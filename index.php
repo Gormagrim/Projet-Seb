@@ -1,7 +1,7 @@
 <?php include_once 'navbar.php'; ?>
 <div class="row">                
-    <div class="offset-1 col-10 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 mainTitle"> 
-        <h2>Que nous proposons vous ?</h2>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mainTitle separation"> 
+       <h2>Que nous proposons vous ?</h2>
     </div>
 </div> <!-- Fin de div row -->
 <div class="row">
