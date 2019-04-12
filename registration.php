@@ -1,5 +1,5 @@
 <?php include_once 'navbarSecondary.php'; ?>
-<?php include('regex.php'); ?>
+<?php include_once('regex.php'); ?>
 
 <?php
 $formErrors = array();
@@ -18,6 +18,16 @@ if (count($_POST) > 0) {
     } else {
         // On va réutiliser notre erreur lastName parce que les deux ne peuvent pas exister en même temps.
         $formErrors['lastname'] = 'Veuillez renseigner votre nom de famille.';
+    }
+
+    if (!empty($_POST['gender'])) {
+        if ($_POST['gender'] == 'Madame' || $_POST['gender'] == 'Monsieur') {
+            $gender = htmlspecialchars($_POST['gender']);
+        } else {
+            $formErrors['gender'] = 'Merci de selectionner un genre existant.';
+        }
+    } else {
+        $formErrors['gender'] = 'Veuillez faire un choix.';
     }
 
     if (!empty($_POST['firstname'])) {
@@ -95,21 +105,24 @@ if (count($_POST) > 0) {
     }
 
     if (!empty($_POST['password'])) {
-         $password = htmlspecialchars($_POST['password']);
+        $password = htmlspecialchars($_POST['password']);
     } else {
         $formErrors['password'] = 'Veuillez renseigner votre mot de passe.';
     }
-    
+
+    if ($_POST['password'] != $_POST['passwordVerification']) {
+        $formErrors['passwordAreDifferent'] = 'Veuillez confirmer votre mot de passe correctement.';
+    }
+
     if (!empty($_POST['termsOfUse'])) {
-         $termsOfUse = htmlspecialchars($_POST['termsOfUse']);
+        $termsOfUse = htmlspecialchars($_POST['termsOfUse']);
     } else {
         $formErrors['termsOfUse'] = 'Veuillez accepter les conditions d\'utilisation.';
     }
 }
 ?>
-<section class="registrationSection">
-<div class="row">
-    <div class="offset-1 col-10 offset-sm-4 col-sm-4 offset-md-4 col-md-4 offset-lg-4 col-lg-4 registration">
+<div class="registrationSection row">
+    <div class="offset-1 col-10 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-3 col-lg-6 registration">
         <?php
 // On affiche le formulaire si rien a été envoyé ou qu'il y a une erreur dans ce qui à été saisi.
         if (count($_POST) == 0 || count($formErrors) > 0) {
@@ -117,115 +130,186 @@ if (count($_POST) > 0) {
             <div class="formRegistration">
                 <h2>Formulaire d'inscription :</h2>
                 <form name="registrationForm" action="registration.php" method="POST">
-                    <label for="type">Vous êtes :</label>
-                    <select  class="form-control" name="type" id="type" required>
-                        <option disabled selected>Veuillez faire un choix !</option>            
-                        <option value="Particulier" <?= isset($_POST['type']) && $_POST['type'] == 'Particulier' ? 'selected' : '' ?>>Particulier</option>
-                        <option value="Professionnel" <?= isset($_POST['type']) && $_POST['type'] == 'Professionnel' ? 'selected' : '' ?>>Professionnel</option>
-                    </select>
-                    <label class="d-flex justify-content-start" for="lastname">Nom de famille</label>
-                    <input class="form-control lastname <?= !isset($formErrors['lastname']) ? 'is-valid' : 'is-invalid' ?>" type="text" name="lastname" id="lastname" placeholder="Doe" value="<?= isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>" required />
-                    <?php if (isset($formErrors['lastname'])) {
-                        ?>
-                        <div class="is-invalid">
-                            <p class="is-valid"><?= $formErrors['lastname'] ?></p>
+
+                    <fieldset>
+                        <legend>Type D'inscription</legend>
+                        <div class="row">
+                            <div class="col-12 col-sm-12  col-md-12 col-lg-12"> 
+                                <label for="type">Vous êtes :</label>
+                                <select  class="form-control" name="type" id="type" required>
+                                    <option disabled selected>Veuillez faire un choix !</option>            
+                                    <option value="Particulier" <?= isset($_POST['type']) && $_POST['type'] == 'Particulier' ? 'selected' : '' ?>>Particulier</option>
+                                    <option value="Professionnel" <?= isset($_POST['type']) && $_POST['type'] == 'Professionnel' ? 'selected' : '' ?>>Professionnel</option>
+                                </select>
+                            </div>
                         </div>
-                    <?php } ?>
-                    <!-- Utiliser les class : is-invalid et is-valid et invalid-feedback (pour les messages d'erreur) pour la mise en forme des input en fonction du remplissage correct ou pas. -->
-                    <label for="firstname">Prénom</label>
-                    <input class="form-control <?= !isset($formErrors['firstname']) ? 'is-valid' : 'is-invalid' ?>" type="text" name="firstname" id="firstname" placeholder="John" value="<?= isset($_POST['firstname']) ? $_POST['firstname'] : '' ?>" required />
-                    <?php if (isset($formErrors['firstname'])) {
-                        ?>
-                        <div class="invalid-feedback">
-                            <p><?= $formErrors['firstname'] ?></p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Civilité</legend>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <input type="radio" name="gender" <?= isset($_POST['gender']) && $_POST['gender'] == 'Madame' ? 'checked' : '' ?> value="Madame" id="Madame" checked="checked" /> <label for="Madame">Madame</label>
+                                <input type="radio" name="gender" <?= isset($_POST['gender']) && $_POST['gender'] == 'Monsieur' ? 'checked' : '' ?> value="Monsieur" id="Monsieur" /> <label for="Monsieur">Monsieur</label>
+                                <?php if (isset($formErrors['gender'])) { ?>
+                                    <div class="invalid-feedback">
+                                        <p><?= $formErrors['gender'] ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
                         </div>
-                    <?php } ?>
-                    <label for="address">Adresse</label>
-                    <input class="form-control <?= !isset($formErrors['address']) ? 'is-valid' : 'is-invalid' ?>" type="text" name="address" id="address" placeholder="1 rue des métiers" value="<?= isset($_POST['address']) ? $_POST['address'] : '' ?>" required />
-                    <?php if (isset($formErrors['address'])) {
-                        ?>
-                        <div class="invalid-feedback">
-                            <p><?= $formErrors['address'] ?></p>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <label class="d-flex justify-content-start" for="lastname">Nom de famille</label>
+                                <input class="form-control lastname <?= isset($formErrors['lastname']) ? 'is-invalid' : (isset($lastname) ? 'is-valid' : '') ?>" type="text" name="lastname" id="lastname" placeholder="Doe" value="<?= isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>" required />
+                                <?php if (isset($formErrors['lastname'])) {
+                                    ?>
+                                    <div class="invalid-feedback">
+                                        <p><?= $formErrors['lastname'] ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <!-- Utiliser les class : is-invalid et is-valid et invalid-feedback (pour les messages d'erreur) pour la mise en forme des input en fonction du remplissage correct ou pas. -->
+                                <label for="firstname">Prénom</label>
+                                <input class="form-control <?= isset($formErrors['firstname']) ? 'is-invalid' : (isset($firstname) ? 'is-valid' : '') ?>" type="text" name="firstname" id="firstname" placeholder="John" value="<?= isset($_POST['firstname']) ? $_POST['firstname'] : '' ?>" required />
+                                <?php if (isset($formErrors['firstname'])) {
+                                    ?>
+                                    <div class="invalid-feedback">
+                                        <p><?= $formErrors['firstname'] ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
                         </div>
-                    <?php } ?>
-                    <label for="postalCode">Code postal</label>
-                    <input class="form-control <?= !isset($formErrors['postalCode']) ? 'is-valid' : 'is-invalid' ?>" type="text" name="postalCode" id="postalCode" placeholder="60000" value="<?= isset($_POST['postalCode']) ? $_POST['postalCode'] : '' ?>" required />
-                    <?php if (isset($formErrors['postalCode'])) {
-                        ?>
-                        <div class="invalid-feedback">
-                            <p><?= $formErrors['postalCode'] ?></p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Adresse et contact</legend>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <label for="address">Adresse</label>
+                                <input class="form-control <?= isset($formErrors['address']) ? 'is-invalid' : (isset($address) ? 'is-valid' : '') ?>" type="text" name="address" id="address" placeholder="1 rue des métiers" value="<?= isset($_POST['address']) ? $_POST['address'] : '' ?>" required />
+                                <?php if (isset($formErrors['address'])) {
+                                    ?>
+                                    <div class="invalid-feedback">
+                                        <p><?= $formErrors['address'] ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
                         </div>
-                    <?php } ?>
-                    <label for="city">Ville</label>
-                    <input class="form-control <?= !isset($formErrors['city']) ? 'is-valid' : 'is-invalid' ?>" type="text" name="city" id="city" placeholder="Beauvais" value="<?= isset($_POST['city']) ? $_POST['city'] : '' ?>" required />
-                    <?php if (isset($formErrors['city'])) {
-                        ?>
-                        <div class="invalid-feedback">
-                            <p><?= $formErrors['city'] ?></p>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6"> 
+                                <label for="postalCode">Code postal</label>
+                                <input class="form-control <?= isset($formErrors['postalCode']) ? 'is-invalid' : (isset($postalCode) ? 'is-valid' : '') ?>" type="text" name="postalCode" id="postalCode" placeholder="60000" value="<?= isset($_POST['postalCode']) ? $_POST['postalCode'] : '' ?>" required />
+                                <?php if (isset($formErrors['postalCode'])) {
+                                    ?>
+                                    <div class="invalid-feedback">
+                                        <p><?= $formErrors['postalCode'] ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <label for="city">Ville</label>
+                                <input class="form-control <?= isset($formErrors['city']) ? 'is-invalid' : (isset($city) ? 'is-valid' : '') ?>" type="text" name="city" id="city" placeholder="Beauvais" value="<?= isset($_POST['city']) ? $_POST['city'] : '' ?>" required />
+                                <?php if (isset($formErrors['city'])) {
+                                    ?>
+                                    <div class="invalid-feedback">
+                                        <p><?= $formErrors['city'] ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
                         </div>
-                    <?php } ?>
-                    <label for="phone">Numéro de téléphone</label>
-                    <input class="form-control <?= !isset($formErrors['phone']) ? 'is-valid' : 'is-invalid' ?>" type="text" name="phone" id="phone" placeholder="06.01.02.03.04" value="<?= isset($_POST['phone']) ? $_POST['phone'] : '' ?>" required />
-                    <?php if (isset($formErrors['phone'])) {
-                        ?>
-                        <div class="invalid-feedback">
-                            <p><?= $formErrors['phone'] ?></p>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <label for="phone">Numéro de téléphone</label>
+                                <input class="form-control <?= isset($formErrors['phone']) ? 'is-invalid' : (isset($phone) ? 'is-valid' : '') ?>" type="text" name="phone" id="phone" placeholder="06.01.02.03.04" value="<?= isset($_POST['phone']) ? $_POST['phone'] : '' ?>" required />
+                                <?php if (isset($formErrors['phone'])) {
+                                    ?>
+                                    <div class="invalid-feedback">
+                                        <p><?= $formErrors['phone'] ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
                         </div>
-                    <?php } ?>
-                    <label for="mail">Adresse mail</label>
-                    <input class="form-control <?= !isset($formErrors['mail']) ? 'is-valid' : 'is-invalid' ?>" type="email" name="mail" id="mail" placeholder="exemple@mail.com" value="<?= isset($_POST['mail']) ? $_POST['mail'] : '' ?>" required />
-                    <?php if (isset($formErrors['mail'])) {
-                        ?>
-                        <div class="invalid-feedback">
-                            <p><?= $formErrors['mail'] ?></p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Connexion</legend>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <label for="mail">Adresse mail</label>
+                                <input class="form-control <?= isset($formErrors['mail']) ? 'is-invalid' : (isset($mail) ? 'is-valid' : '') ?>" type="email" name="mail" id="mail" placeholder="exemple@mail.com" value="<?= isset($_POST['mail']) ? $_POST['mail'] : '' ?>" required />
+                                <?php if (isset($formErrors['mail'])) {
+                                    ?>
+                                    <div class="invalid-feedback">
+                                        <p><?= $formErrors['mail'] ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <label for="mailVerification">Confirmation de l'adresse mail</label>
+                                <input class="form-control <?= !isset($formErrors['mailAreDifferent']) ? '' : 'is-invalid' ?>" type="email" name="mailVerification" id="mailVerification" placeholder="exemple@mail.com" value="<?= isset($_POST['mailVerification']) ? $_POST['mailVerification'] : '' ?>" required />
+                                <?php if (isset($formErrors['mailAreDifferent'])) {
+                                    ?>
+                                    <div class="invalid-feedback">
+                                        <p><?= $formErrors['mailAreDifferent'] ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
                         </div>
-                    <?php } ?>
-                    <label for="mailVerification">Confirmation de l'adresse mail</label>
-                    <input class="form-control <?= !isset($formErrors['mailAreDifferent']) ? 'is-valid' : 'is-invalid' ?>" type="email" name="mailVerification" id="mailVerification" placeholder="exemple@mail.com" value="<?= isset($_POST['mailVerification']) ? $_POST['mailVerification'] : '' ?>" required />
-                    <?php if (isset($formErrors['mailAreDifferent'])) {
-                        ?>
-                        <div class="invalid-feedback">
-                            <p><?= $formErrors['mailAreDifferent'] ?></p>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <label for="password">Mot de passe</label>
+                                <input class="form-control <?= isset($formErrors['password']) ? 'is-invalid' : (isset($password) ? 'is-valid' : '') ?>" type="text" name="password" id="userName" placeholder="Votre mot de passe" value="<?= isset($_POST['password']) ? $_POST['password'] : '' ?>" required />
+                                <?php if (isset($formErrors['password'])) {
+                                    ?>
+                                    <div class="invalid-feedback">
+                                        <p><?= $formErrors['password'] ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <label for="passwordVerification">Confirmation du mot de passe</label>
+                                <input class="form-control <?= !isset($formErrors['passwordAreDifferent']) ? '' : 'is-invalid' ?>" type="text" name="passwordVerification" id="passwordVerification" placeholder="Confirmez votre mot de passe" value="<?= isset($_POST['passwordVerification']) ? $_POST['passwordVerification'] : '' ?>" required />
+                                <?php if (isset($formErrors['passwordAreDifferent'])) {
+                                    ?>
+                                    <div class="invalid-feedback">
+                                        <p><?= $formErrors['passwordAreDifferent'] ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
                         </div>
-                    <?php } ?>
-                    <label for="password">Mot de passe</label>
-                    <input class="form-control <?= !isset($formErrors['password']) ? 'is-valid' : 'is-invalid' ?>" type="text" name="password" id="userName" placeholder="Votre mot de passe" value="<?= isset($_POST['password']) ? $_POST['password'] : '' ?>" required />
-                    <?php if (isset($formErrors['password'])) {
-                        ?>
-                        <div class="invalid-feedback">
-                            <p><?= $formErrors['password'] ?></p>
+                    </fieldset>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 checkbox">
+                            <input class="form-check-input <?= !isset($formErrors['termsOfUse']) ? '' : 'is-invalid' ?>" type="checkbox" id="termsOfUse" name="termsOfUse">
+                            <label class="form-check-label" for="termsOfUse">J'accepte les conditions d'utilisation.</label>
                         </div>
-                    <?php } ?>
-                    <div class="checkbox">
-                    <input class="form-check-input <?= !isset($formErrors['termsOfUse']) ? 'is-valid' : 'is-invalid' ?>" type="checkbox" id="termsOfUse" name="termsOfUse">
-                    <label class="form-check-label" for="termsOfUse">J'accepte les conditions d'utilisation.</label>
                     </div>
                     <input type="submit" name="submit" value="Envoyer" class="btn btn-outline-warning registrationBtn" />
                 </form>
             </div>
-            <a href="index.php">Retour</a>
-        <?php } else { ?>
-            <div class="validSubmit">
-                <p>Vos données ont bien été envoyées.</p>
-            </div>
-            <div class="jumbotron">
-                <p>Vous êtes un <?= $type ?></p>
-                <p>Nom : <?= $lastname; ?></p>
-                <p>Prénom : <?= $firstname; ?></p>
-                <p>Adresse : <?= $address; ?></p>
-                <p>Code postal : <?= $postalCode; ?></p>
-                <p>Ville : <?= $city; ?></p>
-                <p>Numéro de téléphone : <?= $phone; ?></p>
-                <p>Adresse mail : <?= $mail; ?></p>
-                <p>Mot de passe : <?= $password; ?></p>
-            </div>
-            <button type="button" class="btn btn-outline-warning registrationBtn" onclick="javascript:location.href = 'connection.php'">Suivant</button>
-
-            <div class="return">
-                <a class="test" href="index.php">Retour</a>
-            </div>
-        <?php } ?>
+        </div>
     </div>
+    <a href="index.php">Retour</a>
+<?php } else { ?>
+    <div class="validSubmit">
+        <p>Vos données ont bien été envoyées.</p>
+    </div>
+    <div class="jumbotron">
+        <p>Vous êtes un <?= $type ?></p>
+        <p>Nom : <?= $lastname; ?></p>
+        <p>Prénom : <?= $firstname; ?></p>
+        <p>Adresse : <?= $address; ?></p>
+        <p>Code postal : <?= $postalCode; ?></p>
+        <p>Ville : <?= $city; ?></p>
+        <p>Numéro de téléphone : <?= $phone; ?></p>
+        <p>Adresse mail : <?= $mail; ?></p>
+        <p>Mot de passe : <?= $password; ?></p>
+    </div>
+    <button type="button" class="btn btn-outline-warning registrationBtn" onclick="javascript:location.href = 'connection.php'">Suivant</button>
+
+    <div class="return">
+        <a class="test" href="index.php">Retour</a>
+    </div>
+<?php } ?>
 </div>
-</section>
+</div>
 <?php include_once 'footerSecondary.php'; ?>

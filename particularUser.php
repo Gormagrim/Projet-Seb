@@ -13,14 +13,10 @@
         <a href="#" class="w3-bar-item w3-button"><span class="orange">.</span>Mes travaux</a>
         <a href="#" class="w3-bar-item w3-button"><span class="orange">.</span>Mes favoris</a>
         <a href="#" class="w3-bar-item w3-button"><span class="orange">.</span>Mes contacts</a>
-        <p><a href="#"><span class="orange">.</span>Mon compte<a></p>
+        <p><a href="#"><span class="orange">.</span>Mon compte</a></p>
                     </div>
-
                     <div id="main">
-
-
                         <!-- Zone de test -->
-
                         <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 firstCard">
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
@@ -39,9 +35,9 @@
                                                     <p class="card-text">Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes.</p>
                                                     <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
                                                     <div class="socialMedia">
-                                                        <i class="fas fa-sun fa-2x" style="color:#2f4f4f" title="J'aime"></i>
-                                                        <i class="fas fa-snowflake fa-2x" style="color:#2f4f4f" title="J'aime moins"></i>
-                                                        <i class="far fa-plus-square fa-2x" style="color:#2f4f4f" title="Ajouter aux favoris"></i>
+                                                        <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                                                        <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                                                        <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -63,9 +59,9 @@
                                                     <p class="card-text">Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes.</p>
                                                     <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
                                                     <div class="socialMedia">
-                                                        <i class="fas fa-sun fa-2x" style="color:#2f4f4f" title="J'aime"></i>
-                                                        <i class="fas fa-snowflake fa-2x" style="color:#2f4f4f" title="J'aime moins"></i>
-                                                        <i class="far fa-plus-square fa-2x" style="color:#2f4f4f" title="Ajouter aux favoris"></i>
+                                                        <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                                                        <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                                                        <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -85,9 +81,9 @@
                                                     <p class="card-text">Ici les travaux seront décris dans un petit résumé de quelques lignes.</p>
                                                     <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
                                                     <div class="socialMedia">
-                                                        <i class="fas fa-sun fa-2x" style="color:#2f4f4f" title="J'aime"></i>
-                                                        <i class="fas fa-snowflake fa-2x" style="color:#2f4f4f" title="J'aime moins"></i>
-                                                        <i class="far fa-plus-square fa-2x" style="color:#2f4f4f" title="Ajouter aux favoris"></i>
+                                                        <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                                                        <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                                                        <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -98,10 +94,6 @@
                         </div>
                     </div>
                     </div>
-                    <div class="row">
-
-                    </div>
                     <!-- A partir d'ici entrer le contenu -->
-
                     <?php include_once 'footerSecondary.php'; ?>
 
