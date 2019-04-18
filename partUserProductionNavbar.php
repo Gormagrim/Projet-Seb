@@ -13,7 +13,7 @@
     </head>
     <body>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light solid navbarSecondary">
-            <a href="/index.php" class="navbar-left">izi<span class="orange">.</span>travaux<span class="orange">.</span>com</a>
+            <a href="/accueil" class="navbar-left">izi<span class="orange">.</span>travaux<span class="orange">.</span>com</a>
             <button id="grosBoutton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -306,7 +306,7 @@
                         </form>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-warning" onclick="javascript:location.href = 'connection.php'">Connexion</button>
+                        <button type="button" class="btn btn-outline-warning" onclick="javascript:location.href = '#'">Déconnexion</button>
                     </li>
                 </ul>
             </div>

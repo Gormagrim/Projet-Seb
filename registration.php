@@ -1,5 +1,8 @@
-<?php include_once 'navbarSecondary.php'; ?>
-<?php include_once('regex.php'); ?>
+<?php 
+include_once 'navbarSecondary.php';
+include_once('regex.php'); 
+$page = $_SERVER['PHP_SELF'];
+?>
 
 <?php
 $formErrors = array();
@@ -130,9 +133,8 @@ if (count($_POST) > 0) {
             <div class="formRegistration">
                 <h2>Formulaire d'inscription :</h2>
                 <form name="registrationForm" action="registration.php" method="POST">
-
                     <fieldset>
-                        <legend>Type D'inscription</legend>
+                        <legend><span class="orange">.</span>Type D'inscription</legend>
                         <div class="row">
                             <div class="col-12 col-sm-12  col-md-12 col-lg-12"> 
                                 <label for="type">Vous êtes :</label>
@@ -145,7 +147,7 @@ if (count($_POST) > 0) {
                         </div>
                     </fieldset>
                     <fieldset>
-                        <legend>Civilité</legend>
+                        <legend><span class="orange">.</span>Civilité</legend>
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                 <input type="radio" name="gender" <?= isset($_POST['gender']) && $_POST['gender'] == 'Madame' ? 'checked' : '' ?> value="Madame" id="Madame" checked="checked" /> <label for="Madame">Madame</label>
@@ -182,7 +184,7 @@ if (count($_POST) > 0) {
                         </div>
                     </fieldset>
                     <fieldset>
-                        <legend>Adresse et contact</legend>
+                        <legend><span class="orange">.</span>Adresse et contact</legend>
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                 <label for="address">Adresse</label>
@@ -231,7 +233,7 @@ if (count($_POST) > 0) {
                         </div>
                     </fieldset>
                     <fieldset>
-                        <legend>Connexion</legend>
+                        <legend><span class="orange">.</span>Connexion</legend>
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                 <label for="mail">Adresse mail</label>

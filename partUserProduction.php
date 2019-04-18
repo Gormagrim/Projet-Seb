@@ -1,4 +1,7 @@
-<?php include_once 'partUserProductionNavbar.php'; ?>
+<?php include_once 'partUserProductionNavbar.php'; 
+include_once 'TestBaseDeDonnées.php';
+include_once 'function.php';
+?>
 
 <div class="row">
     <!-- Début des col de remplissage --> 
@@ -26,74 +29,14 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
                     <h2>"Votre exemple de réalisation" :</h2>
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
-                    <div class="card mb-3">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src="assets/img/travaux.jpg" class="card-img firstImg" title="Travaux de l'entreprise Yalah" alt="Exemple de travaux">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h4 class="card-title">Exemple de réalisation</h4>
-                                    <h5 class="card-title">Entreprise Top-Team</h5>
-                                    <p class="card-text">Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes.</p>
-                                    <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
-                                    <div class="socialMedia">
-                                        <i class="fas fa-sun fa-2x" title="J'aime"></i>
-                                        <i class="fas fa-snowflake fa-2x" title="J'aime moins"></i>
-                                        <i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?= showBigProductionCards($productionArray) ?>
             </div>
             <div class="row secondCards">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="card mb-3">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src="assets/img/travaux2.jpg" class="card-img secondImg" title="Travaux de l'entreprise Ploufff" alt="Exemple de travaux">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body second">
-                                    <h4 class="card-title">Exemple de réalisation</h4>
-                                    <h5 class="card-title">Entreprise Construct</h5>
-                                    <p class="card-text">Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes. Ici les travaux seront décris dans un petit résumé de quelques lignes.</p>
-                                    <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
-                                    <div class="socialMedia">
-                                        <i class="fas fa-sun fa-2x" title="J'aime"></i>
-                                        <i class="fas fa-snowflake fa-2x" title="J'aime moins"></i>
-                                        <i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="card mb-3">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src="assets/img/travaux3.jpg" class="card-img secondImg" title="Travaux de l'entreprise Trep" alt="Exemple de travaux">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body second">
-                                    <h4 class="card-title">Exemple de réalisation</h4>
-                                    <h5 class="card-title">Entreprise Yalahhh</h5>
-                                    <p class="card-text">Ici les travaux seront décris dans un petit résumé de quelques lignes.</p>
-                                    <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
-                                    <div class="socialMedia">
-                                        <i class="fas fa-sun fa-2x" title="J'aime"></i>
-                                        <i class="fas fa-snowflake fa-2x" title="J'aime moins"></i>
-                                        <i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?= showSmallProductionCards($productionArray2) ?>
+                <?= showSmallProductionCards($productionArray3) ?>
+                <?= showSmallProductionCards($productionArray4) ?>
+                <?= showSmallProductionCards($productionArray5) ?>
+                <?= showSmallProductionCards($productionArray6) ?>
             </div>
         </div>
     </div>

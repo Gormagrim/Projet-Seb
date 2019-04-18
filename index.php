@@ -1,7 +1,7 @@
 <?php include_once 'navbar.php'; ?>
 <div class="row">                
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 mainTitle separation"> 
-       <h2>Que nous proposons vous ?</h2>
+       <h2 style="text-shadow:1px 1px 0 #ffa40d">QUE NOUS PROPOSONS VOUS ?</h2>
     </div>
 </div> <!-- Fin de div row -->
 <div class="row">
@@ -22,7 +22,7 @@
         <p>Ou vous souhaitez simplement regarder ce que font les professionnels pour vous en inspirer ?</p>
         <p>Vous voulez comparer les réalisations et trouver le pro que vous cherchez ?</p>
         <p>Besoin d'un devis?</p>
-        <button type="button" class="btn btn-outline-warning registrationBtn" onclick="javascript:location.href = 'registration.php'">S'inscrire</button>
+        <button type="button" class="btn registrationBtn" onclick="javascript:location.href = 'registration.php'">S'inscrire</button>
     </div>
     <div class="col-12 col-sm-12 col-md-12 offset-lg-2 col-lg-3 Professionnal">
         <h2>PROFESSIONNELS :</h2>
@@ -30,7 +30,7 @@
         <p>Augmentez votre visibilité et proposez vos services à de nouveaux clients?</p>
         <p>Venez exposer votre savoir-faire et gagner en renommée.</p>
         <p>Rejoignez l'une des plus grande communauté de votre région.</p>
-        <button type="button" class="btn btn-outline-warning registrationBtn" onclick="javascript:location.href = 'registration.php'">S'inscrire</button>
+        <button type="button" class="btn registrationBtn" onclick="javascript:location.href = 'registration.php'">S'inscrire</button>
     </div>
 </div>
 <?php include_once 'footer.php'; ?>
