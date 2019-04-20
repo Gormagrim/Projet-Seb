@@ -131,7 +131,7 @@ if (count($_POST) > 0) {
         if (count($_POST) == 0 || count($formErrors) > 0) {
             ?>
             <div class="formRegistration">
-                <h2>Formulaire d'inscription :</h2>
+                <h2><span class="orange">.</span>Formulaire d'inscription :</h2>
                 <form name="registrationForm" action="registration.php" method="POST">
                     <fieldset>
                         <legend><span class="orange">.</span>Type D'inscription</legend>
@@ -259,7 +259,7 @@ if (count($_POST) > 0) {
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                 <label for="password">Mot de passe</label>
-                                <input class="form-control <?= isset($formErrors['password']) ? 'is-invalid' : (isset($password) ? 'is-valid' : '') ?>" type="text" name="password" id="userName" placeholder="Votre mot de passe" value="<?= isset($_POST['password']) ? $_POST['password'] : '' ?>" required />
+                                <input class="form-control <?= isset($formErrors['password']) ? 'is-invalid' : (isset($password) ? 'is-valid' : '') ?>" type="password" name="password" id="userName" placeholder="Votre mot de passe" value="<?= isset($_POST['password']) ? $_POST['password'] : '' ?>" required />
                                 <?php if (isset($formErrors['password'])) {
                                     ?>
                                     <div class="invalid-feedback">
@@ -269,7 +269,7 @@ if (count($_POST) > 0) {
                             </div>
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                 <label for="passwordVerification">Confirmation du mot de passe</label>
-                                <input class="form-control <?= !isset($formErrors['passwordAreDifferent']) ? '' : 'is-invalid' ?>" type="text" name="passwordVerification" id="passwordVerification" placeholder="Confirmez votre mot de passe" value="<?= isset($_POST['passwordVerification']) ? $_POST['passwordVerification'] : '' ?>" required />
+                                <input class="form-control <?= !isset($formErrors['passwordAreDifferent']) ? '' : 'is-invalid' ?>" type="password" name="passwordVerification" id="passwordVerification" placeholder="Confirmez votre mot de passe" value="<?= isset($_POST['passwordVerification']) ? $_POST['passwordVerification'] : '' ?>" required />
                                 <?php if (isset($formErrors['passwordAreDifferent'])) {
                                     ?>
                                     <div class="invalid-feedback">

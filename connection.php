@@ -6,7 +6,7 @@ $page = $_SERVER['PHP_SELF'];
     <div class="row form-row connection">
         <div class="form-group offset-1 col-10 offset-sm-4 col-sm-4 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
             <div class="formConnection">
-                <h2>Connexion</h2>
+                <h2><span class="orange">.</span>Connexion</h2>
                 <label for="mail">Adresse mail :</label>
                 <input type="email" class="form-control" id="mail" placeholder="exemple@mail.com">
                 <label for="password">Mot de passe :</label>

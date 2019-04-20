@@ -109,6 +109,7 @@ function showSmallProductionCards($globalPortrait) {
 
 function showCompany($globalPortrait) {
     ?>
+    <div class="row">
     <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8">
         <div class="row">
             <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
@@ -165,6 +166,7 @@ function showCompany($globalPortrait) {
         <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
             <p class="companyCard">Nombre de réalisation ajoutés en favori: <?= $globalPortrait['companyFavory'] ?></p>
         </div>
+    </div>
     </div>
     </div>
 <?php } ?>

@@ -1,7 +1,7 @@
 <?php include_once 'navbar.php'; ?>
 <div class="row">                
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 mainTitle separation"> 
-       <h2 style="text-shadow:1px 1px 0 #ffa40d">QUE NOUS PROPOSONS VOUS ?</h2>
+       <h2 style="text-shadow:1px 1px 0 #ffa40d"><span class="orange">.</span>QUE NOUS PROPOSONS VOUS ?</h2>
     </div>
 </div> <!-- Fin de div row -->
 <div class="row">
@@ -17,7 +17,7 @@
 </div> <!-- fin de row principalText -->
 <div class="row">
     <div class="col-12 col-sm-12 col-md-12 offset-lg-2 col-lg-3 nonProfessionnal">
-        <h2>PARTICULIERS :</h2>
+        <h2><span class="orange">.</span>PARTICULIERS :</h2>
         <p>Vous souhaitez réaliser prochainement des travaux chez vous?</p>
         <p>Ou vous souhaitez simplement regarder ce que font les professionnels pour vous en inspirer ?</p>
         <p>Vous voulez comparer les réalisations et trouver le pro que vous cherchez ?</p>
@@ -25,7 +25,7 @@
         <button type="button" class="btn registrationBtn" onclick="javascript:location.href = 'registration.php'">S'inscrire</button>
     </div>
     <div class="col-12 col-sm-12 col-md-12 offset-lg-2 col-lg-3 Professionnal">
-        <h2>PROFESSIONNELS :</h2>
+        <h2><span class="orange">.</span>PROFESSIONNELS :</h2>
         <p>Vous êtes particulièrement fière de vos réalisations et souhaitez les partager?</p>
         <p>Augmentez votre visibilité et proposez vos services à de nouveaux clients?</p>
         <p>Venez exposer votre savoir-faire et gagner en renommée.</p>
