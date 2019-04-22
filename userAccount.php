@@ -3,7 +3,6 @@ include_once 'navbarSecondary.php';
 include_once 'TestBaseDeDonnées.php';
 include_once 'function.php';
 ?>
-<!-- Début Menu Slide --> 
 
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left sideBarMenu entreprise" style="display:none" id="mySidebar">
     <button class="w3-bar-item w3-button w3-large slideMenuCloseBtn" onclick="w3_close()">Fermer le Menu &times;</button>
@@ -19,29 +18,7 @@ include_once 'function.php';
     <p><a href="/userAccount.php"><span class="orange">.</span>Mon compte</a></p>
 </div>
 <div id="main">
-
-    <?= showCompany($entrepriseTest); ?>
-
+    <?= showUser($userTest); ?>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php include_once 'footerSecondary.php'; ?>

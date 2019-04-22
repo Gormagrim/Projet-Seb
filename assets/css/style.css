@@ -146,22 +146,22 @@ ul.partProd li {
 }
 
 .megamenu-li {
-  
-  position: static;
+
+    position: static;
 }
 
 .rounded {
-  margin-top: 5em;
-  background-color: #2f4f4f !important;
-  z-index: 100;
+    margin-top: 5em;
+    background-color: #2f4f4f !important;
+    z-index: 100;
 }
 
 .megamenu {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  right: 0;
-  padding: 15px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 15px;
 }
 
 .navbar-expand-lg .navbar-nav .dropdown-menu {
@@ -169,18 +169,18 @@ ul.partProd li {
 }
 
 .navbar-expand-lg .navbar-nav .dropdown-menu a, .navbar-expand-lg .navbar-nav .dropdown-menu h5 {
-  color: #fff;
+    color: #fff;
 }
 
 .navbar-expand-lg .navbar-nav .dropdown-menu a:hover {
-  background-color: #ffa000;
-  outline: 0;
+    background-color: #ffa000;
+    outline: 0;
 }
 
 #dropdown01, #dropdown02, #dropdown03, #dropdown04, #dropdown05, #dropdown06 {
-  color: #fff;
-  font-size: 1em;
-  outline: 0;
+    color: #fff;
+    font-size: 1em;
+    outline: 0;
 }
 
 /* Container fluid */
@@ -231,7 +231,7 @@ p.welcomeWord {
     margin-bottom: 3em;
 }
 
-.registrationBtn {
+.registrationBtn, .realisationBtn {
     display: block;
     margin: 0 auto;
     margin-top: 1em;
@@ -242,7 +242,7 @@ p.welcomeWord {
     position: relative;
 }
 
-.registrationBtn:hover {
+.registrationBtn:hover, .realisationBtn:hover {
     background-image: radial-gradient(#ffbb5b, #ffa000);
     border-color: #fff;
     color: #fff;
@@ -255,7 +255,6 @@ p.welcomeWord {
     background-color: #2f4f4f;
     color: #fff;
     z-index: 100;
-
 }
 
 .fixed-bottom {
@@ -380,11 +379,11 @@ legend {
 }
 
 .form-control.is-invalid {
-   background-image: url(/assets/img/png/notOk.png);
+    background-image: url(/assets/img/png/notOk.png);
 }
 
 .form-control.is-valid {
-   background-image: url(/assets/img/png/valid.png);
+    background-image: url(/assets/img/png/valid.png);
 }
 
 /* connection */
@@ -488,6 +487,10 @@ i:hover {
 
 /* sdieMenu */
 
+.active {
+    background-color: #ffa000;
+}
+
 .w3-button {
     color: #fff;
     border-color: #fff;
@@ -570,6 +573,131 @@ img.companyCard {
     margin-bottom: 2em;
 }
 
-.testo {
+.photoUpload {
     margin-top: 5em;
 }
+
+.form-control {
+    border: 1px solid #ffa000;
+}
+
+.realisationBtn {
+    margin-bottom: 15em;
+}
+
+.realisationTop {
+    margin-top: 5em;
+}
+
+/* userAccount.php */
+
+.Usermodification {
+    float: left;
+}
+
+.userIcon {
+    position: absolute;
+}
+
+.phone, .mediaLike {
+    margin-bottom: 2em;
+}
+
+.userIdentity {
+    margin-bottom: 4em;
+}
+
+.userCards a {
+    color: #000;
+}
+
+.userCards a:hover {
+    color: #ffa000;
+}
+
+
+/* estimate.php */
+
+table {
+    border-collapse: collapse;
+
+}
+
+th, td {
+    border: 1px solid #ffa000;
+}
+
+.userEstimate {
+    margin-bottom: 27em;
+}
+
+.estimateTitle {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+/* sectorSearch.php */
+
+.sectorSearchTitle {
+    margin-top: 2em;
+    margin-bottom: 3em;
+}
+
+h2.sectorSearchTitle {
+    margin-bottom: 0.2em;
+    font-size: 1.5em;
+}
+
+h2.sectorSearchMainTitle {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.sectorSearch p {
+    text-align: center;
+    color: #ffa000;
+}
+
+.sectorSearch h5 {
+    color: #ffa000;
+}
+
+.sectorSearch a {
+    color: #000;
+}
+
+.sectorSearch a:hover {
+    color: #ffa000;
+    background-color: transparent;
+}
+
+a.return {
+    color: #ffa000;
+}
+
+.return {
+    margin-bottom: 0.5em;
+    margin-top: 1.5em;
+    text-align: center;
+}
+
+.zipCode {
+    margin-bottom: 2em;
+}
+
+.form-inline {
+    display: block;
+    margin: auto;
+}
+
+.zipCodeBtn {
+    color: #ffa000;
+    border: 1px solid #ffa000;
+}
+
+.hideOne, .hideTwo, .hideThree, .hideFour, .hideFive, .hideSix, .reHideOne, .reHideTwo, .reHideThree, .reHideFour, .reHideFive, .reHideSix {
+    display: none;
+}
+
+/* realisationTest.php */
+

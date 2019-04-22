@@ -11,13 +11,13 @@ include_once 'function.php';
         <p><span class="orange">.</span>Recherches par :</p>
         <a href="/particularUser.php" class="w3-bar-item w3-button"><span class="orange">.</span>Entreprises</a>
         <a href="/partUserProduction.php" class="w3-bar-item w3-button noMargingTop"><span class="orange">.</span>Réalisations</a>
-        <a href="#" class="w3-bar-item w3-button noMargingTop"><span class="orange">.</span>Secteurs</a>
+        <a href="/sectorSearch.php" class="w3-bar-item w3-button noMargingTop"><span class="orange">.</span>Secteurs</a>
         <p><span class="orange">.</span>Mon activité :</p>
-        <a href="#" class="w3-bar-item w3-button"><span class="orange">.</span>Mes devis</a>
-        <a href="#" class="w3-bar-item w3-button"><span class="orange">.</span>Mes travaux</a>
-        <a href="#" class="w3-bar-item w3-button"><span class="orange">.</span>Mes favoris</a>
-        <a href="#" class="w3-bar-item w3-button"><span class="orange">.</span>Mes contacts</a>
-        <p><a href="#"><span class="orange">.</span>Mon compte</a></p>
+        <a href="/estimate.php" class="w3-bar-item w3-button"><span class="orange">.</span>Mes devis</a>
+        <a href="/userWorks.php" class="w3-bar-item w3-button"><span class="orange">.</span>Mes travaux</a>
+        <a href="/userFavorites.php" class="w3-bar-item w3-button"><span class="orange">.</span>Mes favoris</a>
+        <a href="/userContact.php" class="w3-bar-item w3-button"><span class="orange">.</span>Mes contacts</a>
+        <p><a href="/userAccount.php"><span class="orange">.</span>Mon compte</a></p>
     </div>
     <div id="main">
         <!-- Zone de remplissage du menu Slide -->
