@@ -41,7 +41,7 @@ $realisationTest = array(
     'titlePhotoFive' => 'Titre de la cinquième photo',
     'textePhotoFive' => 'Magnifique et surprennant texte explicatif de la cinquième photo de ce carousel exxeptionnel',
     'realisationLike' => '2',
-    'realisationDislike' => '4',
+    'realisationDislike' => '7',
     'realisationFavory' => '12',
     );
 
