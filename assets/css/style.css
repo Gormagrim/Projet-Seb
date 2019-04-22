@@ -701,3 +701,42 @@ a.return {
 
 /* realisationTest.php */
 
+.carousel-caption h5, .carousel-caption p {
+    color: #fff;
+}
+
+.realisation h3 {
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.realisationText p {
+    margin-top: 1.5em;
+}
+
+.socialMedia p {
+    text-align: center;
+    border: 1px solid #ffa000;
+    border-radius: 50%;
+    height: 22px;
+    width: 22px;
+    z-index: 999;
+    background-color: #f5f5dc;
+    color: #ffa000;
+    position: relative;
+    margin-top: 2em;
+    margin-left: -1em;
+}
+
+.socialMedia span {
+    margin-bottom: 0.6em;
+}
+
+div.socialMedia {
+    display: inline-flex;
+}
+
+.socialMedia.fas, .socialMedia.far {
+    z-index: 998;
+}

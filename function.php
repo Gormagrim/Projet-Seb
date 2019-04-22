@@ -15,8 +15,11 @@ function showBigCards($globalPortrait) { ?>
                         <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/entrepriseTest.php'">Voir plus</button>
                         <div class="socialMedia">
                             <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                            <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
                             <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                            <span><p><?= $globalPortrait['realisationDislike'] ?></p></span>
                             <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                            <span><p><?= $globalPortrait['realisationFavory'] ?></p></span>
                         </div>
                     </div>
                 </div>
@@ -42,8 +45,11 @@ function showSmallCards($globalPortrait) {
                         <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
                         <div class="socialMedia">
                             <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                            <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
                             <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                            <span><p><?= $globalPortrait['realisationDislike'] ?></p></span>
                             <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                            <span><p><?= $globalPortrait['realisationFavory'] ?></p></span>
                         </div>
                     </div>
                 </div>
@@ -69,8 +75,11 @@ function showBigProductionCards($globalPortrait) {
                         <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/realisationTest.php'">Voir plus</button>
                         <div class="socialMedia">
                             <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                            <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
                             <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                            <span><p><?= $globalPortrait['realisationDislike'] ?></p></span>
                             <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                            <span><p><?= $globalPortrait['realisationFavory'] ?></p></span>
                         </div>
                     </div>
                 </div>
@@ -96,8 +105,11 @@ function showSmallProductionCards($globalPortrait) {
                         <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
                         <div class="socialMedia">
                             <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                            <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
                             <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                            <span><p><?= $globalPortrait['realisationDislike'] ?></p></span>
                             <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                            <span><p><?= $globalPortrait['realisationFavory'] ?></p></span>
                         </div>
                     </div>
                 </div>
@@ -162,6 +174,14 @@ function showCompany($globalPortrait) {
                 <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
                     <p class="companyCard">Nombre de réalisation ajoutés en favori: <?= $globalPortrait['companyFavory'] ?></p>
                 </div>
+            </div>
+            <div class="socialMedia">
+                <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                <span><p><?= $globalPortrait['companyLike'] ?></p></span>
+                <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                <span><p><?= $globalPortrait['companyDislike'] ?></p></span>
+                <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                <span><p><?= $globalPortrait['companyFavory'] ?></p></span>
             </div>
         </div>
     </div>
@@ -246,53 +266,86 @@ function showSmallCompanyCards($globalPortrait) {
                     </div>
                 </div>
             </div>
+            <div class="socialMedia">
+                <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
+                <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                <span><p><?= $globalPortrait['realisationDislike'] ?></p></span>
+                <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                <span><p><?= $globalPortrait['realisationFavory'] ?></p></span>
+            </div>
         </div>
     </div>
     <?php
 }
 
-function showRealisation($globalPortrait) { ?>
-    <div class="bd-example">
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-
-                
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="<?php $globalPortrait['realisationPhoto'] ?>" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5><?php $globalPortrait['titlePhoto'] ?></h5>
-                        <p><?php $globalPortrait['textePhoto'] ?></p>
-                    </div>
+function showRealisation($globalPortrait) {
+    ?>
+    <div class="row">
+        <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 userCards">
+            <div class="row">
+                <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
+                    <h2><?= $globalPortrait['companyName'] ?></h2>
                 </div>
-                <div class="carousel-item">
-                    <img src="<?php $globalPortrait['realisationPhotoTwo'] ?>" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5><?php $globalPortrait['titlePhotoTwo'] ?></h5>
-                        <p><?php $globalPortrait['textePhotoTwo'] ?></p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="<?php $globalPortrait['realisationPhotoThree'] ?>" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5><?php $globalPortrait['titlePhotoThree'] ?></h5>
-                        <p><?php $globalPortrait['textePhotoThree'] ?></p>
-                    </div>
-                </div>
-                
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <div class="row">
+                <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 realisation">
+                    <h3>Chantier de <?= $globalPortrait['realisationType'] ?> à <?= $globalPortrait['realisationCity'] ?></h3>
+                </div>
+            </div>
+            <div class="bd-example">
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="<?= $globalPortrait['realisationPhoto'] ?>" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5><?= $globalPortrait['titlePhoto'] ?></h5>
+                                <p><?= $globalPortrait['textePhoto'] ?></p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<?= $globalPortrait['realisationPhotoTwo'] ?>" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5><?= $globalPortrait['titlePhotoTwo'] ?></h5>
+                                <p><?= $globalPortrait['textePhotoTwo'] ?></p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<?= $globalPortrait['realisationPhotoThree'] ?>" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5><?= $globalPortrait['titlePhotoThree'] ?></h5>
+                                <p><?= $globalPortrait['textePhotoThree'] ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 realisationText">
+                    <p>Descriptif des travaux réalisés : <br /><?= $globalPortrait['realisationText'] ?></p>
+                </div>
+            </div>
+            <div class="socialMedia">
+                <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
+                <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                <span><p><?= $globalPortrait['realisationDislike'] ?></p></span>
+                <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                <span><p><?= $globalPortrait['realisationFavory'] ?></p></span>
+            </div>
         </div>
     </div>
 <?php } ?>
