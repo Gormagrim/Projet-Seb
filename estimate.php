@@ -27,22 +27,22 @@ include_once 'function.php';
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Numero de devis</th>
+                                    <th class="mobileHide">Numero de devis</th>
                                     <th>Entreprise</th>
-                                    <th>Type de réalisation</th>
-                                    <th>Date</th>
-                                    <th>Montant</th>
+                                    <th class="mobileHide">Type de réalisation</th>
+                                    <th class="mobileHide">Date</th>
+                                    <th class="mobileHide">Montant</th>
                                     <th>Mon devis</th>
                                     <th>Contacter</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>001</td>
+                                    <td class="mobileHide">001</td>
                                     <td>Test</td>
-                                    <td>Terrasse extérieure</td>
-                                    <td>22/04/2019</td>
-                                    <td>2024.00€</td>
+                                    <td class="mobileHide">Terrasse extérieure</td>
+                                    <td class="mobileHide">22/04/2019</td>
+                                    <td class="mobileHide">2024.00€</td>
                                     <td>fichier.pdf</td>
                                     <td align="center">
                                         <i class="fas fa-phone-square"></i>
@@ -51,11 +51,11 @@ include_once 'function.php';
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>002</td>
+                                    <td class="mobileHide">002</td>
                                     <td>Test2</td>
-                                    <td>Murets de clôture</td>
-                                    <td>22/04/2019</td>
-                                    <td>7035.00€</td>
+                                    <td class="mobileHide">Murets de clôture</td>
+                                    <td class="mobileHide">22/04/2019</td>
+                                    <td class="mobileHide">7035.00€</td>
                                     <td>fichierMuret.pdf</td>
                                     <td align="center">
                                         <i class="fas fa-phone-square"></i>

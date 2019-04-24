@@ -20,7 +20,7 @@ include_once 'function.php';
 <div id="main">
     <div class="row">
         <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8">
-            <h2 class="estimateTitle"><span class="orange">.</span>Mes favoris</h2>
+            <h2 class="estimateTitle"><span class="orange">.</span>Mes Contacts</h2>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userEstimate">
                     <?= showSmallCompanyCards($entrepriseTest) ?>

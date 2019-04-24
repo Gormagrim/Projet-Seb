@@ -14,11 +14,11 @@ function showBigCards($globalPortrait) { ?>
                         <p class="card-text"><?= $globalPortrait['productionDescription'] ?></p>
                         <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/entrepriseTest.php'">Voir plus</button>
                         <div class="socialMedia">
-                            <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                            <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
-                            <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                            <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationDislike'] ?></p></span>
-                            <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                            <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationFavory'] ?></p></span>
                         </div>
                     </div>
@@ -44,11 +44,11 @@ function showSmallCards($globalPortrait) {
                         <p class="card-text"><?= $globalPortrait['productionDescription'] ?></p>
                         <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
                         <div class="socialMedia">
-                            <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                            <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
-                            <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                            <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationDislike'] ?></p></span>
-                            <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                            <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationFavory'] ?></p></span>
                         </div>
                     </div>
@@ -74,11 +74,11 @@ function showBigProductionCards($globalPortrait) {
                         <p class="card-text"><?= $globalPortrait['productionDescription'] ?></p>
                         <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/realisationTest.php'">Voir plus</button>
                         <div class="socialMedia">
-                            <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                            <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
-                            <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                            <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationDislike'] ?></p></span>
-                            <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                            <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationFavory'] ?></p></span>
                         </div>
                     </div>
@@ -104,11 +104,11 @@ function showSmallProductionCards($globalPortrait) {
                         <p class="card-text"><?= $globalPortrait['productionDescription'] ?></p>
                         <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
                         <div class="socialMedia">
-                            <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                            <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
-                            <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                            <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationDislike'] ?></p></span>
-                            <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                            <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationFavory'] ?></p></span>
                         </div>
                     </div>
@@ -176,11 +176,11 @@ function showCompany($globalPortrait) {
                 </div>
             </div>
             <div class="socialMedia">
-                <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
                 <span><p><?= $globalPortrait['companyLike'] ?></p></span>
-                <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
                 <span><p><?= $globalPortrait['companyDislike'] ?></p></span>
-                <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
                 <span><p><?= $globalPortrait['companyFavory'] ?></p></span>
             </div>
         </div>
@@ -194,8 +194,7 @@ function showUser($globalPortrait) {
         <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 userCards">
             <a href="#"><i class="fas fa-user-edit fa-2x Usermodification" title="Modifier mes infos"></i></a>
             <div class="row">
-                <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userIdentity">
-                    <i class="fas fa-user-circle fa-9x userIcon"></i>
+                <div class=" offset-1 col-1 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userIdentity">
                     <h2 class="companyCard"><?= $globalPortrait['userFirstname'] ?> <?= $globalPortrait['userLastname'] ?></h2>
                 </div>
             </div>
@@ -245,39 +244,45 @@ function showUser($globalPortrait) {
             </div>
         </div>
     </div>
-    <?php
-}
+<?php }
+?>
+
+<?php
 
 function showSmallCompanyCards($globalPortrait) {
     ?>
-    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-        <div class="card mb-3">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="<?= $globalPortrait['companyPhoto'] ?>" class="card-img firstImg" title="Travaux de l'entreprise <?= $globalPortrait['companyName'] ?>" alt="Exemple de travaux">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h4 class="card-title"><?= $globalPortrait['companyName'] ?></h4>
-                        <h5 class="card-title"><?= $globalPortrait['companyBoss'] ?></h5>
-                        <h5 class="card-title"><?= $globalPortrait['companyAdress'] ?> <?= $globalPortrait['companyCity'] ?></h5>
-                        <h5 class="card-title"><?= $globalPortrait['companyPhoneNumber'] ?></h5>
-                        <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="<?= $globalPortrait['companyPhoto'] ?>" class="card-img firstImg" title="Travaux de l'entreprise <?= $globalPortrait['companyName'] ?>" alt="Exemple de travaux" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title"><?= $globalPortrait['companyName'] ?></h4>
+                            <h5 class="card-title"><?= $globalPortrait['companyBoss'] ?></h5>
+                            <h5 class="card-title"><?= $globalPortrait['companyAddress'] ?> <?= $globalPortrait['companyCity'] ?></h5>
+                            <h5 class="card-title"><?= $globalPortrait['companyPhoneNumber'] ?></h5>
+                            <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/entrepriseTest.php'">Voir plus</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="socialMedia">
-                <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
-                <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
-                <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
-                <span><p><?= $globalPortrait['realisationDislike'] ?></p></span>
-                <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
-                <span><p><?= $globalPortrait['realisationFavory'] ?></p></span>
+                <div class="socialMedia">
+                    <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
+                    <span><p><?= $globalPortrait['companyLike'] ?></p></span>
+                    <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
+                    <span><p><?= $globalPortrait['companyDislike'] ?></p></span>
+                    <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
+                    <span><p><?= $globalPortrait['companyFavory'] ?></p></span>
+                </div>
             </div>
         </div>
     </div>
-    <?php
-}
+<?php }
+?>
+
+<?php
 
 function showRealisation($globalPortrait) {
     ?>
@@ -339,11 +344,11 @@ function showRealisation($globalPortrait) {
                 </div>
             </div>
             <div class="socialMedia">
-                <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
                 <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
-                <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
                 <span><p><?= $globalPortrait['realisationDislike'] ?></p></span>
-                <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
+                <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
                 <span><p><?= $globalPortrait['realisationFavory'] ?></p></span>
             </div>
         </div>

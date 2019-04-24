@@ -27,24 +27,24 @@ include_once 'function.php';
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Numero de devis</th>
+                                    <th class="mobileHide">Numero de devis</th>
                                     <th>Entreprise</th>
-                                    <th>Type de réalisation</th>
-                                    <th>Date de siganture</th>
+                                    <th class="mobileHide">Type de réalisation</th>
+                                    <th class="mobileHide">Date de siganture</th>
                                     <th>Date de début des travaux</th>
-                                    <th>Date de fin des travaux</th>
+                                    <th class="mobileHide">Date de fin des travaux</th>
                                     <th>Montant des travaux</th>
                                     <th>Qualité</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>001</td>
+                                    <td class="mobileHide">001</td>
                                     <td>Test</td>
-                                    <td>Terrasse extérieure</td>
-                                    <td>22/04/2019</td>
+                                    <td class="mobileHide">Terrasse extérieure</td>
+                                    <td class="mobileHide">22/04/2019</td>
                                     <td>25/05/2019</td>
-                                    <td>25/06/2019</td>
+                                    <td class="mobileHide">25/06/2019</td>
                                     <td>3550.00€</td>
                                     <td align="center">
                                         <i class="fas fa-star"></i>
@@ -55,12 +55,12 @@ include_once 'function.php';
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>001</td>
+                                    <td class="mobileHide">001</td>
                                     <td>Test 2</td>
-                                    <td>Plomberie</td>
-                                    <td>22/01/2019</td>
+                                    <td class="mobileHide">Plomberie</td>
+                                    <td class="mobileHide">22/01/2019</td>
                                     <td>25/01/2019</td>
-                                    <td>25/06/2019</td>
+                                    <td class="mobileHide">25/06/2019</td>
                                     <td>350.00€</td>
                                     <td align="center">
                                         <i class="fas fa-star"></i>

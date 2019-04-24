@@ -12,51 +12,112 @@ function w3_close() {
 
 $(function () {
     $('#go').click(function () {
-        $('.hideOne').css('display', 'block');
-        $('.reHideOne').css('display', 'block');
+        $('.hideOne').show();
+        $('.reHideOne').show();
+        $('.hideTwo').hide();
+        $('.reHideTwo').hide();
+        $('.hideThree').hide();
+        $('.reHideThree').hide();
+        $('.hideFour').hide();
+        $('.reHideFour').hide();
+        $('.hideFive').hide();
+        $('.reHideFive').hide();
+        $('.hideSix').hide();
+        $('.reHideSix').hide();
     });
     $('#charp').click(function () {
-        $('.hideTwo').css('display', 'block');
-        $('.reHideTwo').css('display', 'block');
+        $('.hideTwo').show();
+        $('.reHideTwo').show();
+        $('.hideOne').hide();
+        $('.reHideOne').hide();
+        $('.hideThree').hide();
+        $('.reHideThree').hide();
+        $('.hideFour').hide();
+        $('.reHideFour').hide();
+        $('.hideFive').hide();
+        $('.reHideFive').hide();
+        $('.hideSix').hide();
+        $('.reHideSix').hide();
     });
     $('#wall').click(function () {
-        $('.hideThree').css('display', 'block');
-        $('.reHideThree').css('display', 'block');
+        $('.hideThree').show();
+        $('.reHideThree').show();
+        $('.hideOne').hide();
+        $('.reHideOne').hide();
+        $('.hideTwo').hide();
+        $('.reHideTwo').hide();
+        $('.hideFour').hide();
+        $('.reHideFour').hide();
+        $('.hideFive').hide();
+        $('.reHideFive').hide();
+        $('.hideSix').hide();
+        $('.reHideSix').hide();
     });
     $('#menui').click(function () {
-        $('.hideFour').css('display', 'block');
-        $('.reHideFour').css('display', 'block');
+        $('.hideFour').show();
+        $('.reHideFour').show();
+        $('.hideOne').hide();
+        $('.reHideOne').hide();
+        $('.hideTwo').hide();
+        $('.reHideTwo').hide();
+        $('.hideThree').hide();
+        $('.reHideThree').hide();
+        $('.hideFive').hide();
+        $('.reHideFive').hide();
+        $('.hideSix').hide();
+        $('.reHideSix').hide();
     });
     $('#plomb').click(function () {
-        $('.hideFive').css('display', 'block');
-        $('.reHideFive').css('display', 'block');
+        $('.hideFive').show();
+        $('.reHideFive').show();
+        $('.hideOne').hide();
+        $('.reHideOne').hide();
+        $('.hideTwo').hide();
+        $('.reHideTwo').hide();
+        $('.hideThree').hide();
+        $('.reHideThree').hide();
+        $('.hideFour').hide();
+        $('.reHideFour').hide();
+        $('.hideSix').hide();
+        $('.reHideSix').hide();
     });
     $('#out').click(function () {
-        $('.hideSix').css('display', 'block');
-        $('.reHideSix').css('display', 'block');
+        $('.hideSix').show();
+        $('.reHideSix').show();
+        $('.hideOne').hide();
+        $('.reHideOne').hide();
+        $('.hideTwo').hide();
+        $('.reHideTwo').hide();
+        $('.hideThree').hide();
+        $('.reHideThree').hide();
+        $('.hideFour').hide();
+        $('.reHideFour').hide();
+        $('.hideFive').hide();
+        $('.reHideFive').hide();
     });
+
     $('.reHideOne').click(function () {
-        $('.hideOne').css('display', 'none');
-        $('.reHideOne').css('display', 'none');
+        $('.hideOne').hide();
+        $('.reHideOne').hide();
     });
     $('.reHideTwo').click(function () {
-        $('.hideTwo').css('display', 'none');
-        $('.reHideTwo').css('display', 'none');
+        $('.hideTwo').hide();
+        $('.reHideTwo').hide();
     });
     $('.reHideThree').click(function () {
-        $('.hideThree').css('display', 'none');
-        $('.reHideThree').css('display', 'none');
+        $('.hideThree').hide();
+        $('.reHideThree').hide();
     });
     $('.reHideFour').click(function () {
-        $('.hideFour').css('display', 'none');
-        $('.reHideFour').css('display', 'none');
+        $('.hideFour').hide();
+        $('.reHideFour').hide();
     });
     $('.reHideFive').click(function () {
-        $('.hideFive').css('display', 'none');
-        $('.reHideFive').css('display', 'none');
+        $('.hideFive').hide();
+        $('.reHideFive').hide();
     });
     $('.reHideSix').click(function () {
-        $('.hideSix').css('display', 'none');
-        $('.reHideSix').css('display', 'none');
+        $('.hideSix').hide();
+        $('.reHideSix').hide();
     });
 });

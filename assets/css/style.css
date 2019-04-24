@@ -69,6 +69,10 @@ h2 {
     .topSite h1 {
         font-size: 2.5em;
     }
+    
+    .topSite p {
+        font-size: 1.5em;
+    }
 }
 
 .izi {
@@ -94,6 +98,10 @@ h2 {
 
 .navbar a {
     text-decoration: none;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
 }
 
 .navbar-light .navbar-left {
@@ -128,9 +136,53 @@ h2 {
     color: #fff;
 }
 
+#navbarDropdownOne, #navbarDropdownTwo {
+    color: #fff;
+}
+
 .orange {
     color: #ffa000;
     font-weight: bold;
+}
+
+.nav-item.dropdown.hideMenu, .nav-item.hideMenu {
+    display: none;
+}
+
+@media screen and (max-width: 990px) {
+    .nav-item.dropdown.hideMenu, .nav-item.hideMenu {
+        display: block;
+        text-align: center;
+    }
+    
+    a.dropdown-item {
+        text-align: center;
+    }
+    
+    #connexionBtn, #deconnexionBtn, #indexConnexionBtn {
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .sideBarMenu {
+        display: none;
+    }
+    
+    #openNav {
+        display: none;
+    }
+    
+    .form-inline.mobileMenu {
+        display: none;
+    }
+    
+    img.firstImg, img.secondImg {
+        margin-left: 0;
+    }
+    
+    .mobileHide {
+        display: none;
+    }
 }
 
 /* navbarSecondary */
@@ -596,7 +648,8 @@ img.companyCard {
 }
 
 .userIcon {
-    position: absolute;
+    font-size: 3em;
+    margin-left: 0;
 }
 
 .phone, .mediaLike {
@@ -605,6 +658,7 @@ img.companyCard {
 
 .userIdentity {
     margin-bottom: 4em;
+    float: left;
 }
 
 .userCards a {
@@ -664,6 +718,7 @@ h2.sectorSearchMainTitle {
 
 .sectorSearch a {
     color: #000;
+    text-align: center;
 }
 
 .sectorSearch a:hover {
@@ -693,6 +748,11 @@ a.return {
 .zipCodeBtn {
     color: #ffa000;
     border: 1px solid #ffa000;
+}
+
+ ul {
+    list-style:none;
+    padding-left: 0;
 }
 
 .hideOne, .hideTwo, .hideThree, .hideFour, .hideFive, .hideSix, .reHideOne, .reHideTwo, .reHideThree, .reHideFour, .reHideFive, .reHideSix {

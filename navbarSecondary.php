@@ -16,26 +16,50 @@ if ($page == '/registration.php' || $page == '/connection.php') {
         </head>
         <body>
             <nav class="navbar fixed-top navbar-expand-lg navbar-light solid navbarSecondary">
-                <a href="/accueil" class="navbar-left">izi<span class="orange">.</span>travaux<span class="orange">.</span>com</a>
+                <a href="/index.php" class="navbar-left">izi<span class="orange">.</span>travaux<span class="orange">.</span>com</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <form class="form-inline">
+                            <form class="form-inline mobileMenu">
                                 <input class="form-control mr-sm-2 searchNav" type="search" placeholder="Recherche" aria-label="Search">
                                 <button class="btn btn-outline-warning searchNav" type="submit">Rechercher</button>
                             </form>
                         </li>
                         <li class="nav-item">
-                            <button type="button" class="btn btn-outline-warning" onclick="javascript:location.href = 'connection.php'">Connexion</button>
+                            <button type="button" class="btn btn-outline-warning" id="connexionBtn" onclick="javascript:location.href = 'connection.php'">Connexion</button>
+                        </li>
+                        <li class="nav-item dropdown hideMenu">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOne" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="orange">.</span>Recherches par
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/particularUser.php"><span class="orange">.</span>Entreprises</a>
+                                <a class="dropdown-item" href="/partUserProduction.php"><span class="orange">.</span>Réalisations</a>
+                                <a class="dropdown-item" href="/sectorSearch.php"><span class="orange">.</span>Secteurs</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown hideMenu">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTwo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="orange">.</span>Mon activité
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/estimate.php"><span class="orange">.</span>Mes devis</a>
+                                <a class="dropdown-item" href="/userWorks.php"><span class="orange">.</span>Mes travaux</a>
+                                <a class="dropdown-item" href="/userFavorites.php"><span class="orange">.</span>Mes favoris</a>
+                                <a class="dropdown-item" href="/userContact.php"><span class="orange">.</span>Mes contacts</a>
+                            </div>
+                        </li>  
+                        <li class="nav-item hideMenu">
+                            <a class="nav-link" href="/userAccount.php"><span class="orange">.</span>Mon compte</a>
                         </li>
                     </ul>
                 </div>
             </nav>
             <div class="container-fluid">
-<?php } else { ?>
+            <?php } else { ?>
                 <!DOCTYPE html>
                 <html lang="fr" dir="ltr">
                     <head>
@@ -60,16 +84,40 @@ if ($page == '/registration.php' || $page == '/connection.php') {
                                         <button id="openNav" class="w3-button searchNav" onclick="w3_open()">Menu</button>
                                     </li>
                                     <li class="nav-item">
-                                        <form class="form-inline">
+                                        <form class="form-inline mobileMenu">
                                             <input class="form-control mr-sm-2 searchNav" type="search" placeholder="Recherche" aria-label="Search">
                                             <button class="btn btn-outline-warning searchNav" type="submit">Rechercher</button>
                                         </form>
                                     </li>
                                     <li class="nav-item">
-                                        <button type="button" class="btn btn-outline-warning" onclick="javascript:location.href = '#'">Déconnexion</button>
+                                        <button type="button" class="btn btn-outline-warning" id="deconnexionBtn" onclick="javascript:location.href = '#'">Déconnexion</button>
+                                    </li>
+                                    <li class="nav-item dropdown hideMenu">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOne" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="orange">.</span>Recherches par
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/particularUser.php"><span class="orange">.</span>Entreprises</a>
+                                            <a class="dropdown-item" href="/partUserProduction.php"><span class="orange">.</span>Réalisations</a>
+                                            <a class="dropdown-item" href="/sectorSearch.php"><span class="orange">.</span>Secteurs</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown hideMenu">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTwo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="orange">.</span>Mon activité
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/estimate.php"><span class="orange">.</span>Mes devis</a>
+                                            <a class="dropdown-item" href="/userWorks.php"><span class="orange">.</span>Mes travaux</a>
+                                            <a class="dropdown-item" href="/userFavorites.php"><span class="orange">.</span>Mes favoris</a>
+                                            <a class="dropdown-item" href="/userContact.php"><span class="orange">.</span>Mes contacts</a>
+                                        </div>
+                                    </li>  
+                                    <li class="nav-item hideMenu">
+                                        <a class="nav-link" href="/userAccount.php"><span class="orange">.</span>Mon compte</a>
                                     </li>
                                 </ul>
                             </div>
                         </nav>
                         <div class="container-fluid">
-<?php } ?>
+                        <?php } ?>
