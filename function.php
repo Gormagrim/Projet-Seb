@@ -60,6 +60,7 @@ function showSmallCards($globalPortrait) {
 }
 
 function showBigProductionCards($globalPortrait) {
+    $page = $_SERVER['PHP_SELF'];
     ?>
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
         <div class="card mb-3">
@@ -72,7 +73,11 @@ function showBigProductionCards($globalPortrait) {
                         <h4 class="card-title"><?= $globalPortrait['productionTitle'] ?></h4>
                         <h5 class="card-title"><?= $globalPortrait['companyName'] ?></h5>
                         <p class="card-text"><?= $globalPortrait['productionDescription'] ?></p>
+                        <?php if($page == '/partUserProduction.php') { ?>
                         <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/realisationTest.php'">Voir plus</button>
+                        <?php } else { ?>
+                         <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Modifier</button>
+                        <?php } ?>
                         <div class="socialMedia">
                             <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
                             <span><p><?= $globalPortrait['realisationLike'] ?></p></span>
@@ -246,6 +251,58 @@ function showUser($globalPortrait) {
     </div>
 <?php }
 ?>
+<?php
+
+function showProfessionnalUser($globalPortrait) {
+    ?>
+    <div class="row">
+        <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 userCards">
+            <a href="#"><i class="fas fa-user-edit fa-2x Usermodification" title="Modifier mes infos"></i></a>
+            <div class="row">
+                <div class=" offset-1 col-1 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userIdentity">
+                    <h2 class="companyCard"><?= $globalPortrait['companyName'] ?></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
+                    <p class="companyCard">Nom du dirigeant : <?= $globalPortrait['companyBoss'] ?></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
+                    <p class="companyCard">Adresse : <?= $globalPortrait['companyAddress'] ?></p>
+                </div>
+                <div class="col-12 col-sm-5 col-md-5 col-lg-5">
+                    <p class="companyCard">Ville : <?= $globalPortrait['companyCity'] ?></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
+                    <p class="companyCard">Numéro de téléphone : <?= $globalPortrait['companyPhoneNumber'] ?></p>
+                </div>
+                <div class="col-12 col-sm-5 col-md-5 col-lg-5">
+                    <p class="companyCard">Nombre de réalisation ajoutés en favori: <?= $globalPortrait['companyFavory'] ?></p>
+                </div>
+            </div>
+            <div class="row phone">
+                <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
+                    <p class="companyCard">Nombre de "J'aime" : <?= $globalPortrait['companyLike'] ?></p>
+                </div>
+                <div class="col-12 col-sm-5 col-md-5 col-lg-5">
+                    <p class="companyCard">Nombre de "j'aime moins" : <?= $globalPortrait['companyDislike'] ?></p>
+                </div>
+            </div>
+            <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
+                <p class="companyCard"><a href="/professionnal/professionnalEstimate.php"><span class="orange">.</span>Devis envoyés</a></p>
+            </div>
+            <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
+                <p class="companyCard"><a href="/professionnal/professionnalProduction.php"><span class="orange">.</span>Réalisations</a></p>
+            </div>
+        </div>
+    </div>
+    </div>
+<?php }
+?>
 
 <?php
 
@@ -282,6 +339,37 @@ function showSmallCompanyCards($globalPortrait) {
 <?php }
 ?>
 
+    
+    <?php
+
+function showSmallPartUserCards($globalPortrait) {
+    ?>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p class="card-title"><?= $globalPortrait['userFirstname'] ?> <?= $globalPortrait['userLastname'] ?></p>
+                            <p class="card-title"><?= $globalPortrait['userAddress'] ?> <?= $globalPortrait['userCity'] ?></p>
+                            <p class="card-title"><?= $globalPortrait['userPhoneNumber'] ?></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="socialMedia">
+                    <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
+                    <span><p><?= $globalPortrait['userLike'] ?></p></span>
+                    <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
+                    <span><p><?= $globalPortrait['userDislike'] ?></p></span>
+                    <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
+                    <span><p><?= $globalPortrait['userFavory'] ?></p></span>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php }
+?>
+    
 <?php
 
 function showRealisation($globalPortrait) {

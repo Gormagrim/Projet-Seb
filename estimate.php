@@ -7,7 +7,7 @@ include_once 'function.php';
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left sideBarMenu entreprise" style="display:none" id="mySidebar">
     <button class="w3-bar-item w3-button w3-large slideMenuCloseBtn" onclick="w3_close()">Fermer le Menu &times;</button>
     <p><span class="orange">.</span>Recherches par :</p>
-    <a href="/particularUser.php" class="w3-bar-item w3-button"><span class="orange">.</span>Entreprises</a>
+    <a href="/partUserCompany.php" class="w3-bar-item w3-button"><span class="orange">.</span>Entreprises</a>
     <a href="/partUserProduction.php" class="w3-bar-item w3-button noMargingTop"><span class="orange">.</span>Réalisations</a>
     <a href="/sectorSearch.php" class="w3-bar-item w3-button noMargingTop"><span class="orange">.</span>Secteurs</a>
     <p><span class="orange">.</span>Mon activité :</p>

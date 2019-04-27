@@ -1,7 +1,7 @@
-<?php include_once 'navbarSecondary.php'; 
+<?php
+include_once 'navbarSecondary.php';
 include_once 'TestBaseDeDonnées.php';
 include_once 'function.php';
-$page = $_SERVER['PHP_SELF'];
 ?>
 
 <div class="row">
@@ -24,31 +24,32 @@ $page = $_SERVER['PHP_SELF'];
     <div id="main">
 
         <!-- Zone de test -->
+
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
-                <h2><span class="orange">.</span>Recherche par type de réalisation :</h2>
+                <h2><span class="orange">.</span>Recherche par entreprises :</h2>
             </div>
             <div class="col-12 offset-sm-4 col-sm-4 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
-                <label for="zipCode"><span class="orange">.</span>Rechercher une réalisation :</label>
+                <label for="zipCode"><span class="orange">.</span>Rechercher une entreprise :</label>
                 <form class="form-inline position-center">
-                    <input class="form-control mr-sm-2 searchNav" type="search" placeholder="Réalisation" aria-label="Search">
+                    <input class="form-control mr-sm-2 searchNav" type="search" placeholder="Entreprise" aria-label="Search">
                     <button class="btn btn-outline-warning hightBtn" type="submit">Rechercher</button>
                 </form>
             </div>
         </div>
         <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 firstCard">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
+                <h2><span class="orange">.</span>Résultat de votre recherche :</h2>
+            </div>
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
-                    <h2><span class="orange">.</span>Résultat de votre recherche :</h2>
-                </div>
-                <?= showBigProductionCards($productionArray) ?>
+                <?= showBigCards($productionArray) ?>
             </div>
             <div class="row secondCards">
-                <?= showSmallProductionCards($productionArray2) ?>
-                <?= showSmallProductionCards($productionArray3) ?>
-                <?= showSmallProductionCards($productionArray4) ?>
-                <?= showSmallProductionCards($productionArray5) ?>
-                <?= showSmallProductionCards($productionArray6) ?>
+                <?= showSmallCards($productionArray2) ?>
+                <?= showSmallCards($productionArray3) ?>
+                <?= showSmallCards($productionArray4) ?>
+                <?= showSmallCards($productionArray5) ?>
+                <?= showSmallCards($productionArray6) ?>
             </div>
         </div>
     </div>

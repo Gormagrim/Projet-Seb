@@ -7,7 +7,7 @@ include_once 'function.php';
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left sideBarMenu entreprise" style="display:none" id="mySidebar">
     <button class="w3-bar-item w3-button w3-large slideMenuCloseBtn" onclick="w3_close()">Fermer le Menu &times;</button>
     <p><span class="orange">.</span>Recherches par :</p>
-    <a href="/particularUser.php" class="w3-bar-item w3-button"><span class="orange">.</span>Entreprises</a>
+    <a href="/partUserCompany.php" class="w3-bar-item w3-button"><span class="orange">.</span>Entreprises</a>
     <a href="/partUserProduction.php" class="w3-bar-item w3-button noMargingTop"><span class="orange">.</span>Réalisations</a>
     <a href="/sectorSearch.php" class="w3-bar-item w3-button noMargingTop"><span class="orange">.</span>Secteurs</a>
     <p><span class="orange">.</span>Mon activité :</p>
@@ -19,12 +19,12 @@ include_once 'function.php';
 </div>
 <div id="main">
     <div class="row">
-        <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
             <h2 class="estimateTitle"><span class="orange">.</span>Mes Contacts</h2>
-            <div class="row">
-                <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userEstimate">
-                    <?= showSmallCompanyCards($entrepriseTest) ?>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userEstimate">
+                <?= showSmallCompanyCards($entrepriseTest) ?>
             </div>
         </div>
     </div>

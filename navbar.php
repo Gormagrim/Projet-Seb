@@ -18,12 +18,6 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <form class="form-inline mobileMenu">
-                            <input class="form-control mr-sm-2 searchNav" type="search" placeholder="Recherche" aria-label="Search">
-                            <button class="btn btn-outline-warning searchNav hightBtn" type="submit">Rechercher</button>
-                        </form>
-                    </li>
-                    <li class="nav-item">
                         <button type="button" class="btn btn-outline-warning hightBtn" id="indexConnexionBtn" onclick="javascript:location.href = 'connection.php'">Connexion</button>
                     </li>
                 </ul>
