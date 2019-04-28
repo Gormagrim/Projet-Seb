@@ -36,7 +36,7 @@ h2 {
 }
 
 .welcome {
-    padding-top: 6em;
+    padding-top: 4em;
     font-size: 2em;
 }
 
@@ -177,7 +177,7 @@ h2 {
         display: none;
     }
     
-    #openNav {
+    nav #openNav {
         display: none;
     }
     
@@ -541,7 +541,7 @@ i:hover {
 }
 
 .sideBarMenu {
-    margin-top: 12em;
+    margin-top: 8em;
     z-index: 50;
     height: 40em;
     box-shadow: 2px 2px 10px #403d39;
@@ -779,7 +779,8 @@ div.socialMedia {
 /* pofessionnalUser.php */
 
 .welcomePro {
-    margin-bottom: 27.2em;
+    margin-top: 5em;
+    margin-bottom: 8.6em;
 }
 
 /* professionnalEstimate.php */
@@ -796,3 +797,6 @@ a.estimateSent:hover {
 .estimateSent {
     margin-bottom: 2em;
 }
+
+/* TEST */
+

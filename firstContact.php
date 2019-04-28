@@ -3,6 +3,7 @@ include_once 'navbarSecondary.php';
 include_once 'TestBaseDeDonnées.php';
 include_once 'function.php';
 ?>
+
     <!-- Début Menu Slide --> 
 
     <div class="w3-sidebar w3-bar-block w3-card w3-animate-left sideBarMenu" style="display:none" id="mySidebar">
@@ -21,15 +22,14 @@ include_once 'function.php';
     <div id="main">
         <!-- Zone de remplissage du menu Slide -->
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 topSite welcomePro">
-                <h1>izi<span class="orange">.</span>travaux<span class="orange">.</span>com</h1>
-            </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
+            <h2 class="estimateTitle"><span class="orange">.</span>Envoyer un message</h2>
         </div>
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 welcomePro">
-                <h2>Bienvenue sur votre espace personnel</h2>
+            <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userEstimate">
+
             </div>
         </div>
+    </div>
     </div> <!-- Fin de div de remplissage du menu Slide -->
 <?php include_once 'footerSecondary.php'; ?>
-

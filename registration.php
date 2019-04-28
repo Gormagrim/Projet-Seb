@@ -29,7 +29,7 @@ if (count($_POST) > 0) {
         $formErrors['gender'] = 'Veuillez faire un choix.';
     }
 
-    if ($_POST['type'] === 'Particulier') {
+    if ($_POST['type'] === 'Particulier' && (!isset($formErrors['type']))) {
         // on vérifie que la variable $_POST['lastname'] existe ET n'est pas vide.
         if (!empty($_POST['lastname'])) {
             // Je vérifie bien que ma variable $_POST['lastname'] correspond à ma patternName.
@@ -56,10 +56,10 @@ if (count($_POST) > 0) {
         }
     }
 
-    if ($_POST['type'] === 'Professionnel') {
+    if ($_POST['type'] === 'Professionnel' && (!isset($formErrors['type']))) {
         if (!empty($_POST['companyName'])) {
             if (preg_match($patternName, $_POST['companyName'])) {
-                $firstname = htmlspecialchars($_POST['companyName']);
+                $companyName = htmlspecialchars($_POST['companyName']);
             } else {
                 $formErrors['companyName'] = 'Le nom de l\'entreprise est incorrect.';
             }
@@ -69,7 +69,7 @@ if (count($_POST) > 0) {
 
         if (!empty($_POST['siretNumber'])) {
             if (preg_match($patternSiretNumber, $_POST['siretNumber'])) {
-                $firstname = htmlspecialchars($_POST['siretNumber']);
+                $siretNumber = htmlspecialchars($_POST['siretNumber']);
             } else {
                 $formErrors['siretNumber'] = 'Le numéro de siret est incorrect.';
             }
@@ -79,7 +79,7 @@ if (count($_POST) > 0) {
 
         if (!empty($_POST['leaderLastname'])) {
             if (preg_match($patternName, $_POST['leaderLastname'])) {
-                $firstname = htmlspecialchars($_POST['leaderLastname']);
+                $leaderLastname = htmlspecialchars($_POST['leaderLastname']);
             } else {
                 $formErrors['leaderLastname'] = 'Votre nom est incorrect.';
             }
@@ -89,7 +89,7 @@ if (count($_POST) > 0) {
 
         if (!empty($_POST['leaderFirstname'])) {
             if (preg_match($patternName, $_POST['leaderFirstname'])) {
-                $firstname = htmlspecialchars($_POST['leaderFirstname']);
+                $leaderFirstname = htmlspecialchars($_POST['leaderFirstname']);
             } else {
                 $formErrors['leaderFirstname'] = 'Votre prénom est incorrect.';
             }
@@ -182,7 +182,7 @@ if (count($_POST) > 0) {
                         <legend><span class="orange">.</span>Type D'inscription</legend>
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                <input type="radio" name="type" <?= isset($_POST['type']) && $_POST['type'] == 'Particulier' ? 'checked' : '' ?> value="Particulier" id="Particulier" checked="checked" /> <label for="Particulier">Particulier</label>
+                                <input type="radio" name="type" <?= isset($_POST['type']) && $_POST['type'] == 'Particulier' ? 'checked' : '' ?> value="Particulier" id="Particulier" /> <label for="Particulier">Particulier</label>
                                 <input type="radio" name="type" <?= isset($_POST['type']) && $_POST['type'] == 'Professionnel' ? 'checked' : '' ?> value="Professionnel" id="Professionnel" /> <label for="Professionnel">Professionnel</label>
                                 <?php if (isset($formErrors['type'])) { ?>
                                     <div class="invalid-feedback">
@@ -396,8 +396,15 @@ if (count($_POST) > 0) {
     </div>
     <div class="jumbotron">
         <p>Vous êtes un <?= $type ?></p>
+        <?php if($_POST['type'] === 'Particulier') {  ?>
         <p>Nom : <?= $lastname; ?></p>
         <p>Prénom : <?= $firstname; ?></p>
+        <?php } else {  ?>
+        <p>Nom de l'entreprise : <?= $companyName; ?></p>
+        <p>Numéro de siret : <?= $siretNumber; ?></p>
+        <p>Nom du dirigeant : <?= $leaderLastname; ?></p>
+        <p>Prénom du dirigeant : <?= $leaderFirstname; ?></p>
+        <?php } ?>
         <p>Adresse : <?= $address; ?></p>
         <p>Code postal : <?= $postalCode; ?></p>
         <p>Ville : <?= $city; ?></p>
@@ -414,4 +421,3 @@ if (count($_POST) > 0) {
 </div>
 </div>
 <?php include_once 'footerSecondary.php'; ?>
-

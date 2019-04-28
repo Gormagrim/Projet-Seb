@@ -45,7 +45,7 @@ include_once 'function.php';
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideOne"><span class="orange">.</span>Construction neuve</h5>
                             <ul>
                                 <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Fondations</a></li>
@@ -54,7 +54,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Chape</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideOne"><span class="orange">.</span>Agrandissement</h5>
                             <ul>
                                 <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Extension</a></li>
@@ -62,14 +62,14 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Garage</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideOne"><span class="orange">.</span>Rénovation</h5>
                             <ul>
                                 <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Maison</a></li>
                                 <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Appartement</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideOne"><span class="orange">.</span>Terrassement et canalisation</h5>
                             <ul>
                                 <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Tranchée et trou</a></li>
@@ -91,7 +91,7 @@ include_once 'function.php';
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideTwo"><span class="orange">.</span>Charpente</h5>
                             <ul>
                                 <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Bois</a></li>
@@ -100,7 +100,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Diagnostique</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideTwo"><span class="orange">.</span>Couverture</h5>
                             <ul>
                                 <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Tuiles plate</a></li>
@@ -110,7 +110,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Entretien</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideTwo"><span class="orange">.</span>Couverture(suite)</h5>
                             <ul>
                                 <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Descente et gouttière</a></li>
@@ -121,7 +121,7 @@ include_once 'function.php';
                             </ul>
                         </div>
 
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideTwo"><span class="orange">.</span>Toiture Terrasse</h5>
                             <ul>
                                 <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Bois</a></li>
@@ -137,7 +137,7 @@ include_once 'function.php';
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideThree"><span class="orange">.</span>Mur</h5>
                             <ul>
                                 <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Soutènement</a></li>
@@ -155,7 +155,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Parement</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideThree"><span class="orange">.</span>Sol</h5>
                             <ul>
                                 <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Chape</a></li>
@@ -171,7 +171,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Ragréage</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideThree"><span class="orange">.</span>Plafond</h5>
                             <ul>
                                 <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Plâtre</a></li>
@@ -180,7 +180,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Peinture</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideThree"><span class="orange">.</span>Isolation</h5>
                             <ul>
                                 <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Par l'exterieur</a></li>
@@ -204,7 +204,7 @@ include_once 'function.php';
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideFour"><span class="orange">.</span>Extérieur</h5>
                             <ul>
                                 <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Fenêtre aluminium</a></li>
@@ -217,7 +217,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Chassis à galandage</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideFour"><span class="orange">.</span>Extérieur(suite)</h5>
                             <ul>
                                 <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Chassis de toit</a></li>
@@ -230,7 +230,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Dépannage Serrurerie</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideFour"><span class="orange">.</span>Intérieur</h5>
                             <ul>
                                 <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Bloc-porte</a></li>
@@ -240,7 +240,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Plan de travail</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideFour"><span class="orange">.</span>Intérieur(suite)</h5>
                             <ul>
                                 <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Escalier</a></li>
@@ -258,7 +258,7 @@ include_once 'function.php';
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideFive"><span class="orange">.</span>Plomberie</h5>
                             <ul>
                                 <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Réseau sanitaire</a></li>
@@ -272,7 +272,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Baignoire balnéo</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideFive"><span class="orange">.</span>Plomberie(suite)</h5>
                             <ul>
                                 <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Douche</a></li>
@@ -286,7 +286,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Cuisine</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideFive"><span class="orange">.</span>Chauffage</h5>
                             <ul>
                                 <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Chaudière</a></li>
@@ -304,7 +304,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Climatisation</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideFive"><span class="orange">.</span>Electricité</h5>
                             <ul>
                                 <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Installation</a></li>
@@ -323,13 +323,13 @@ include_once 'function.php';
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-12">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <h2 class="sectorSearchTitle" id="out"><span class="orange">.</span>Extérieur</h2>
                             <p class="reHideSix">(Masquer)</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideSix"><span class="orange">.</span>Terrasse et chemin</h5>
                             <ul>
                                 <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Béton armé</a></li>
@@ -343,7 +343,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>enrobé</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideSix"><span class="orange">.</span>Clôture</h5>
                             <ul>
                                 <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Maçonnerie</a></li>
@@ -355,7 +355,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Portillon</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideSix"><span class="orange">.</span>Aménagement</h5>
                             <ul>
                                 <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Véranda</a></li>
@@ -366,7 +366,7 @@ include_once 'function.php';
                                 <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Paysagerie</a></li>
                             </ul>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <h5 class="hideSix"><span class="orange">.</span>Piscine</h5>
                             <ul>
                                 <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Maçonnerie enterrée</a></li>

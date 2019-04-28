@@ -7,9 +7,9 @@ $page = $_SERVER['PHP_SELF'];
         <div class="form-group offset-1 col-10 offset-sm-4 col-sm-4 offset-md-4 col-md-4 offset-lg-4 col-lg-4">
             <div class="formConnection">
                 <h2><span class="orange">.</span>Connexion</h2>
-                <label for="mail">Adresse mail :</label>
+                <label for="mail"><span class="orange">.</span>Adresse mail :</label>
                 <input type="email" class="form-control" id="mail" placeholder="exemple@mail.com">
-                <label for="password">Mot de passe :</label>
+                <label for="password"><span class="orange">.</span>Mot de passe :</label>
                 <input type="password" class="form-control" id="password" placeholder="Mot de passe">
                 <p><a class="lostPassword" href="#">mot de passe oublié ?</a></p>
             </div>

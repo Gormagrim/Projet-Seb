@@ -15,7 +15,7 @@ if ($page == '/registration.php' || $page == '/connection.php') {
             <title>Projet BTP</title>
         </head>
         <body>
-            <nav class="navbar fixed-top navbar-expand-lg navbar-light solid navbarSecondary">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-light navbar-dark solid navbarSecondary">
                 <a href="/index.php" class="navbar-left">izi<span class="orange">.</span>travaux<span class="orange">.</span>com</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -68,7 +68,7 @@ if ($page == '/registration.php' || $page == '/connection.php') {
                     </head>
                     <body>
                         <nav class="navbar fixed-top navbar-expand-lg navbar-light solid navbarSecondary">
-                            <a href="/index.php" class="navbar-left">izi<span class="orange">.</span>travaux<span class="orange">.</span>com</a>
+                            <a href="/particularUser.php" class="navbar-left">izi<span class="orange">.</span>travaux<span class="orange">.</span>com</a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
@@ -78,7 +78,7 @@ if ($page == '/registration.php' || $page == '/connection.php') {
                                         <button id="openNav" class="w3-button searchNav" onclick="w3_open()">Menu</button>
                                     </li>
                                     <li class="nav-item">
-                                        <button type="button" class="btn btn-outline-warning" id="deconnexionBtn" onclick="javascript:location.href = '#'">Déconnexion</button>
+                                        <button type="button" class="btn btn-outline-warning" id="deconnexionBtn" onclick="javascript:location.href = '/index.php'">Déconnexion</button>
                                     </li>
                                     <li class="nav-item dropdown hideMenu">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOne" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

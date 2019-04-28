@@ -73,7 +73,7 @@ function showBigProductionCards($globalPortrait) {
                         <h4 class="card-title"><?= $globalPortrait['productionTitle'] ?></h4>
                         <h5 class="card-title"><?= $globalPortrait['companyName'] ?></h5>
                         <p class="card-text"><?= $globalPortrait['productionDescription'] ?></p>
-                        <?php if($page == '/partUserProduction.php') { ?>
+                        <?php if($page == '/userFavorites.php') { ?>
                         <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/realisationTest.php'">Voir plus</button>
                         <?php } else { ?>
                          <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Modifier</button>
@@ -178,6 +178,10 @@ function showCompany($globalPortrait) {
             <div class="row mediaLike"> 
                 <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
                     <p class="companyCard">Nombre de réalisation ajoutés en favori: <?= $globalPortrait['companyFavory'] ?></p>
+                </div>
+            </div><div class="row contact"> 
+                <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
+                    <button type="button" class="btn registrationBtn" onclick="javascript:location.href = 'firstContact.php'">Contacter</button>
                 </div>
             </div>
             <div class="socialMedia">
@@ -378,12 +382,12 @@ function showRealisation($globalPortrait) {
         <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 userCards">
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
-                    <h2><?= $globalPortrait['companyName'] ?></h2>
+                    <h2><span class="orange">.</span><?= $globalPortrait['companyName'] ?></h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 realisation">
-                    <h3>Chantier de <?= $globalPortrait['realisationType'] ?> à <?= $globalPortrait['realisationCity'] ?></h3>
+                    <h3><span class="orange">.</span>Chantier de <?= $globalPortrait['realisationType'] ?> à <?= $globalPortrait['realisationCity'] ?></h3>
                 </div>
             </div>
             <div class="bd-example">
@@ -428,7 +432,7 @@ function showRealisation($globalPortrait) {
             </div>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 realisationText">
-                    <p>Descriptif des travaux réalisés : <br /><?= $globalPortrait['realisationText'] ?></p>
+                    <p><span class="orange">.</span>Descriptif des travaux réalisés : <br /><?= $globalPortrait['realisationText'] ?></p>
                 </div>
             </div>
             <div class="socialMedia">

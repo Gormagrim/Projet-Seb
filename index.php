@@ -11,7 +11,7 @@
         <p>Ce que nous vous proposons, c'est une plateforme de libre-échange entre particuliers et professionnels du bâtiment.</p>
         <p>Particuliers, vous trouverez de nombreux exemples de réalisations diverses et variées de professionnels proche de chez vous.</p>
         <p>Professionnels, augmentez votre visibilité en proposant vos plus belles réalisations et en les partageant avec vos futurs clients.</p>
-        <p class="welcomeWord">Bienvenue chez izi<span class="orange">.</span>travaux<span class="orange">.</span>com !</p>
+        <h2 class="welcomeWord">Bienvenue chez izi<span class="orange">.</span>travaux<span class="orange">.</span>com !</h2>
 
     </div>
 </div> <!-- fin de row principalText -->
