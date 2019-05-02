@@ -73,7 +73,7 @@ function showBigProductionCards($globalPortrait) {
                         <h4 class="card-title"><?= $globalPortrait['productionTitle'] ?></h4>
                         <h5 class="card-title"><?= $globalPortrait['companyName'] ?></h5>
                         <p class="card-text"><?= $globalPortrait['productionDescription'] ?></p>
-                        <?php if($page == '/userFavorites.php') { ?>
+                        <?php if($page == '/userFavorites.php' || $page == '/partUserProduction.php') { ?>
                         <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/realisationTest.php'">Voir plus</button>
                         <?php } else { ?>
                          <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Modifier</button>

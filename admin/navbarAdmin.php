@@ -13,20 +13,20 @@
     </head>
     <body>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light navbarSecondary">
-            <a href="/professionnal/professionnalUser.php" class="navbar-left">izi<span class="green">.</span>travaux<span class="green">.</span>com<span class="green">/Admin</span></a>
+            <a href="/admin/adminUser.php" class="navbar-left">izi<span class="green">.</span>travaux<span class="green">.</span>com<span class="green">/Admin</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/professionnal/professionnalAccount.php">Mon compte</a>
+                        <a class="nav-link" href="#">Mon compte</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/professionnal/downloadFiles.php">Ajouter un chantier</a>
+                        <a class="nav-link" href="#">Ajouter un chantier</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/professionnal/professionnalContacts.php">Contacts</a>
+                        <a class="nav-link" href="#">Contacts</a>
                     </li>
                     <li class="nav-item">
                         <button type="button" class="btn btn-outline-warning" id="deconnexionBtn" onclick="javascript:location.href = '#'">Déconnexion</button>

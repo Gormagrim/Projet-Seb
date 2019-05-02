@@ -6,7 +6,7 @@ if (count($_POST) > 0) {
     if (!empty($_POST['estimateName'])) {
         // Je vérifie bien que ma variable $_POST['lastName'] correspond à ma patternName.
         // On stocke dans la variable lastName la variable $_POST['lastName'] dont on a désactivé les balises HTML.
-        $photoName = htmlspecialchars($_POST['estimateName']);
+        $estimateName = htmlspecialchars($_POST['estimateName']);
     } else {
         // On va réutiliser notre erreur lastName parce que les deux ne peuvent pas exister en même temps.
         $formErrors['estimateName'] = 'Veuillez renseigner le nom de votre devis';
@@ -23,7 +23,7 @@ if (count($_POST) > 0) {
             //On crée une date pour différencier les fichiers
             $date = date('Y-m-d_H-i-s');
             //On crée le nouveau nom du fichier (celui qu'il aura une fois uploadé)
-            $fileNewName = $photoName . '_' . $date;
+            $fileNewName = $estimateName . '_' . $date;
             //On stocke dans une variable le chemin complet du fichier (chemin + nouveau nom + extension une fois uploadé) Attention : ne pas oublier le point
             $fileFullPath = $path . $fileNewName . '.' . $fileInfos['extension'];
             //move_uploaded_files : déplace le fichier depuis son emplacement temporaire ($_FILES['file']['tmp_name']) vers son emplacement définitif ($fileFullPath)
@@ -54,7 +54,7 @@ if (count($_POST) > 0) {
         <div class="row">
             <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 photoUpload">
                 <h2><span class="orange">.</span>Envoyer un devis</h2>
-                <form method="POST" action="downloadFiles.php" enctype="multipart/form-data">
+                <form method="POST" action="sendEstimate.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="estimateName"><span class="orange">.</span>Nom du devis</label>
                         <?php
@@ -63,7 +63,7 @@ if (count($_POST) > 0) {
                          * Si $_POST['lastName'] existe (?) alors on affiche $_POST['lastName'] (:) Sinon on affiche rien.
                          */
                         ?>
-                        <input type="text" value="<?= isset($_POST['estimateName']) ? $_POST['estimateName'] : '' ?>" name="photoName" class="form-control" id="estimateName" placeholder="Exemple" required />
+                        <input type="text" value="<?= isset($_POST['estimateName']) ? $_POST['estimateName'] : '' ?>" name="estimateName" class="form-control" id="estimateName" placeholder="Exemple" required />
                         <?php
                         // On affiche un alerte rouge qui contient le texte de l'erreur s'il y en à une.
                         if (isset($formErrors['estimateName'])) {
@@ -117,29 +117,7 @@ if (count($_POST) > 0) {
                     <div class="alert-success realisationTop">
                         <p>Vos données ont bien été envoyées et votre fichier a bien été transmis.</p>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
-                        <div class="card mb-3">
-                            <div class="row no-gutters">
-                                <div class="col-md-4">
-                                    <img src="<?= $fileFullPath ?>" class="card-img firstImg" title="Travaux de l'entreprise <?= $productionArray['companyName'] ?>" alt="Exemple de travaux">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h4 class="card-title"><?= $productionArray['companyName'] ?></h4>
-                                        <h5 class="card-title"><?= $photoName ?></h5>
-                                        <p class="card-text"><?= $explanatoryText ?></p>
-                                        <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/entrepriseTest.php'">Voir plus</button>
-                                        <div class="socialMedia">
-                                            <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
-                                            <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
-                                            <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="downloadFiles.php" title="Retour vers le formulaire" class="btn btn-info realisationBtn">Ajouter une nouvelle réalisation</a>
-                    </div>
+                    
                 </div>
             <?php } ?>
         </div>

@@ -16,6 +16,7 @@ include_once '../function.php';
                                 <th class="mobileHide">Numero de devis</th>
                                 <th>Entreprise</th>
                                 <th class="mobileHide">Type de réalisation</th>
+                                <th>Envoyé à</th>
                                 <th class="mobileHide">Date d'envoi</th>
                                 <th class="mobileHide">Montant</th>
                                 <th>Mon devis</th>
@@ -27,6 +28,7 @@ include_once '../function.php';
                                 <td class="mobileHide">001</td>
                                 <td>Test</td>
                                 <td class="mobileHide">Terrasse extérieure</td>
+                                <td>Sébastien LARRIVÉE</td>
                                 <td class="mobileHide">22/04/2019</td>
                                 <td class="mobileHide">2024.00€</td>
                                 <td>fichier.pdf</td>
@@ -40,6 +42,7 @@ include_once '../function.php';
                                 <td class="mobileHide">002</td>
                                 <td>Test2</td>
                                 <td class="mobileHide">Murets de clôture</td>
+                                <td>Pierre ROUX</td>
                                 <td class="mobileHide">22/04/2019</td>
                                 <td class="mobileHide">7035.00€</td>
                                 <td>fichierMuret.pdf</td>
