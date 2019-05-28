@@ -342,6 +342,7 @@ legend {
 
 .registration input, .registration select {
     border: 1px solid #ffa000;
+    margin-bottom: 1.5em;
 }
 
 .form-check-label {
@@ -517,7 +518,7 @@ i:hover {
     background-color: #ffa000;
 }
 
-.w3-button {
+.slide-button {
     color: #fff;
     border-color: #fff;
     margin-right: 2em;
@@ -527,7 +528,7 @@ i:hover {
     height: calc(1.5em + .75rem + 2px);
 }
 
-.w3-button:hover {
+.slide-button:hover {
     background-image: radial-gradient(#ffbb5b, #ffa000);
     border-color: #fff;
     color: #fff !important;
@@ -666,6 +667,10 @@ th, td {
 }
 
 /* sectorSearch.php */
+
+.sectorSearchTitle, .reHideOne, .reHideTwo, .reHideThree, .reHideFour, .reHideFive, .reHideSix {
+    cursor: pointer;
+}
 
 .sectorSearchTitle {
     margin-top: 2em;

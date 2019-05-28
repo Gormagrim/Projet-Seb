@@ -1,179 +1,25 @@
 <?php
 include_once 'navbarSecondary.php';
-include_once('regex.php');
+require_once 'regex.php';
+require_once 'models/city.php';
+require_once 'models/userGroup.php';
+require_once 'models/particularUsers.php';
+require_once 'models/company.php';
+require_once 'controllers/inserParticularUserCtrl.php';
+
 $page = $_SERVER['PHP_SELF'];
 ?>
 
-<?php
-$formErrors = array();
 
-if (count($_POST) > 0) {
-
-    if (!empty($_POST['type'])) {
-        if ($_POST['type'] === 'Particulier' || $_POST['type'] === 'Professionnel') {
-            $type = $_POST['type'];
-        } else {
-            $formErrors['type'] = 'Vôtre choix est incorrect.';
-        }
-    } else {
-        $formErrors['type'] = 'Veuillez renseigner si vous êtes un partuculier ou un professionnel.';
-    }
-
-    if (!empty($_POST['gender'])) {
-        if ($_POST['gender'] == 'Madame' || $_POST['gender'] == 'Monsieur') {
-            $gender = htmlspecialchars($_POST['gender']);
-        } else {
-            $formErrors['gender'] = 'Merci de selectionner un genre existant.';
-        }
-    } else {
-        $formErrors['gender'] = 'Veuillez faire un choix.';
-    }
-
-    if ($_POST['type'] === 'Particulier' && (!isset($formErrors['type']))) {
-        // on vérifie que la variable $_POST['lastname'] existe ET n'est pas vide.
-        if (!empty($_POST['lastname'])) {
-            // Je vérifie bien que ma variable $_POST['lastname'] correspond à ma patternName.
-            if (preg_match($patternName, $_POST['lastname'])) {
-                // On stocke dans la variable lastname la variable $_POST['lastname'] dont on a désactivé les balises HTML.
-                $lastname = htmlspecialchars($_POST['lastname']);
-            } else {
-                // Si la saisie utilisateur ne correspond pas à la regex on va stocker une erreur lastname dans notre tableau d'erreurs.
-                $formErrors['lastname'] = 'Votre nom de famille est incorrect.';
-            }
-        } else {
-            // On va réutiliser notre erreur lastName parce que les deux ne peuvent pas exister en même temps.
-            $formErrors['lastname'] = 'Veuillez renseigner votre nom de famille.';
-        }
-
-        if (!empty($_POST['firstname'])) {
-            if (preg_match($patternName, $_POST['firstname'])) {
-                $firstname = htmlspecialchars($_POST['firstname']);
-            } else {
-                $formErrors['firstname'] = 'Votre prénom est incorrect.';
-            }
-        } else {
-            $formErrors['firstname'] = 'Veuillez renseigner votre prénom.';
-        }
-    }
-
-    if ($_POST['type'] === 'Professionnel' && (!isset($formErrors['type']))) {
-        if (!empty($_POST['companyName'])) {
-            if (preg_match($patternName, $_POST['companyName'])) {
-                $companyName = htmlspecialchars($_POST['companyName']);
-            } else {
-                $formErrors['companyName'] = 'Le nom de l\'entreprise est incorrect.';
-            }
-        } else {
-            $formErrors['companyName'] = 'Veuillez renseigner le nom de votre entreprise.';
-        }
-
-        if (!empty($_POST['siretNumber'])) {
-            if (preg_match($patternSiretNumber, $_POST['siretNumber'])) {
-                $siretNumber = htmlspecialchars($_POST['siretNumber']);
-            } else {
-                $formErrors['siretNumber'] = 'Le numéro de siret est incorrect.';
-            }
-        } else {
-            $formErrors['siretNumber'] = 'Veuillez renseigner le numéro de siret de votre entreprise.';
-        }
-
-        if (!empty($_POST['leaderLastname'])) {
-            if (preg_match($patternName, $_POST['leaderLastname'])) {
-                $leaderLastname = htmlspecialchars($_POST['leaderLastname']);
-            } else {
-                $formErrors['leaderLastname'] = 'Votre nom est incorrect.';
-            }
-        } else {
-            $formErrors['leaderLastname'] = 'Veuillez renseigner votre nom.';
-        }
-
-        if (!empty($_POST['leaderFirstname'])) {
-            if (preg_match($patternName, $_POST['leaderFirstname'])) {
-                $leaderFirstname = htmlspecialchars($_POST['leaderFirstname']);
-            } else {
-                $formErrors['leaderFirstname'] = 'Votre prénom est incorrect.';
-            }
-        } else {
-            $formErrors['leaderFirstname'] = 'Veuillez renseigner votre prénom.';
-        }
-    }
-
-    if (!empty($_POST['address'])) {
-        if (preg_match($patternAddress, $_POST['address'])) {
-            $address = htmlspecialchars($_POST['address']);
-        } else {
-            $formErrors['address'] = 'Votre adresse est incorrecte.';
-        }
-    } else {
-        $formErrors['address'] = 'Veuillez renseigner votre adresse.';
-    }
-
-    if (!empty($_POST['postalCode'])) {
-        if (preg_match($patternPostalCode, $_POST['postalCode'])) {
-            $postalCode = htmlspecialchars($_POST['postalCode']);
-        } else {
-            $formErrors['postalCode'] = 'Votre code postal est incorrect.';
-        }
-    } else {
-        $formErrors['postalCode'] = 'Veuillez renseigner votre code postal.';
-    }
-
-    if (!empty($_POST['city'])) {
-        if (preg_match($patternName, $_POST['city'])) {
-            $city = htmlspecialchars($_POST['city']);
-        } else {
-            $formErrors['city'] = 'Votre ville est incorrecte.';
-        }
-    } else {
-        $formErrors['city'] = 'Veuillez renseigner votre ville.';
-    }
-
-    if (!empty($_POST['phone'])) {
-        if (preg_match($patternPhone, $_POST['phone'])) {
-            $phone = htmlspecialchars($_POST['phone']);
-        } else {
-            $formErrors['phone'] = 'Votre numéro de téléphone est incorrect.';
-        }
-    } else {
-        $formErrors['phone'] = 'Veuillez renseigner votre numéro de téléphone.';
-    }
-
-    if (!empty($_POST['mail'])) {
-        if (preg_match($patternMail, $_POST['mail'])) {
-            $mail = htmlspecialchars($_POST['mail']);
-        } else {
-            $formErrors['mail'] = 'Votre adresse mail est incorrecte.';
-        }
-    } else {
-        $formErrors['mail'] = 'Veuillez renseigner votre adresse mail.';
-    }
-
-    if ($_POST['mail'] != $_POST['mailVerification']) {
-        $formErrors['mailAreDifferent'] = 'Veuillez confirmer votre adresse mail correctement.';
-    }
-
-    if (!empty($_POST['password'])) {
-        $password = htmlspecialchars($_POST['password']);
-    } else {
-        $formErrors['password'] = 'Veuillez renseigner votre mot de passe.';
-    }
-
-    if ($_POST['password'] != $_POST['passwordVerification']) {
-        $formErrors['passwordAreDifferent'] = 'Veuillez confirmer votre mot de passe correctement.';
-    }
-
-    if (!empty($_POST['termsOfUse'])) {
-        $termsOfUse = htmlspecialchars($_POST['termsOfUse']);
-    } else {
-        $formErrors['termsOfUse'] = 'Veuillez accepter les conditions d\'utilisation.';
-    }
-}
-?>
 <div class="registrationSection row">
     <div class="offset-1 col-10 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-3 col-lg-6 registration">
         <?php
 // On affiche le formulaire si rien a été envoyé ou qu'il y a une erreur dans ce qui à été saisi.
         if (count($_POST) == 0 || count($formErrors) > 0) {
+            if (isset($formErrors['add'])) {
+                ?>
+                <p><?= $formErrors['add'] ?></p>
+            <?php }
             ?>
             <div class="formRegistration">
                 <h2><span class="orange">.</span>Formulaire d'inscription :</h2>
@@ -182,11 +28,11 @@ if (count($_POST) > 0) {
                         <legend><span class="orange">.</span>Type D'inscription</legend>
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                <input type="radio" name="type" <?= isset($_POST['type']) && $_POST['type'] == 'Particulier' ? 'checked' : '' ?> value="Particulier" id="Particulier" /> <label for="Particulier">Particulier</label>
-                                <input type="radio" name="type" <?= isset($_POST['type']) && $_POST['type'] == 'Professionnel' ? 'checked' : '' ?> value="Professionnel" id="Professionnel" /> <label for="Professionnel">Professionnel</label>
-                                <?php if (isset($formErrors['type'])) { ?>
+                                <input type="radio" name="id_al2jt_userGroup" <?= isset($_POST['id_al2jt_userGroup']) && $_POST['id_al2jt_userGroup'] == '2' ? 'checked' : '' ?> value="2" id="Particulier" /> <label for="Particulier">Particulier</label>
+                                <input type="radio" name="id_al2jt_userGroup" <?= isset($_POST['id_al2jt_userGroup']) && $_POST['id_al2jt_userGroup'] == '3' ? 'checked' : '' ?> value="3" id="Professionnel" /> <label for="Professionnel">Professionnel</label>
+                                <?php if (isset($formErrors['id_al2jt_userGroup'])) { ?>
                                     <div class="invalid-feedback">
-                                        <p><?= $formErrors['type'] ?></p>
+                                        <p><?= $formErrors['id_al2jt_userGroup'] ?></p>
                                     </div>
                                 <?php } ?>
                             </div>
@@ -258,7 +104,7 @@ if (count($_POST) > 0) {
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                                    <label class="d-flex justify-content-start" for="lastname">Nom de famille du dirigeant</label>
+                                    <label class="d-flex justify-content-start" for="lastname">Nom de famille</label>
                                     <input class="form-control lastname <?= isset($formErrors['leaderLastname']) ? 'is-invalid' : (isset($leaderLastname) ? 'is-valid' : '') ?>" type="text" name="leaderLastname" id="leaderLastname" placeholder="Doe" value="<?= isset($_POST['leaderLastname']) ? $_POST['leaderLastname'] : '' ?>" required />
                                     <?php if (isset($formErrors['leaderLastname'])) {
                                         ?>
@@ -268,7 +114,7 @@ if (count($_POST) > 0) {
                                     <?php } ?>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                                    <label for="firstname">Prénom du dirigeant</label>
+                                    <label for="firstname">Prénom</label>
                                     <input class="form-control <?= isset($formErrors['leaderFirstname']) ? 'is-invalid' : (isset($leaderFirstname) ? 'is-valid' : '') ?>" type="text" name="leaderFirstname" id="leaderFirstname" placeholder="John" value="<?= isset($_POST['leaderFirstname']) ? $_POST['leaderFirstname'] : '' ?>" required />
                                     <?php if (isset($formErrors['leaderFirstname'])) {
                                         ?>
@@ -281,7 +127,6 @@ if (count($_POST) > 0) {
 
                         </fieldset>
                     </div>
-
                     <fieldset>
                         <legend><span class="orange">.</span>Adresse et contact</legend>
                         <div class="row">
@@ -297,39 +142,32 @@ if (count($_POST) > 0) {
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 col-sm-6 col-md-6 col-lg-6"> 
-                                <label for="postalCode">Code postal</label>
-                                <input class="form-control <?= isset($formErrors['postalCode']) ? 'is-invalid' : (isset($postalCode) ? 'is-valid' : '') ?>" type="text" name="postalCode" id="postalCode" placeholder="60000" value="<?= isset($_POST['postalCode']) ? $_POST['postalCode'] : '' ?>" required />
-                                <?php if (isset($formErrors['postalCode'])) {
-                                    ?>
-                                    <div class="invalid-feedback">
-                                        <p><?= $formErrors['postalCode'] ?></p>
-                                    </div>
-                                <?php } ?>
-                            </div>
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                 <label for="city">Ville</label>
-                                <input class="form-control <?= isset($formErrors['city']) ? 'is-invalid' : (isset($city) ? 'is-valid' : '') ?>" type="text" name="city" id="city" placeholder="Beauvais" value="<?= isset($_POST['city']) ? $_POST['city'] : '' ?>" required />
-                                <?php if (isset($formErrors['city'])) {
+                                <input list="navigateurs" class="form-control <?= isset($formErrors['search']) ? 'is-invalid' : (isset($search) ? 'is-valid' : '') ?>" type="text" name="search" id="search" placeholder="Beauvais" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" required />
+                                <datalist id="navigateurs" class="search"></datalist>
+                                <?php if (isset($formErrors['search'])) {
                                     ?>
                                     <div class="invalid-feedback">
-                                        <p><?= $formErrors['city'] ?></p>
+                                        <p><?= $formErrors['search'] ?></p>
                                     </div>
                                 <?php } ?>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                                <label for="phone">Numéro de téléphone</label>
-                                <input class="form-control <?= isset($formErrors['phone']) ? 'is-invalid' : (isset($phone) ? 'is-valid' : '') ?>" type="text" name="phone" id="phone" placeholder="06.01.02.03.04" value="<?= isset($_POST['phone']) ? $_POST['phone'] : '' ?>" required />
-                                <?php if (isset($formErrors['phone'])) {
-                                    ?>
-                                    <div class="invalid-feedback">
-                                        <p><?= $formErrors['phone'] ?></p>
-                                    </div>
-                                <?php } ?>
+                                <input class="form-control" type="hidden" name="cityId" id="cityId" placeholder="" value=""  />    
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                    <label for="phoneNumber">Numéro de téléphone</label>
+                                    <input class="form-control <?= isset($formErrors['phoneNumber']) ? 'is-invalid' : (isset($phoneNumber) ? 'is-valid' : '') ?>" type="text" name="phoneNumber" id="phoneNumber" placeholder="06.01.02.03.04" value="<?= isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : '' ?>" required />
+                                    <?php if (isset($formErrors['phoneNumber'])) {
+                                        ?>
+                                        <div class="invalid-feedback">
+                                            <p><?= $formErrors['phoneNumber'] ?></p>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
                     </fieldset>
                     <fieldset>
                         <legend><span class="orange">.</span>Connexion</legend>
@@ -391,26 +229,11 @@ if (count($_POST) > 0) {
     </div>
     <a href="index.php">Retour</a>
 <?php } else { ?>
-    <div class="validSubmit">
-        <p>Vos données ont bien été envoyées.</p>
-    </div>
+    <?php if (isset($formSuccess)) { ?>
+        <p><?= $formSuccess ?></p>
+    <?php } ?>
     <div class="jumbotron">
-        <p>Vous êtes un <?= $type ?></p>
-        <?php if($_POST['type'] === 'Particulier') {  ?>
-        <p>Nom : <?= $lastname; ?></p>
-        <p>Prénom : <?= $firstname; ?></p>
-        <?php } else {  ?>
-        <p>Nom de l'entreprise : <?= $companyName; ?></p>
-        <p>Numéro de siret : <?= $siretNumber; ?></p>
-        <p>Nom du dirigeant : <?= $leaderLastname; ?></p>
-        <p>Prénom du dirigeant : <?= $leaderFirstname; ?></p>
-        <?php } ?>
-        <p>Adresse : <?= $address; ?></p>
-        <p>Code postal : <?= $postalCode; ?></p>
-        <p>Ville : <?= $city; ?></p>
-        <p>Numéro de téléphone : <?= $phone; ?></p>
-        <p>Adresse mail : <?= $mail; ?></p>
-        <p>Mot de passe : <?= $password; ?></p>
+        <h2>Votre inscription a été validée</h2>
     </div>
     <button type="button" class="btn btn-outline-warning registrationBtn" onclick="javascript:location.href = 'connection.php'">Suivant</button>
 

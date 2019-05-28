@@ -8,9 +8,9 @@ if ($page == '/registration.php' || $page == '/connection.php') {
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, user-scalable=no" />
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
             <link rel="stylesheet" href="assets/css/style.css" />
+            <link rel="stylesheet" href="assets/css/animate.css"/>
             <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet" />
             <title>Projet BTP</title>
         </head>
@@ -63,6 +63,7 @@ if ($page == '/registration.php' || $page == '/connection.php') {
                         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
                         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
                         <link rel="stylesheet" href="/assets/css/style.css" />
+                        <link rel="stylesheet" href="assets/css/animate.css"/>
                         <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet" />
                         <title>Projet BTP</title>
                     </head>
@@ -75,7 +76,7 @@ if ($page == '/registration.php' || $page == '/connection.php') {
                             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <button id="openNav" class="w3-button searchNav" onclick="w3_open()">Menu</button>
+                                        <button id="openNav" class="btn btn-outline-warning searchNav" onclick="slide_open()">Menu</button>
                                     </li>
                                     <li class="nav-item">
                                         <button type="button" class="btn btn-outline-warning" id="deconnexionBtn" onclick="javascript:location.href = '/index.php'">Déconnexion</button>

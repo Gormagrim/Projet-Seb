@@ -3,7 +3,7 @@ $(document).ready(function () {
     var valueTwo = $('#Professionnel').val();
 
     $('#Particulier').click(function () {
-        if (valueOne === 'Particulier') {
+        if (valueOne === '2') {
             $('.particularUser').css('display', 'block');
             $('.professionnalUser').css('display', 'none');
             $("#companyName").removeAttr("required");
@@ -16,7 +16,7 @@ $(document).ready(function () {
         }
     });
     $('#Professionnel').click(function () {
-        if (valueTwo === 'Professionnel') {
+        if (valueTwo === '3') {
             $('.particularUser').css('display', 'none');
             $('.professionnalUser').css('display', 'block');
             $("#firstname").removeAttr("required");
