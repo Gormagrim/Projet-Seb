@@ -1,5 +1,5 @@
 html {
-  scroll-behavior : smooth;
+    scroll-behavior : smooth;
 }
 
 * {
@@ -74,7 +74,7 @@ h2 {
     .topSite h1 {
         font-size: 2.5em;
     }
-    
+
     .topSite p {
         font-size: 1.5em;
     }
@@ -158,37 +158,46 @@ h2 {
     display: none;
 }
 
+.nav-item {
+    color: #fff;
+}
+
+.helloName {
+    margin-right: 1rem;
+    padding-top: 0.5rem;
+}
+
 @media screen and (max-width: 990px) {
     .nav-item.dropdown.hideMenu, .nav-item.hideMenu {
         display: block;
         text-align: center;
     }
-    
+
     a.dropdown-item {
         text-align: center;
     }
-    
+
     #connexionBtn, #deconnexionBtn, #indexConnexionBtn {
         display: block;
         margin: 0 auto;
     }
-    
+
     .sideBarMenu {
         display: none;
     }
-    
+
     nav #openNav {
         display: none;
     }
-    
+
     .form-inline.mobileMenu {
         display: none;
     }
-    
+
     img.firstImg, img.secondImg {
         margin-left: 0;
     }
-    
+
     .mobileHide {
         display: none;
     }
@@ -619,6 +628,10 @@ img.companyCard {
 
 /* userAccount.php */
 
+.accountDetails {
+    font-weight: bold;
+}
+
 .Usermodification {
     float: left;
 }
@@ -730,7 +743,7 @@ a.return {
     border: 1px solid #ffa000;
 }
 
- ul {
+ul {
     list-style:none;
     padding-left: 0;
 }

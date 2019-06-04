@@ -1,4 +1,8 @@
 <?php
+include_once 'models/database.php';
+include_once 'models/particularUsers.php';
+include_once 'controllers/navbarSecondaryCtrl.php';
+
 $page = $_SERVER['PHP_SELF'];
 if ($page == '/registration.php' || $page == '/connection.php') {
     ?>
@@ -75,11 +79,14 @@ if ($page == '/registration.php' || $page == '/connection.php') {
                             </button>
                             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                                 <ul class="navbar-nav">
+                                    <li class="nav-item helloName">
+                                        bonjour, <?= $particularUserInfo->firstname ?>
+                                    </li>
                                     <li class="nav-item">
                                         <button id="openNav" class="btn btn-outline-warning searchNav" onclick="slide_open()">Menu</button>
                                     </li>
                                     <li class="nav-item">
-                                        <button type="button" class="btn btn-outline-warning" id="deconnexionBtn" onclick="javascript:location.href = '/index.php'">Déconnexion</button>
+                                        <button type="button" class="btn btn-outline-warning" id="deconnexionBtn" onclick="javascript:location.href = '/controllers/deconnectionCtrl.php'">Déconnexion</button>
                                     </li>
                                     <li class="nav-item dropdown hideMenu">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOne" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -1,4 +1,7 @@
 <?php
+include_once 'models/database.php';
+include_once 'models/particularUsers.php';
+include_once 'controllers/particularUserCtrl.php';
 
 function showBigCards($globalPortrait) { ?>
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
@@ -197,58 +200,64 @@ function showCompany($globalPortrait) {
     <?php
 }
 
-function showUser($globalPortrait) {
+function showUser($particularUserInfo) {
     ?>
     <div class="row">
         <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 userCards">
-            <a href="#"><i class="fas fa-user-edit fa-2x Usermodification" title="Modifier mes infos"></i></a>
+            <a href="/userAccountModify.php"><i class="fas fa-user-edit fa-2x Usermodification" title="Modifier mes infos"></i></a>
+            <a href="/deleteAccount.php"><i class="fas fa-user-slash fa-2x Usermodification" title="Supprimer mon compte"></i></a>
             <div class="row">
                 <div class=" offset-1 col-1 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userIdentity">
-                    <h2 class="companyCard"><?= $globalPortrait['userFirstname'] ?> <?= $globalPortrait['userLastname'] ?></h2>
+                    <h2 class="companyCard"><?= $particularUserInfo->firstname ?> <?= $particularUserInfo->lastname ?></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class=" offset-1 col-1 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userIdentity">
+                    <p class="companyCard"><span class="orange">.</span>Compte <?= $particularUserInfo->type ?></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
-                    <p class="companyCard">Adresse : <?= $globalPortrait['userAddress'] ?></p>
+                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Adresse :</span> <?= $particularUserInfo->address ?></p>
                 </div>
                 <div class="col-12 col-sm-5 col-md-5 col-lg-5">
-                    <p class="companyCard">Ville : <?= $globalPortrait['userCity'] ?></p>
+                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Ville :</span> <?= $particularUserInfo->zipcode . ' ' . $particularUserInfo->city ?></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
-                    <p class="companyCard">Numéro de téléphone : <?= $globalPortrait['userPhoneNumber'] ?></p>
+                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Numéro de téléphone :</span> <?= $particularUserInfo->phoneNumber ?></p>
                 </div>
                 <div class="col-12 col-sm-5 col-md-5 col-lg-5">
-                    <p class="companyCard">Nombre de réalisation ajoutés en favori: <?= $globalPortrait['userFavory'] ?></p>
+                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Adresse mail :</span> <?= $particularUserInfo->mail ?></p>
                 </div>
             </div>
             <div class="row phone">
                 <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
-                    <p class="companyCard">Nombre de "J'aime" : <?= $globalPortrait['userLike'] ?></p>
+                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Nombre de "J'aime" :</span> <?= $globalPortrait['userLike'] ?></p>
                 </div>
                 <div class="col-12 col-sm-5 col-md-5 col-lg-5">
-                    <p class="companyCard">Nombre de "j'aime moins" : <?= $globalPortrait['userDislike'] ?></p>
+                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Nombre de "j'aime moins" :</span> <?= $globalPortrait['userDislike'] ?></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
-                    <p class="companyCard"><a href="/estimate.php"><span class="orange">.</span>Mes devis</a></p>
+                    <p class="companyCard"><a href="/estimate.php"><span class="orange">.</span><span class="accountDetails">Mes devis</span></a></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
-                    <p class="companyCard"><a href="/userWorks.php"><span class="orange">.</span>Mes travaux</a></p>
+                    <p class="companyCard"><a href="/userWorks.php"><span class="orange">.</span><span class="accountDetails">Mes travaux</span></a></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
-                    <p class="companyCard"><a href="/userFavorites.php"><span class="orange">.</span>Mes favoris</a></p>
+                    <p class="companyCard"><a href="/userFavorites.php"><span class="orange">.</span><span class="accountDetails">Mes favoris</span></a></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
-                    <p class="companyCard"><a href="/userContact.php"><span class="orange">.</span>Mes contacts: </a</p>
+                    <p class="companyCard"><a href="/userContact.php"><span class="orange">.</span><span class="accountDetails">Mes contacts</span></a</p>
                 </div>
             </div>
         </div>
@@ -257,14 +266,14 @@ function showUser($globalPortrait) {
 ?>
 <?php
 
-function showProfessionnalUser($globalPortrait) {
+function showProfessionnalUser($professionnalUserInfo) {
     ?>
     <div class="row">
         <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 userCards">
             <a href="#"><i class="fas fa-user-edit fa-2x Usermodification" title="Modifier mes infos"></i></a>
             <div class="row">
                 <div class=" offset-1 col-1 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userIdentity">
-                    <h2 class="companyCard"><?= $globalPortrait['companyName'] ?></h2>
+                    <h2 class="companyCard"><?= $professionnalUserInfo->name ?></h2>
                 </div>
             </div>
             <div class="row">

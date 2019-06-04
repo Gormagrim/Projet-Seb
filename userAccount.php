@@ -1,4 +1,9 @@
 <?php
+session_start();
+include_once 'models/database.php';
+include_once 'models/particularUsers.php';
+include_once 'controllers/particularUserCtrl.php';
+include_once 'controllers/deleteUserCtrl.php';
 include_once 'navbarSecondary.php';
 include_once 'TestBaseDeDonnées.php';
 include_once 'function.php';
@@ -18,7 +23,7 @@ include_once 'function.php';
         <p><a href="/userAccount.php"><span class="orange">.</span>Mon compte</a></p>
     </div>
 <div id="main">
-    <?= showUser($userTest); ?>
+    <?= showUser($particularUserInfo); ?>
 </div>
 
 <?php include_once 'footerSecondary.php'; ?>

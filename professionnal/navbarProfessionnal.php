@@ -28,7 +28,7 @@
                         <a class="nav-link" href="/professionnal/professionnalContacts.php">Contacts</a>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-warning" id="deconnexionBtn" onclick="javascript:location.href = '#'">Déconnexion</button>
+                        <button type="button" class="btn btn-outline-warning" id="deconnexionBtn" onclick="javascript:location.href = '../controllers/deconnectionCtrl.php'">Déconnexion</button>
                     </li>
                 </ul>
             </div>

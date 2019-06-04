@@ -1,7 +1,12 @@
 <?php
+session_start();
+include_once '../models/database.php';
+include_once '../models/particularUsers.php';
+include_once '../models/city.php';
+include_once '../models/company.php';
+include_once '../models/userGroup.php';
+include_once '../controllers/professionnalUserCtrl.php';
 include_once 'navbarProfessionnal.php';
-include_once '../TestBaseDeDonnées.php';
-include_once '../function.php';
 ?>
 <div class="row">
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 topSite welcomePro">
@@ -11,6 +16,7 @@ include_once '../function.php';
 <div class="row">
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 welcomePro">
         <h2>Bienvenue sur votre espace professionnel</h2>
+        <h2>Entreprise <?= $professionnalUserInfo->name ?></h2>
     </div>
 </div>
 <?php include_once '../footerSecondary.php'; ?>

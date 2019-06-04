@@ -1,4 +1,10 @@
 <?php
+session_start();
+include_once 'models/database.php';
+include_once 'models/particularUsers.php';
+include_once 'models/city.php';
+include_once 'models/userGroup.php';
+include_once 'controllers/particularUserCtrl.php';
 include_once 'navbarSecondary.php';
 include_once 'TestBaseDeDonnées.php';
 include_once 'function.php';
@@ -28,6 +34,7 @@ include_once 'function.php';
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 welcomePro">
                 <h2>Bienvenue sur votre espace personnel</h2>
+                <h2><?= $particularUserInfo->firstname . ' ' . $particularUserInfo->lastname ?></h2>
             </div>
         </div>
     </div> <!-- Fin de div de remplissage du menu Slide -->

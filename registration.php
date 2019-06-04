@@ -1,8 +1,8 @@
 <?php
 include_once 'navbarSecondary.php';
 require_once 'regex.php';
+require_once 'models/database.php';
 require_once 'models/city.php';
-require_once 'models/userGroup.php';
 require_once 'models/particularUsers.php';
 require_once 'models/company.php';
 require_once 'controllers/inserParticularUserCtrl.php';
@@ -93,18 +93,18 @@ $page = $_SERVER['PHP_SELF'];
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                     <label for="companySiret">Numero de Siret</label>
-                                    <input class="form-control <?= isset($formErrors['siretNumber']) ? 'is-invalid' : (isset($siretNumber) ? 'is-valid' : '') ?>" type="text" name="siretNumber" id="siretNumber" placeholder="123 456 789 12345" value="<?= isset($_POST['siretNumber']) ? $_POST['siretNumber'] : '' ?>" required />
-                                    <?php if (isset($formErrors['siretNumber'])) {
+                                    <input class="form-control <?= isset($formErrors['siret']) ? 'is-invalid' : (isset($siret) ? 'is-valid' : '') ?>" type="text" name="siret" id="siret" placeholder="123 456 789 12345" value="<?= isset($_POST['siret']) ? $_POST['siret'] : '' ?>" required />
+                                    <?php if (isset($formErrors['siret'])) {
                                         ?>
                                         <div class="invalid-feedback">
-                                            <p><?= $formErrors['siretNumber'] ?></p>
+                                            <p><?= $formErrors['siret'] ?></p>
                                         </div>
                                     <?php } ?>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                                    <label class="d-flex justify-content-start" for="lastname">Nom de famille</label>
+                                    <label class="d-flex justify-content-start" for="leaderLastname">Nom de famille</label>
                                     <input class="form-control lastname <?= isset($formErrors['leaderLastname']) ? 'is-invalid' : (isset($leaderLastname) ? 'is-valid' : '') ?>" type="text" name="leaderLastname" id="leaderLastname" placeholder="Doe" value="<?= isset($_POST['leaderLastname']) ? $_POST['leaderLastname'] : '' ?>" required />
                                     <?php if (isset($formErrors['leaderLastname'])) {
                                         ?>
@@ -114,8 +114,8 @@ $page = $_SERVER['PHP_SELF'];
                                     <?php } ?>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                                    <label for="firstname">Prénom</label>
-                                    <input class="form-control <?= isset($formErrors['leaderFirstname']) ? 'is-invalid' : (isset($leaderFirstname) ? 'is-valid' : '') ?>" type="text" name="leaderFirstname" id="leaderFirstname" placeholder="John" value="<?= isset($_POST['leaderFirstname']) ? $_POST['leaderFirstname'] : '' ?>" required />
+                                    <label for="leaderFirstname">Prénom</label>
+                                    <input class="d-flex justify-content-start" class="form-control <?= isset($formErrors['leaderFirstname']) ? 'is-invalid' : (isset($leaderFirstname) ? 'is-valid' : '') ?>" type="text" name="leaderFirstname" id="leaderFirstname" placeholder="John" value="<?= isset($_POST['leaderFirstname']) ? $_POST['leaderFirstname'] : '' ?>" required />
                                     <?php if (isset($formErrors['leaderFirstname'])) {
                                         ?>
                                         <div class="invalid-feedback">
@@ -144,7 +144,7 @@ $page = $_SERVER['PHP_SELF'];
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                 <label for="city">Ville</label>
-                                <input list="navigateurs" class="form-control <?= isset($formErrors['search']) ? 'is-invalid' : (isset($search) ? 'is-valid' : '') ?>" type="text" name="search" id="search" placeholder="Beauvais" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" required />
+                                <input list="navigateurs" class="form-control search <?= isset($formErrors['search']) ? 'is-invalid' : (isset($search) ? 'is-valid' : '') ?>" type="text" name="search" id="search" placeholder="Beauvais" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" required />
                                 <datalist id="navigateurs" class="search"></datalist>
                                 <?php if (isset($formErrors['search'])) {
                                     ?>
@@ -153,10 +153,7 @@ $page = $_SERVER['PHP_SELF'];
                                     </div>
                                 <?php } ?>
                             </div>
-                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                                <input class="form-control" type="hidden" name="cityId" id="cityId" placeholder="" value=""  />    
-                            </div>
-                            <div class="row">
+                                <input class="form-control cityId" type="hidden" name="cityId" id="cityId" placeholder="" value=""  />    
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                     <label for="phoneNumber">Numéro de téléphone</label>
                                     <input class="form-control <?= isset($formErrors['phoneNumber']) ? 'is-invalid' : (isset($phoneNumber) ? 'is-valid' : '') ?>" type="text" name="phoneNumber" id="phoneNumber" placeholder="06.01.02.03.04" value="<?= isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : '' ?>" required />

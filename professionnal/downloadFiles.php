@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'navbarProfessionnal.php';
 include_once '../TestBaseDeDonnées.php';
 $formErrors = array();

@@ -1,6 +1,6 @@
 $(function () {
     //Etape 1 : Je crée mon évènements (et je le teste)
-    $('#search').keyup(function () {
+    $('.search').keyup(function () {
         /**
          * Etape 2 : j'appelle la fonction ajax 
          * J'utilise :
@@ -11,13 +11,12 @@ $(function () {
          * de recherche ($('#search').val()) et je veux l'envoyer dans une variable qui s'appellera $_POST['search']
          */
         $.post('../../controllers/inserParticularUserCtrl.php', {
-            searchCity: $('#search').val()
-            /**
-             * function (data) est la fonction qui s'éxécutera une fois que le contrôleur aura fini
-             * data est le retour du contrôleur (ce qu'on a mis dans echo json_encode())
-             */
+            searchCity: $('.search').val()
+                    /**
+                     * function (data) est la fonction qui s'éxécutera une fois que le contrôleur aura fini
+                     * data est le retour du contrôleur (ce qu'on a mis dans echo json_encode())
+                     */
         }, function (data) {
-            console.log(data);
             /*
              * Etape 4 : L'affichage
              * Je récupère ce qui a été retourné du PHP grâce au echo json_encode, on le convertit en tableau d'objet js et on le stocke
@@ -26,7 +25,7 @@ $(function () {
             var results = $.parseJSON(data);
             //4.1 : Je vide le tableau pour préparer l'affichage (enlever les résultats déjà présents)
             $('.search').empty();
-            $('#cityId').empty();
+            $('.cityId').empty();
             //4.2 : Je vérifie que le tableau de résultats n'est pas vide
             if (results.length > 0) {
                 //4.3 : Je parcours le tableau (similaire à foreach($results as $key=>$patient). patient est un objet contenu dans le tableau
@@ -36,13 +35,28 @@ $(function () {
                      * On y injecte les information du patient
                      */
                     var display = '<option class="city" value="' + city.city + ' ' + city.zipcode + '" id="' + city.id + '">' + city.city + ' ' + city.zipcode + '</option>';
-                    var idCity =   '' + city.id + ''
+                    var idCity = '' + city.id + ''
                     //J'ajoute la ligne que je viens de créer au tableau, cette opération se répètera pour chaque patient dans le tableau results
                     $('.search').append(display);
-                    $('#cityId').attr('value', idCity);
-                    console.log(idCity);
+                    $('.cityId').attr('value', idCity);
                 });
-            } 
+            }
+        }
+        );
+    });
+    $('#zipSearch').keyup(function () {
+        $.post('../../controllers/sectorSearchCtrl.php', {
+            searchZipcode: $('#zipSearch').val()
+        }, function (data) {
+            var zip = $.parseJSON(data);
+            $('.zipSearch').empty();
+            if (zip.length > 0) {
+                $.each(zip, function (key, city) {
+                    var display = '<option value="' + city.city + ' ' + city.zipcode + '" id="' + city.id + '">' + city.city + ' ' + city.zipcode + '</option>';
+                    $('.zipSearch').append(display);
+                    console.log($('#zipSearch').val());
+                });
+            }
         }
         );
     });

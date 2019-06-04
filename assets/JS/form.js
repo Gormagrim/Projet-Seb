@@ -7,7 +7,7 @@ $(document).ready(function () {
             $('.particularUser').css('display', 'block');
             $('.professionnalUser').css('display', 'none');
             $("#companyName").removeAttr("required");
-            $("#siretNumber").removeAttr("required");
+            $("#siret").removeAttr("required");
             $("#leaderLastname").removeAttr("required");
             $("#leaderFirstname").removeAttr("required");
             $("#firstname").addAttr("required");
@@ -22,7 +22,7 @@ $(document).ready(function () {
             $("#firstname").removeAttr("required");
             $("#lastname").removeAttr("required");
             $("#companyName").addAttr("required");
-            $("#siretNumber").addAttr("required");
+            $("#siret").addAttr("required");
             $("#leaderLastname").addAttr("required");
             $("#leaderFirstname").addAttr("required");
             

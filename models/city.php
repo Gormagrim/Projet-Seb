@@ -1,17 +1,12 @@
 <?php
 
-class city {
+class city extends database {
     public $id = 0;
     public $city = '';
     public $zipcode = '';
-    private $db = NULL;
     
     public function __construct() {
-        try {
-            $this->db = new PDO('mysql:host=localhost;dbname=projet_BTP_Test;charset=utf8', 'admin_btp', '123');
-        } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
-        }
+        parent::__construct();
     }
     
     public function searchCity($search) {
@@ -20,6 +15,16 @@ class city {
                 . 'WHERE `city` LIKE :search';
         $queryExecute = $this->db->prepare($query);
         $queryExecute->bindValue(':search', $search.'%', PDO::PARAM_STR);
+        $queryExecute->execute();
+        return $queryExecute->fetchAll(PDO::FETCH_OBJ);
+    }
+    
+    public function searchZipcode($zipSearch) {
+        $query = 'SELECT `id`, `zipcode`, `city` '
+                . 'FROM `al2jt_city` '
+                . 'WHERE `zipcode` LIKE :zipSearch';
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->bindValue(':zipSearch', $zipSearch.'%', PDO::PARAM_INT);
         $queryExecute->execute();
         return $queryExecute->fetchAll(PDO::FETCH_OBJ);
     }

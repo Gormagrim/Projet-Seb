@@ -1,4 +1,6 @@
-<?php include_once 'navbarSecondary.php'; 
+<?php 
+session_start();
+include_once 'navbarSecondary.php'; 
 include_once 'TestBaseDeDonnées.php';
 include_once 'function.php';
 $page = $_SERVER['PHP_SELF'];

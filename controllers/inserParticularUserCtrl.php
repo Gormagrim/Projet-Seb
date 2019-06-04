@@ -3,13 +3,14 @@
 $formErrors = array();
 
 if (isset($_POST['searchCity'])) {
+    require_once '../models/database.php';
     require_once '../models/particularUsers.php';
     require_once '../models/city.php';
     require_once '../models/company.php';
 
     $city = new city();
     if (!empty($_POST['searchCity'])) {
-        echo json_encode($city->searchCity(htmlspecialchars($_POST['searchCity']))); 
+        echo json_encode($city->searchCity(htmlspecialchars($_POST['searchCity'])));
     }
 } else {
     $city = new city();
@@ -76,20 +77,22 @@ if (isset($_POST['searchCity'])) {
                 $formErrors['companyName'] = 'Veuillez renseigner le nom de votre entreprise.';
             }
 
-            if (!empty($_POST['siretNumber'])) {
-                if (preg_match($patternSiretNumber, $_POST['siretNumber'])) {
-                    $company->siret = htmlspecialchars($_POST['siretNumber']);
+            if (!empty($_POST['siret'])) {
+                if (preg_match($patternSiretNumber, $_POST['siret'])) {
+                    $company->siret = htmlspecialchars($_POST['siret']);
                 } else {
-                    $formErrors['siretNumber'] = 'Le numéro de siret est incorrect.';
+                    $formErrors['siret'] = 'Le numéro de siret est incorrect.';
                 }
             } else {
-                $formErrors['siretNumber'] = 'Veuillez renseigner le numéro de siret de votre entreprise.';
+                $formErrors['siret'] = 'Veuillez renseigner le numéro de siret de votre entreprise.';
             }
 
             if (!empty($_POST['leaderLastname'])) {
                 if (preg_match($patternName, $_POST['leaderLastname'])) {
-                    $company->leader = htmlspecialchars($_POST['leaderLastname']);
-                    $particularUsers->lastname = htmlspecialchars($_POST['leaderLastname']);
+                    if ($_POST['id_al2jt_userGroup'] === '3') {
+                        $company->leader = htmlspecialchars($_POST['leaderLastname']);
+                        $particularUsers->lastname = htmlspecialchars($_POST['leaderLastname']);
+                    }
                 } else {
                     $formErrors['leaderLastname'] = 'Votre nom est incorrect.';
                 }
@@ -98,8 +101,10 @@ if (isset($_POST['searchCity'])) {
             }
 
             if (!empty($_POST['leaderFirstname'])) {
-                if (preg_match($patternName, $_POST['leaderFirstname'])) {
-                    $particularUsers->firstname = htmlspecialchars($_POST['leaderFirstname']);
+                if ($_POST['id_al2jt_userGroup'] === '3') {
+                    if (preg_match($patternName, $_POST['leaderFirstname'])) {
+                        $particularUsers->firstname = htmlspecialchars($_POST['leaderFirstname']);
+                    }
                 } else {
                     $formErrors['leaderFirstname'] = 'Votre prénom est incorrect.';
                 }
@@ -111,7 +116,7 @@ if (isset($_POST['searchCity'])) {
         if (!empty($_POST['address'])) {
             if (preg_match($patternAddress, $_POST['address'])) {
                 $particularUsers->address = htmlspecialchars($_POST['address']);
-                if($_POST['id_al2jt_userGroup'] === '3'){
+                if ($_POST['id_al2jt_userGroup'] === '3') {
                     $company->address = htmlspecialchars($_POST['address']);
                 }
             } else {
@@ -124,9 +129,9 @@ if (isset($_POST['searchCity'])) {
         if (!empty($_POST['cityId'])) {
             $cityId = htmlspecialchars($_POST['cityId']);
             $particularUsers->id_al2jt_city = $cityId;
-            if($_POST['id_al2jt_userGroup'] === '3'){
-                    $company->id_al2jt_city = htmlspecialchars($_POST['cityId']);
-                }
+            if ($_POST['id_al2jt_userGroup'] === '3') {
+                $company->id_al2jt_city = htmlspecialchars($_POST['cityId']);
+            }
         } else {
             $formErrors['cityId'] = 'Veuillez renseigner votre ville.';
         }
@@ -134,7 +139,7 @@ if (isset($_POST['searchCity'])) {
         if (!empty($_POST['phoneNumber'])) {
             if (preg_match($patternPhone, $_POST['phoneNumber'])) {
                 $particularUsers->phoneNumber = htmlspecialchars($_POST['phoneNumber']);
-                if($_POST['id_al2jt_userGroup'] === '3'){
+                if ($_POST['id_al2jt_userGroup'] === '3') {
                     $company->phoneNumber = htmlspecialchars($_POST['phoneNumber']);
                 }
             } else {
@@ -147,6 +152,10 @@ if (isset($_POST['searchCity'])) {
         if (!empty($_POST['mail'])) {
             if (preg_match($patternMail, $_POST['mail'])) {
                 $particularUsers->mail = htmlspecialchars($_POST['mail']);
+                $check = $particularUsers->checkUser();
+            if ($check->number > 0) {
+                $formErrors['mail'] = 'Un compte avec ce mail existe déjà';
+            }
             } else {
                 $formErrors['mail'] = 'Votre adresse mail est incorrecte.';
             }
@@ -158,27 +167,33 @@ if (isset($_POST['searchCity'])) {
             $formErrors['mailAreDifferent'] = 'Veuillez confirmer votre adresse mail correctement.';
         }
 
-        if (!empty($_POST['password'])) {
-            $particularUsers->password = htmlspecialchars($_POST['password']);
+        if (!empty($_POST['password']) && ($_POST['password'] == $_POST['passwordVerification'])) {
+            $particularUsers->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         } else {
             $formErrors['password'] = 'Veuillez renseigner votre mot de passe.';
         }
 
         if ($_POST['password'] != $_POST['passwordVerification']) {
             $formErrors['passwordAreDifferent'] = 'Veuillez confirmer votre mot de passe correctement.';
-        }
+        }else 
 
         if (!empty($_POST['termsOfUse'])) {
             $termsOfUse = htmlspecialchars($_POST['termsOfUse']);
         } else {
             $formErrors['termsOfUse'] = 'Veuillez accepter les conditions d\'utilisation.';
         }
+
         if (count($formErrors) == 0) {
+            $check = $particularUsers->checkUser();
             if ($particularUsersInsert = $particularUsers->inserParticularUser()) {
+                if ($_POST['id_al2jt_userGroup'] === '3') {
+                    $company->id_al2jt_user = $particularUsersInsert;
+                    $companyInser = $company->inserCompany();
+                }
                 $formSuccess = 'Enregistrement effectué';
-                $companyInser = $company->inserCompany();
             } else {
                 $formErrors['add'] = 'Une erreur est survenue';
+//                DELETE $particularUsersInsert à prevoir !!!!!!
             }
         }
     }
