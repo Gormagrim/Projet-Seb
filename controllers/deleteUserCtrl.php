@@ -1,5 +1,6 @@
 <?php
- $particularUsers = new particularUsers();
+
+$particularUsers = new particularUsers();
 
 if (!empty($_SESSION['id'])) {
     if (preg_match($regexId, $_SESSION['id'])) {
@@ -9,4 +10,6 @@ if (!empty($_SESSION['id'])) {
                 session_destroy();
                 header('location: ../index.php');
             }
-        } } } 
+        }
+    }
+} 

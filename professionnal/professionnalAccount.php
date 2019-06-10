@@ -11,25 +11,29 @@ include_once 'navbarProfessionnal.php';
 
 <div class="row">
     <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 userCards">
-        <a href="#"><i class="fas fa-user-edit fa-2x Usermodification" title="Modifier mes infos"></i></a>
-        <a href="#"><i class="fas fa-user-slash fa-2x Usermodification" title="Supprimer mon compte"></i></a>
         <div class="row">
-            <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userIdentity">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 userIdentity">
+                <a href="/professionnal/professionnalAccountModify.php"><i class="fas fa-user-edit fa-2x Usermodification" title="Modifier mes infos"></i></a>
+                <a href="/professionnal/deleteProfessionnalUser.php"><i class="fas fa-user-slash fa-2x Usermodification" title="Supprimer mon compte"></i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 userIdentity">
                 <h2 class="companyCard">Entreprise <?= $professionnalUserInfo->name ?></h2>
             </div>
         </div>
-        <?php if (isset($professionnalUserInfo->presentationPhoto)) { ?>
-            <div class="row">
-                <div class=" offset-1 col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userIdentity">
-                    <img src="<?= $professionnalUserInfo->presentationPhoto ?>" alt="Photo de l'entreprise <?= $professionnalUserInfo->name ?>">
-                </div>
-            </div>
-        <?php } ?>
         <div class="row">
             <div class=" offset-1 col-1 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userIdentity">
                 <p class="companyCard"><span class="orange">.</span>Compte <?= $professionnalUserInfo->type ?></p>
             </div>
         </div>
+        <?php if (isset($professionnalUserInfo->presentationPhoto)) { ?>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 userIdentity">
+                    <img class="proUserPresentationPhoto" src="<?= $professionnalUserInfo->presentationPhoto ?>" alt="Photo de l'entreprise <?= $professionnalUserInfo->name ?>" title="Photo de l'entreprise <?= $professionnalUserInfo->name ?>">
+                </div>
+            </div>
+        <?php } ?>
         <div class="row">
             <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
                 <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Nom du dirigeant : </span>Monsieur <?= $professionnalUserInfo->leader ?></p>

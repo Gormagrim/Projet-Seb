@@ -17,11 +17,11 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
                 <p><?= $formErrors['add'] ?></p>   
             <?php } ?>
         <h2>Modification de votre profil</h2>
-        <form action="professionnalAccountModify.php" method="POST">
+        <form action="professionnalAccountModify.php" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                    <label class="d-flex justify-content-start" for="lastname">Nom de famille</label>
-                    <input class="form-control lastname <?= isset($formErrors['lastname']) ? 'is-invalid' : (isset($lastname) ? 'is-valid' : '') ?>" type="text" name="lastname" id="lastname" placeholder="Doe" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['lastname']) : $particularUserInfo->lastname ?>" required />
+                    <label class="d-flex justify-content-start" for="lastname">Nom de famille du gestionnaire du compte</label>
+                    <input class="form-control lastname <?= isset($formErrors['lastname']) ? 'is-invalid' : (isset($lastname) ? 'is-valid' : '') ?>" type="text" name="lastname" id="lastname" placeholder="Doe" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['lastname']) : $professionnalUserInfo->lastname ?>" required />
                     <?php if (isset($formErrors['lastname'])) {
                         ?>
                         <div class="invalid-feedback">
@@ -31,8 +31,8 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                     <!-- Utiliser les class : is-invalid et is-valid et invalid-feedback (pour les messages d'erreur) pour la mise en forme des input en fonction du remplissage correct ou pas. -->
-                    <label for="firstname">Prénom</label>
-                    <input class="form-control <?= isset($formErrors['firstname']) ? 'is-invalid' : (isset($firstname) ? 'is-valid' : '') ?>" type="text" name="firstname" id="firstname" placeholder="John" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['firstname']) : $particularUserInfo->firstname ?>" required />
+                    <label for="firstname">Prénom du gestionnaire du compte</label>
+                    <input class="form-control <?= isset($formErrors['firstname']) ? 'is-invalid' : (isset($firstname) ? 'is-valid' : '') ?>" type="text" name="firstname" id="firstname" placeholder="John" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['firstname']) : $professionnalUserInfo->firstname ?>" required />
                     <?php if (isset($formErrors['firstname'])) {
                         ?>
                         <div class="invalid-feedback">
@@ -43,8 +43,8 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
             </div>
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                    <label for="address">Adresse</label>
-                    <input class="form-control <?= isset($formErrors['address']) ? 'is-invalid' : (isset($address) ? 'is-valid' : '') ?>" type="text" name="address" id="address" placeholder="1 rue des métiers" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['address']) : $particularUserInfo->address ?>" required />
+                    <label for="address">Adresse de l'entreprise</label>
+                    <input class="form-control <?= isset($formErrors['address']) ? 'is-invalid' : (isset($address) ? 'is-valid' : '') ?>" type="text" name="address" id="address" placeholder="1 rue des métiers" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['address']) : $professionnalUserInfo->address ?>" required />
                     <?php if (isset($formErrors['address'])) {
                         ?>
                         <div class="invalid-feedback">
@@ -53,8 +53,8 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
                     <?php } ?>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                    <label for="city">Ville</label>
-                    <input list="navigateurs" class="form-control search <?= isset($formErrors['search']) ? 'is-invalid' : (isset($search) ? 'is-valid' : '') ?>" type="text" name="search" id="search" placeholder="Beauvais" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['search']) : $particularUserInfo->city . ' ' . $particularUserInfo->zipcode ?>" required />
+                    <label for="search">Ville de l'entreprise</label>
+                    <input list="navigateurs" class="form-control search <?= isset($formErrors['search']) ? 'is-invalid' : (isset($search) ? 'is-valid' : '') ?>" type="text" name="search" id="search" placeholder="Beauvais" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['search']) : $professionnalUserInfo->city . ' ' . $professionnalUserInfo->zipcode ?>" required />
                     <datalist id="navigateurs" class="search"></datalist>
                     <?php if (isset($formErrors['search'])) {
                         ?>
@@ -64,13 +64,13 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
                     <?php } ?>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                    <input class="form-control cityId" type="hidden" name="cityId" id="cityId" placeholder="" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['cityId']) : $particularUserInfo->id_al2jt_city ?>"  />    
+                    <input class="form-control cityId" type="hidden" name="cityId" id="cityId" placeholder="" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['cityId']) : $professionnalUserInfo->id_al2jt_city ?>"  />    
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                    <label for="phoneNumber">Numéro de téléphone</label>
-                    <input class="form-control <?= isset($formErrors['phoneNumber']) ? 'is-invalid' : (isset($phoneNumber) ? 'is-valid' : '') ?>" type="text" name="phoneNumber" id="phoneNumber" placeholder="06.01.02.03.04" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['phoneNumber']) : $particularUserInfo->phoneNumber ?>" required />
+                    <label for="phoneNumber">Numéro de téléphone de l'entreprise</label>
+                    <input class="form-control <?= isset($formErrors['phoneNumber']) ? 'is-invalid' : (isset($phoneNumber) ? 'is-valid' : '') ?>" type="text" name="phoneNumber" id="phoneNumber" placeholder="06.01.02.03.04" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['phoneNumber']) : $professionnalUserInfo->phoneNumber ?>" required />
                     <?php if (isset($formErrors['phoneNumber'])) {
                         ?>
                         <div class="invalid-feedback">
@@ -79,8 +79,8 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
                     <?php } ?>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                    <label for="mail">Adresse mail</label>
-                    <input class="form-control <?= isset($formErrors['mail']) ? 'is-invalid' : (isset($mail) ? 'is-valid' : '') ?>" type="email" name="mail" id="mail" placeholder="exemple@mail.com" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['mail']) : $particularUserInfo->mail ?>" required />
+                    <label for="mail">Adresse mail de l'entreprise</label>
+                    <input class="form-control <?= isset($formErrors['mail']) ? 'is-invalid' : (isset($mail) ? 'is-valid' : '') ?>" type="email" name="mail" id="mail" placeholder="exemple@mail.com" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['mail']) : $professionnalUserInfo->mail ?>" required />
                     <?php if (isset($formErrors['mail'])) {
                         ?>
                         <div class="invalid-feedback">
@@ -91,8 +91,8 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
             </div>
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                    <label for="name">Nom du dirigéant</label>
-                    <input class="form-control <?= isset($formErrors['name']) ? 'is-invalid' : (isset($name) ? 'is-valid' : '') ?>" type="text" name="name" id="name" placeholder="" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['name']) : $particularUserInfo->name ?>" required />
+                    <label for="name">Nom de l'entreprise</label>
+                    <input class="form-control <?= isset($formErrors['name']) ? 'is-invalid' : (isset($name) ? 'is-valid' : '') ?>" type="text" name="name" id="name" placeholder="" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['name']) : $professionnalUserInfo->name ?>" required />
                     <?php if (isset($formErrors['name'])) {
                         ?>
                         <div class="invalid-feedback">
@@ -101,8 +101,8 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
                     <?php } ?>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                    <label for="siret">Adresse mail</label>
-                    <input class="form-control <?= isset($formErrors['siret']) ? 'is-invalid' : (isset($siret) ? 'is-valid' : '') ?>" type="text" name="siret" id="siret" placeholder="" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['siret']) : $particularUserInfo->siret ?>" required />
+                    <label for="siret">Numéro de SIRET</label>
+                    <input class="form-control <?= isset($formErrors['siret']) ? 'is-invalid' : (isset($siret) ? 'is-valid' : '') ?>" type="text" name="siret" id="siret" placeholder="" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['siret']) : $professionnalUserInfo->siret ?>" required />
                     <?php if (isset($formErrors['siret'])) {
                         ?>
                         <div class="invalid-feedback">
@@ -111,7 +111,41 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
                     <?php } ?>
                 </div>
             </div>
-            <!-- RESTE PRESENTATIONPHTO, LEADER ET NUMBEROFEMPLOY DANS LE FORMULAIRE -->
+             <div class="row">
+                <div class="form-group">
+                        <div class="form-group">
+                            <label for="presentationPhoto"><span class="orange">.</span>Photo de présentation (.jpg ou .jpeg)</label>
+                            <input class="form-control" type="file" name="presentationPhoto" id="presentationPhoto" />
+                        </div>
+                        <?php if (isset($formErrors['presentationPhoto'])) { ?>
+                            <div class="alert-danger">
+                                <p><?= $formErrors['presentationPhoto'] ?></p>
+                            </div>
+                        <?php } ?>
+                    </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                    <label for="leader">Nom de famille du chef d'entreprise</label>
+                    <input class="form-control <?= isset($formErrors['leader']) ? 'is-invalid' : (isset($leader) ? 'is-valid' : '') ?>" type="text" name="leader" id="leader" placeholder="" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['leader']) : $professionnalUserInfo->leader ?>" required />
+                    <?php if (isset($formErrors['leader'])) {
+                        ?>
+                        <div class="invalid-feedback">
+                            <p><?= $formErrors['leader'] ?></p>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                    <label for="numberOfEmploy">Nombre d'employés</label>
+                    <input class="form-control <?= isset($formErrors['numberOfEmploy']) ? 'is-invalid' : (isset($numberOfEmploy) ? 'is-valid' : '') ?>" type="text" name="numberOfEmploy" id="numberOfEmploy" placeholder="" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['numberOfEmploy']) : $professionnalUserInfo->numberOfEmploy ?>" required />
+                    <?php if (isset($formErrors['numberOfEmploy'])) {
+                        ?>
+                        <div class="invalid-feedback">
+                            <p><?= $formErrors['numberOfEmploy'] ?></p>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
             <input type="submit" name="submit" value="Modifier" class="btn btn-outline-warning registrationBtn" />
         </form>
     </div>
@@ -121,6 +155,6 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
     <h2>Votre profil a bien été modifié</h2>
 </div>
     
-<?php } ?>
+<?php } 
 
-<?php include_once 'footerSecondary.php'; ?>
+include_once '../footerSecondary.php'; ?>

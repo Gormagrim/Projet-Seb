@@ -1,8 +1,15 @@
-<?php 
+<?php
 session_start();
-include_once 'navbarSecondary.php'; 
-include_once 'TestBaseDeDonnées.php';
-include_once 'function.php';
+include_once 'navbarSecondary.php';
+require_once 'regex.php';
+include_once 'models/database.php';
+include_once 'models/particularUsers.php';
+include_once 'models/city.php';
+include_once 'models/company.php';
+include_once 'models/photo.php';
+include_once 'models/production.php';
+include_once 'models/type.php';
+include_once 'controllers/partUserProductionCtrl.php';
 $page = $_SERVER['PHP_SELF'];
 ?>
 
@@ -43,16 +50,74 @@ $page = $_SERVER['PHP_SELF'];
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
                     <h2><span class="orange">.</span>Réalisations mises en avant cette semaine :</h2>
                 </div>
-           </div>
+            </div>
             <div class="row">
-                <?= showBigProductionCards($productionArray) ?>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="professionnal/<?= $getOneProductionInformation->photo ?>" class="card-img firstImg" title="Travaux de l'entreprise <?= $getOneProductionInformation->name ?> : <?= $getOneProductionInformation->description ?>" alt="Travaux de l'entreprise <?= $getOneProductionInformation->name ?> : <?= $getOneProductionInformation->description ?>">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title"><?= $getOneProductionInformation->title ?></h4>
+                                    <h3 class="card-title">Entreprise <?= $getOneProductionInformation->name ?></h3>
+                                    <h5 class="card-title">Chantier réalisé à <?= $getOneProductionInformation->city ?> (<?= $getOneProductionInformation->zipcode ?>) de type : <?= $getOneProductionInformation->category ?> / <?= $getOneProductionInformation->type ?></h5>
+                                    <p class="card-text"><?= $getOneProductionInformation->descriptionText ?></p>
+                                    <?php if ($page == '/userFavorites.php' || $page == '/partUserProduction.php') { ?>
+                                        <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
+                                    <?php } else { ?>
+                                        <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Modifier</button>
+                                    <?php } ?>
+                                    <div class="socialMedia">
+                                        <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
+                                        <span><p></p></span>
+                                        <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
+                                        <span><p></p></span>
+                                        <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
+                                        <span><p></p></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
+                    <h2><span class="orange">.</span>Résultat de votre recherche :</h2>
+                </div>
             </div>
             <div class="row secondCards">
-                <?= showSmallProductionCards($productionArray2) ?>
-                <?= showSmallProductionCards($productionArray3) ?>
-                <?= showSmallProductionCards($productionArray4) ?>
-                <?= showSmallProductionCards($productionArray5) ?>
-                <?= showSmallProductionCards($productionArray6) ?>
+                <?php foreach ($getProductionInformation as $smallProduction) { ?>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src="professionnal/<?= $smallProduction->photo ?>" class="card-img firstImg" title="Travaux de l'entreprise <?= $smallProduction->name ?> : <?= $smallProduction->description ?>" alt="Travaux de l'entreprise <?= $smallProduction->name ?> : <?= $smallProduction->description ?>">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><?= $smallProduction->title ?></h4>
+                                        <h3 class="card-title">Entreprise <?= $smallProduction->name ?></h3>
+                                        <h5 class="card-title">Chantier réalisé à <?= $smallProduction->city ?> (<?= $smallProduction->zipcode ?>)</h5>
+                                        <h5 class="card-title">De type : <?= $smallProduction->category ?> / <?= $smallProduction->type ?></h5>
+                                        <p class="card-text"><?= $smallProduction->descriptionText ?></p>
+                                        <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
+                                        <div class="socialMedia">
+                                            <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
+                                            <span><p></p></span>
+                                            <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
+                                            <span><p></p></span>
+                                            <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
+                                            <span><p></p></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>

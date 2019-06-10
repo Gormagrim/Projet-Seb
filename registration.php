@@ -143,7 +143,7 @@ $page = $_SERVER['PHP_SELF'];
                         </div>
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                                <label for="city">Ville</label>
+                                <label for="search">Ville</label>
                                 <input list="navigateurs" class="form-control search <?= isset($formErrors['search']) ? 'is-invalid' : (isset($search) ? 'is-valid' : '') ?>" type="text" name="search" id="search" placeholder="Beauvais" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" required />
                                 <datalist id="navigateurs" class="search"></datalist>
                                 <?php if (isset($formErrors['search'])) {

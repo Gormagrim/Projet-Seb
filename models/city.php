@@ -19,6 +19,8 @@ class city extends database {
         return $queryExecute->fetchAll(PDO::FETCH_OBJ);
     }
     
+    // METHODE CREE AU CAS OU, PAS DE RECHERCHE AU CODE POSTAL AU 06/06/2019 !
+    
     public function searchZipcode($zipSearch) {
         $query = 'SELECT `id`, `zipcode`, `city` '
                 . 'FROM `al2jt_city` '

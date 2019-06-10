@@ -11,19 +11,19 @@ include_once '../models/production.php';
 include_once '../models/type.php';
 include_once '../models/category.php';
 include_once '../models/typeOfProduction.php';
-include_once '../controllers/downloadFilesCtrl.php';
+include_once '../controllers/downloadedFilesModifyCtrl.php';
 
 
 if (count($_POST) == 0 || count($formErrors) > 0) {
     ?>
     <div class="row">
         <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 photoUpload">
-            <h2><span class="orange">.</span>Ajouter une réalisation</h2>
+            <h2><span class="orange">.</span>Modifier une réalisation</h2>
             <form method="POST" action="downloadFiles.php" enctype="multipart/form-data">
                 <div class="row">
                     <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                         <label for="produtionName"><span class="orange">.</span>Nom du chantier</label>
-                        <input type="text" value="<?= isset($_POST['produtionName']) ? $_POST['produtionName'] : '' ?>" name="produtionName" class="form-control" id="produtionName" placeholder="Nom du chantier" required />
+                        <input type="text" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['title']) : $getProductionInfo->title ?>" name="produtionName" class="form-control" id="produtionName" placeholder="Nom du chantier" required />
                         <?php
                         // On affiche un alerte rouge qui contient le texte de l'erreur s'il y en à une.
                         if (isset($formErrors['produtionName'])) {
@@ -37,7 +37,7 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                 <div class="row">
                     <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                         <label for="explanatoryText"><span class="orange">.</span>Descriptif du chantier</label>
-                        <textarea class="form-control" name="explanatoryText" id="explanatoryText" required><?= isset($_POST['explanatoryText']) ? $_POST['explanatoryText'] : '' ?></textarea>
+                        <textarea class="form-control" name="explanatoryText" id="explanatoryText" required><?= count($formErrors) > 0 ? htmlspecialchars($_POST['explanatoryText']) : $getProductionInfo->descriptionText ?></textarea>
                         <?php if (isset($formErrors['explanatoryText'])) {
                             ?>
                             <div class="alert-danger">
@@ -48,20 +48,8 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                 </div>
                 <div class="row">
                     <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
-                        <label for="photoName"><span class="orange">.</span>Nom de la photo</label>
-                        <input type="text" value="<?= isset($_POST['photoName']) ? $_POST['photoName'] : '' ?>" name="photoName" class="form-control" id="photoName" placeholder="Exemple" required />
-                        <?php
-                        // On affiche un alerte rouge qui contient le texte de l'erreur s'il y en à une.
-                        if (isset($formErrors['photoName'])) {
-                            ?>
-                            <div class="alert-danger">
-                                <p><?= $formErrors['photoName'] ?></p>
-                            </div>
-                        <?php } ?>
-                    </div>
-                    <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
                         <label for="file"><span class="orange">.</span>Fichier (.jpg ou .jpeg)</label>
-                        <input class="form-control" type="file" name="file" id="file" />
+                        <input class="form-control" type="file" name="file" id="file" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['photo']) : $getProductionInfo->photo ?>"/>
                         <?php if (isset($formErrors['file'])) { ?>
                             <div class="alert-danger">
                                 <p><?= $formErrors['file'] ?></p>
@@ -72,7 +60,7 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                 <div class="row">
                     <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
                         <label for="photoDescription"><span class="orange">.</span>Description de la photo</label>
-                        <input type="text" value="<?= isset($_POST['photoDescription']) ? $_POST['photoDescription'] : '' ?>" name="photoDescription" class="form-control" id="photoDescription" placeholder="Description de la photo" required />
+                        <input type="text" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['description']) : $getProductionInfo->description ?>" name="photoDescription" class="form-control" id="photoDescription" placeholder="Description de la photo" required />
                         <?php
                         // On affiche un alerte rouge qui contient le texte de l'erreur s'il y en à une.
                         if (isset($formErrors['photoDescription'])) {
@@ -84,7 +72,7 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                     </div>
                     <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
                         <label for="productionType"><span class="orange">.</span>Type de chantier</label>
-                        <input list="productionType" class="form-control productionType <?= isset($formErrors['productionType']) ? 'is-invalid' : (isset($productionType) ? 'is-valid' : '') ?>" type="text" name="productionType" id="productionType" placeholder="Type de chantier" value="" required />
+                        <input list="productionType" class="form-control productionType <?= isset($formErrors['productionType']) ? 'is-invalid' : (isset($productionType) ? 'is-valid' : '') ?>" type="text" name="productionType" id="productionType" placeholder="Type de chantier" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['productionType']) : $getProductionInfo->productionType ?>" required />
                         <datalist id="productionType" class="search"></datalist>
                         <?php if (isset($formErrors['productionType'])) {
                             ?>
@@ -110,7 +98,7 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                 <div class="row">
                     <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
                         <label for="search">Ville</label>
-                        <input list="navigateurs" class="form-control search <?= isset($formErrors['search']) ? 'is-invalid' : (isset($search) ? 'is-valid' : '') ?>" type="text" name="search" id="search" placeholder="Beauvais" value="<?= isset($_POST['search']) ? $_POST['search'] : '' ?>" required />
+                        <input list="navigateurs" class="form-control search <?= isset($formErrors['search']) ? 'is-invalid' : (isset($search) ? 'is-valid' : '') ?>" type="text" name="search" id="search" placeholder="Beauvais" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['city']) : $getProductionInfo->city . ' ' . $getProductionInfo->zipcode ?>" required />
                         <datalist id="navigateurs" class="search"></datalist>
                         <?php if (isset($formErrors['search'])) {
                             ?>
@@ -134,7 +122,7 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
             ?>
             <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 firstCard">
                 <div class="alert-success realisationTop">
-                    <p>Vos données ont bien été envoyées et votre fichier a bien été transmis.</p>
+                    <p>Votre chantier a bien été modifié.</p>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
                     <div class="card mb-3">
@@ -165,3 +153,5 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
 
 
     <?php include_once '../footerSecondary.php'; ?>
+/
+

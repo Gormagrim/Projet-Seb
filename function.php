@@ -232,14 +232,7 @@ function showUser($particularUserInfo) {
                     <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Adresse mail :</span> <?= $particularUserInfo->mail ?></p>
                 </div>
             </div>
-            <div class="row phone">
-                <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
-                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Nombre de "J'aime" :</span> <?= $globalPortrait['userLike'] ?></p>
-                </div>
-                <div class="col-12 col-sm-5 col-md-5 col-lg-5">
-                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Nombre de "j'aime moins" :</span> <?= $globalPortrait['userDislike'] ?></p>
-                </div>
-            </div>
+            
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
                     <p class="companyCard"><a href="/estimate.php"><span class="orange">.</span><span class="accountDetails">Mes devis</span></a></p>

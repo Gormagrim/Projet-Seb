@@ -647,7 +647,6 @@ img.companyCard {
 
 .userIdentity {
     margin-bottom: 4em;
-    float: left;
 }
 
 .userCards a {
@@ -816,5 +815,13 @@ a.estimateSent:hover {
     margin-bottom: 2em;
 }
 
-/* TEST */
+/* professionnalAccount.php */
+
+img.proUserPresentationPhoto {
+    width: 50rem;
+    display:block;
+    justify-content: center;
+    margin-right:auto;
+    margin-left:auto;
+}
 

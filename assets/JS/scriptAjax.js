@@ -1,6 +1,6 @@
 $(function () {
     //Etape 1 : Je crée mon évènements (et je le teste)
-    $('.search').keyup(function () {
+    $('#search').keyup(function () {
         /**
          * Etape 2 : j'appelle la fonction ajax 
          * J'utilise :
@@ -11,7 +11,7 @@ $(function () {
          * de recherche ($('#search').val()) et je veux l'envoyer dans une variable qui s'appellera $_POST['search']
          */
         $.post('../../controllers/inserParticularUserCtrl.php', {
-            searchCity: $('.search').val()
+            searchCity: $('#search').val()
                     /**
                      * function (data) est la fonction qui s'éxécutera une fois que le contrôleur aura fini
                      * data est le retour du contrôleur (ce qu'on a mis dans echo json_encode())
@@ -35,26 +35,10 @@ $(function () {
                      * On y injecte les information du patient
                      */
                     var display = '<option class="city" value="' + city.city + ' ' + city.zipcode + '" id="' + city.id + '">' + city.city + ' ' + city.zipcode + '</option>';
-                    var idCity = '' + city.id + ''
+                    var idCity = '' + city.id + '';
                     //J'ajoute la ligne que je viens de créer au tableau, cette opération se répètera pour chaque patient dans le tableau results
                     $('.search').append(display);
                     $('.cityId').attr('value', idCity);
-                });
-            }
-        }
-        );
-    });
-    $('#zipSearch').keyup(function () {
-        $.post('../../controllers/sectorSearchCtrl.php', {
-            searchZipcode: $('#zipSearch').val()
-        }, function (data) {
-            var zip = $.parseJSON(data);
-            $('.zipSearch').empty();
-            if (zip.length > 0) {
-                $.each(zip, function (key, city) {
-                    var display = '<option value="' + city.city + ' ' + city.zipcode + '" id="' + city.id + '">' + city.city + ' ' + city.zipcode + '</option>';
-                    $('.zipSearch').append(display);
-                    console.log($('#zipSearch').val());
                 });
             }
         }

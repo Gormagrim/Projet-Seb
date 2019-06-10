@@ -109,10 +109,10 @@ class particularUsers extends database {
     
     public function updateProfessionnalUserProfil() {
         $query = 'UPDATE `al2jt_user` AS `u` '
-                . 'SET `u`.`lastname` = :lastname, `u`.`firstname` = :firstname, `u`.`phoneNumber` = :phoneNumber, `u`.`address` = :address, `u`.`mail` = :mail, `u`.`id_al2jt_city` = :id_al2jt_city, `c`.`name` = :name, `c`.`siret` = :siret, `c`.`presentationPhoto` = :presentationPhoto, `c`.`leader` = :leader, `c`.`numberOfEmploy` = :numberOfEmploy  '
                 . 'INNER JOIN `al2jt_company` AS `c` ON `u`.`id` = `c`.`id_al2jt_user` '
                 . 'INNER JOIN `al2jt_city` AS `city` ON `u`.`id_al2jt_city` = `city`.`id` '
-                . 'WHERE `id` = :id ';
+                . 'SET `u`.`lastname` = :lastname, `u`.`firstname` = :firstname, `u`.`phoneNumber` = :phoneNumber, `u`.`address` = :address, `u`.`mail` = :mail, `u`.`id_al2jt_city` = :id_al2jt_city, `c`.`name` = :name, `c`.`siret` = :siret, `c`.`presentationPhoto` = :presentationPhoto, `c`.`leader` = :leader, `c`.`numberOfEmploy` = :numberOfEmploy  '
+                . 'WHERE `u`.`id` = :id ';
         $queryExecute = $this->db->prepare($query);
 
         $queryExecute->bindValue(':id', $this->id, PDO::PARAM_INT);

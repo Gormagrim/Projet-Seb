@@ -1,8 +1,16 @@
 <?php
 session_start();
 include_once 'navbarSecondary.php';
-include_once 'TestBaseDeDonnées.php';
-include_once 'function.php';
+require_once 'regex.php';
+include_once 'models/database.php';
+include_once 'models/particularUsers.php';
+include_once 'models/city.php';
+include_once 'models/company.php';
+include_once 'models/photo.php';
+include_once 'models/production.php';
+include_once 'models/type.php';
+include_once 'controllers/partUserCompanyCtrl.php';
+$page = $_SERVER['PHP_SELF'];
 ?>
 
 <div class="row">
@@ -44,14 +52,67 @@ include_once 'function.php';
                 </div>
             </div>
             <div class="row">
-                <?= showBigCards($productionArray) ?>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="professionnal/<?= $getOneCompanyInformation->presentationPhoto ?>" class="card-img firstImg" title="Travaux de l'entreprise <?= $getOneCompanyInformation->name ?>" alt="Travaux de l'entreprise <?= $getOneCompanyInformation->name ?>">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title">Entreprise <?= $getOneCompanyInformation->name ?></h4>
+                                    <h3 class="card-title"><?= $getOneCompanyInformation->address ?>, <?= $getOneCompanyInformation->zipcode ?> <?= $getOneCompanyInformation->city ?></h3>
+                                        <h3 class="card-title">Tel : <?= $getOneCompanyInformation->phoneNumber ?></h3>
+                                        <h5 class="card-title">Entreprise gérée par monsieur <?= $getOneCompanyInformation->leader ?></h5>
+                                    <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
+                                    <div class="socialMedia">
+                                        <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
+                                        <span><p></p></span>
+                                        <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
+                                        <span><p></p></span>
+                                        <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
+                                        <span><p></p></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
+                    <h2><span class="orange">.</span>Résultat de votre recherche :</h2>
+                </div>
             </div>
             <div class="row secondCards">
-                <?= showSmallCards($productionArray2) ?>
-                <?= showSmallCards($productionArray3) ?>
-                <?= showSmallCards($productionArray4) ?>
-                <?= showSmallCards($productionArray5) ?>
-                <?= showSmallCards($productionArray6) ?>
+                <?php foreach ($getProductionInformation as $smallProduction) { ?>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src="professionnal/<?= $smallProduction->presentationPhoto ?>" class="card-img firstImg" title="Présentation de l'entreprise <?= $smallProduction->name ?>" alt="Présentation de l'entreprise <?= $smallProduction->name ?>">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Entreprise <?= $smallProduction->name ?></h4>
+                                        <h3 class="card-title"><?= $smallProduction->address ?>, <?= $smallProduction->zipcode ?> <?= $smallProduction->city ?></h3>
+                                        <h3 class="card-title">Tel : <?= $smallProduction->phoneNumber ?></h3>
+                                        <h5 class="card-title">Entreprise gérée par monsieur <?= $smallProduction->leader ?></h5>
+                                        <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Voir plus</button>
+                                        <div class="socialMedia">
+                                            <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
+                                            <span><p></p></span>
+                                            <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
+                                            <span><p></p></span>
+                                            <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
+                                            <span><p></p></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>
