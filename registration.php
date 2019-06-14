@@ -115,7 +115,7 @@ $page = $_SERVER['PHP_SELF'];
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                     <label for="leaderFirstname">Prénom</label>
-                                    <input class="d-flex justify-content-start" class="form-control <?= isset($formErrors['leaderFirstname']) ? 'is-invalid' : (isset($leaderFirstname) ? 'is-valid' : '') ?>" type="text" name="leaderFirstname" id="leaderFirstname" placeholder="John" value="<?= isset($_POST['leaderFirstname']) ? $_POST['leaderFirstname'] : '' ?>" required />
+                                    <input class="form-control <?= isset($formErrors['leaderFirstname']) ? 'is-invalid' : (isset($leaderFirstname) ? 'is-valid' : '') ?>" type="text" name="leaderFirstname" id="leaderFirstname" placeholder="John" value="<?= isset($_POST['leaderFirstname']) ? $_POST['leaderFirstname'] : '' ?>" required />
                                     <?php if (isset($formErrors['leaderFirstname'])) {
                                         ?>
                                         <div class="invalid-feedback">

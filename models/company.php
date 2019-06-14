@@ -42,7 +42,7 @@ class company extends database {
     }
     
     public function getCompanyProductionInformation() {
-        $query = 'SELECT `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
+        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
                 . 'FROM `al2jt_company` AS `comp`'
                 . 'INNER JOIN `al2jt_production` AS `p` ON `comp`.`id` = `p`.`id_al2jt_company` '
                 . 'INNER JOIN `al2jt_photo` AS `photo` ON `p`.`id` = `photo`.`id_al2jt_production` '
@@ -58,7 +58,7 @@ class company extends database {
     }
     
     public function getProductionInformation() {
-        $query = 'SELECT `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
+        $query = 'SELECT `comp`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
                 . 'FROM `al2jt_company` AS `comp`'
                 . 'INNER JOIN `al2jt_production` AS `p` ON `comp`.`id` = `p`.`id_al2jt_company` '
                 . 'INNER JOIN `al2jt_photo` AS `photo` ON `p`.`id` = `photo`.`id_al2jt_production` '
@@ -71,8 +71,8 @@ class company extends database {
         return $queryExecute->fetchAll(PDO::FETCH_OBJ);
     }
     
-    public function getOneProductionInformation() {
-        $query = 'SELECT `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
+    public function getThisProductionInformation() {
+        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
                 . 'FROM `al2jt_company` AS `comp`'
                 . 'INNER JOIN `al2jt_production` AS `p` ON `comp`.`id` = `p`.`id_al2jt_company` '
                 . 'INNER JOIN `al2jt_photo` AS `photo` ON `p`.`id` = `photo`.`id_al2jt_production` '
@@ -81,6 +81,7 @@ class company extends database {
                 . 'INNER JOIN `al2jt_category` AS `cat` ON `t`.`id_al2jt_category` = `cat`.`id` ';
                
         $queryExecute = $this->db->prepare($query);
+        $queryExecute->bindValue(':id', $this->id, PDO::PARAM_INT);
         $queryExecute->execute();
         return $queryExecute->fetch(PDO::FETCH_OBJ);
     }
@@ -105,6 +106,18 @@ class company extends database {
         $queryExecute = $this->db->prepare($query);
         $queryExecute->execute();
         return $queryExecute->fetch(PDO::FETCH_OBJ);
+    }
+    
+    public function searchCompany($search) {
+        $query = 'SELECT `comp`.`name`, `comp`.`siret`,`comp`.`presentationPhoto`, `comp`.`address`, `comp`.`leader`, `comp`.`phoneNumber`, `c`.`zipcode`, `c`.`city` '
+                . 'FROM `al2jt_company` AS `comp`'
+                . 'INNER JOIN `al2jt_city` AS `c` ON `c`.`id` = `comp`.`id_al2jt_city` '
+                . 'WHERE `comp`.`name` LIKE :companySearch';
+        
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->bindValue(':companySearch', $search.'%', PDO::PARAM_STR);
+        $queryExecute->execute();
+        return $queryExecute->fetchAll(PDO::FETCH_OBJ);
     }
     
     public function __destruct() {

@@ -24,9 +24,9 @@ class city extends database {
     public function searchZipcode($zipSearch) {
         $query = 'SELECT `id`, `zipcode`, `city` '
                 . 'FROM `al2jt_city` '
-                . 'WHERE `zipcode` LIKE :zipSearch';
+                . 'WHERE `zipcode` LIKE :zipcodeSearch';
         $queryExecute = $this->db->prepare($query);
-        $queryExecute->bindValue(':zipSearch', $zipSearch.'%', PDO::PARAM_INT);
+        $queryExecute->bindValue(':zipcodeSearch', $zipSearch.'%', PDO::PARAM_INT);
         $queryExecute->execute();
         return $queryExecute->fetchAll(PDO::FETCH_OBJ);
     }

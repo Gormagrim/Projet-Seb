@@ -18,12 +18,12 @@ include_once 'navbarProfessionnal.php';
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 userIdentity">
+            <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userIdentity">
                 <h2 class="companyCard">Entreprise <?= $professionnalUserInfo->name ?></h2>
             </div>
         </div>
         <div class="row">
-            <div class=" offset-1 col-1 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userIdentity">
+            <div class="offset-1 col-1 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 userIdentity">
                 <p class="companyCard"><span class="orange">.</span>Compte <?= $professionnalUserInfo->type ?></p>
             </div>
         </div>

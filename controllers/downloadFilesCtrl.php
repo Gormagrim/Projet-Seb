@@ -1,31 +1,23 @@
 <?php
 
 $formErrors = array();
+if (isset($_POST['searchCategory'])) {
+    require_once '../models/database.php';
+    require_once '../models/typeOfProduction.php';
 
-if (!empty($_SESSION['id'])) {
-    if (preg_match($regexId, $_SESSION['id'])) {
-        $professionnalUsers = new particularUsers();
-        $professionnalUsers->id = htmlspecialchars($_SESSION['id']);
-        $professionnalUserInfo = $professionnalUsers->getProfessionnalInformation();
-        $production = new production();
-        $photo = new photo();
-        $category = new category();
-        $getCategory = $category->getCategory();
-        $typeOfProduction = new typeOfProduction();
-        $typeOfProduction->id_al2jt_category = $category->id;
-        $getTypeOfProductionWithCategory = $typeOfProduction->getTypeOfProductionWithCategory();
-
-        if (isset($_POST['searchCity'])) {
-            require_once '../models/database.php';
-            require_once '../models/particularUsers.php';
-            require_once '../models/city.php';
-            require_once '../models/company.php';
-
-            $city = new city();
-            if (!empty($_POST['searchCity'])) {
-                echo json_encode($city->searchCity(htmlspecialchars($_POST['searchCity'])));
-            }
-        } else {
+    $type = new typeOfProduction();
+    $type->id_al2jt_category = $_POST['searchCategory'];
+    echo json_encode($type->getTypeOfProductionWithCategory());
+} else {
+    if (!empty($_SESSION['id'])) {
+        if (preg_match($regexId, $_SESSION['id'])) {
+            $professionnalUsers = new particularUsers();
+            $professionnalUsers->id = htmlspecialchars($_SESSION['id']);
+            $professionnalUserInfo = $professionnalUsers->getProfessionnalInformation();
+            $production = new production();
+            $photo = new photo();
+            $category = new category();
+            $getCategory = $category->getCategory();
             $city = new city();
 
             if (count($_POST) > 0) {
@@ -52,7 +44,7 @@ if (!empty($_SESSION['id'])) {
                 } else {
                     $formErrors['photoName'] = 'Veuillez renseigner votre nom de photo';
                 }
-                
+
                 if (!empty($_FILES['file']) && $_FILES['file']['error'] == 0) {
                     // On stock dans $fileInfos les informations concernant le chemin du fichier.
                     $fileInfos = pathinfo($_FILES['file']['name']);
@@ -101,7 +93,7 @@ if (!empty($_SESSION['id'])) {
                 } else {
                     $formErrors['cityId'] = 'Veuillez renseigner votre ville.';
                 }
-                
+
                 if (count($formErrors) == 0) {
                     $company->id_al2jt_user = $_SESSION['id'];
                     $getCompanyId = $company->getCompanyId();
@@ -112,7 +104,6 @@ if (!empty($_SESSION['id'])) {
                         $formSuccess = 'Enregistrement effectué';
                     } else {
                         $formErrors['add'] = 'Une erreur est survenue';
-//                DELETE  à prevoir !!!!!!
                     }
                 }
             }

@@ -4,9 +4,8 @@ include_once 'navbarSecondary.php';
 require_once 'models/database.php';
 require_once 'models/city.php';
 require_once 'models/company.php';
+require_once 'models/production.php';
 require_once 'controllers/sectorSearchCtrl.php';
-include_once 'TestBaseDeDonnées.php';
-include_once 'function.php';
 ?>
 
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left sideBarMenu" style="display:none" id="mySidebar">
@@ -23,371 +22,410 @@ include_once 'function.php';
     <p><a href="/userAccount.php"><span class="orange">.</span>Mon compte</a></p>
 </div>
 <div id="main">
-    <div class="row">
-        <div class="bigCompanyCard col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 sectorSearch">
-            <h2 class="sectorSearchMainTitle" id="topPage"><span class="orange">.</span>Recherche par secteur géographique ou par secteur d'activité :</h2>
-            <div class="row">
-                <div class="col-12 offset-sm-4 col-sm-4 offset-md-4 col-md-4 offset-lg-4 col-lg-4 zipCode">
-                    <form class="form-inline position-center">
-                        <label for="zipSearch"><span class="orange">.</span>Votre code postal :</label>
-                        <input list="zipSearch" class="form-control mr-sm-2 searchNav" id="zipSearch" name="zipSearch" type="search" placeholder="Recherche" aria-label="Search">
-                        <datalist id="navigateurs" class="zipSearch"></datalist>
-                        <button class="btn btn-outline-warning zipCodeBtn" type="submit">Rechercher</button>
-                    </form>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                    <p>Cliquez sur une titre pour afficher le menu</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                            <h2 class="sectorSearchTitle" id="go"><span class="orange">.</span>Gros oeuvre</h2>
-                            <p class="reHideOne">(Masquer)</p>
-                        </div>
-                    </div>
-                    <div class="row hideMenu">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideOne"><span class="orange">.</span>Construction neuve</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Fondations</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Maçonnerie</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Dallage</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Chape</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideOne"><span class="orange">.</span>Agrandissement</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Extension</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Surélévation</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Garage</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideOne"><span class="orange">.</span>Rénovation</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Maison</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Appartement</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideOne"><span class="orange">.</span>Terrassement et canalisation</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Tranchée et trou</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Nivelement</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Puisard</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Canalisation</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Relevage</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Fosse</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Entretien de fosse</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Remblai</a></li>
-                                <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Epandage</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                            <h2 class="sectorSearchTitle" id="charp"><span class="orange">.</span>Charpente et Couverture</h2>
-                            <p class="reHideTwo">(Masquer)</p>
-                        </div>
-                    </div>
-                    <div class="row hideMenuTwo">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideTwo"><span class="orange">.</span>Charpente</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Bois</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Métalique</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Rénovation bois</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Diagnostique</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideTwo"><span class="orange">.</span>Couverture</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Tuiles plate</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Tuiles mécaniques</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Ardoises</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Réparation</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Entretien</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideTwo"><span class="orange">.</span>Couverture(suite)</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Descente et gouttière</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Châssis de toit</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Souches</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Accessoires</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Isolation par l'extérieur</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideTwo"><span class="orange">.</span>Toiture Terrasse</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Bois</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Béton armé</a></li>
-                                <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Isolation par l'extérieur</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                            <h2 class="sectorSearchTitle" id="wall"><span class="orange">.</span>Mur, Sol et Plafond</h2>
-                            <p class="reHideThree">(Masquer)</p>
-                        </div>
-                    </div>
-                    <div class="row hideMenuThree">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideThree"><span class="orange">.</span>Mur</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Soutènement</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Carreaux de plâtre</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Placostyle</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Isolation</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Béton cellulaire</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Maçonnerie</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Pierre naturelle</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Carottage</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Ouverture avec linteau</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Peinture</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Bardage</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Enduits extérieur</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Parement</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideThree"><span class="orange">.</span>Sol</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Chape</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Plancher chauffant</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Carrelage</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Peinture de sol</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Sol souple</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Moquette</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Statifié</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Solivage bois</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Parquet massif</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Rénovation parquet massif</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Ragréage</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideThree"><span class="orange">.</span>Plafond</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Plâtre</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Placostyle</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Toile tendus</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Peinture</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideThree"><span class="orange">.</span>Isolation</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Par l'exterieur</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Par l'intérieur</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Comble habité</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Comble perdu</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Comble perdu</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Laine minérale</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Soufflage</a></li>
-                                <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Acoustique</a></li>
-                            </ul>
-                        </div>
+    <?php if (!isset($_POST['zipcodeSearch'])) { ?>
+        <div class="row">
+            <div class="bigCompanyCard col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 sectorSearch">
+                <h2 class="sectorSearchMainTitle" id="topPage"><span class="orange">.</span>Recherche par secteur géographique ou par secteur d'activité :</h2>
+                <div class="row">
+                    <div class="col-12 offset-sm-3 col-sm-6 offset-md-3 col-md-6 offset-lg-3 col-lg-6">
+                        <form class="form-inline position-center"  action="sectorSearch.php" method="POST">
+                            <label for="zipcodeSearch"><span class="orange">.</span>Votre code postal :</label>
+                            <input class="form-control mr-sm-2 searchNav" id="zipcodeSearch" name="zipcodeSearch" type="search" placeholder="60000" />
+                            <button class="btn btn-outline-warning hightBtn" type="submit">Rechercher</button>
+                        </form>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <p>Cliquez sur une titre pour afficher le menu</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
 
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                            <h2 class="sectorSearchTitle" id="menui"><span class="orange">.</span>Menuiserie</h2>
-                            <p class="reHideFour">(Masquer)</p>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <h2 class="sectorSearchTitle" id="go"><span class="orange">.</span>Gros oeuvre</h2>
+                                <p class="reHideOne">(Masquer)</p>
+                            </div>
+                        </div>
+                        <div class="row hideMenu">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideOne"><span class="orange">.</span>Construction neuve</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Fondations</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Maçonnerie</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Dallage</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Chape</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideOne"><span class="orange">.</span>Agrandissement</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Extension</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Surélévation</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Garage</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideOne"><span class="orange">.</span>Rénovation</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Maison</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Appartement</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideOne"><span class="orange">.</span>Terrassement et canalisation</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Tranchée et trou</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Nivelement</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Puisard</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Canalisation</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Relevage</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Fosse</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Entretien de fosse</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Remblai</a></li>
+                                    <li><a class="dropdown-item hideOne" href="#"><span class="orange">.</span>Epandage</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <h2 class="sectorSearchTitle" id="charp"><span class="orange">.</span>Charpente et Couverture</h2>
+                                <p class="reHideTwo">(Masquer)</p>
+                            </div>
+                        </div>
+                        <div class="row hideMenuTwo">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideTwo"><span class="orange">.</span>Charpente</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Bois</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Métalique</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Rénovation bois</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Diagnostique</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideTwo"><span class="orange">.</span>Couverture</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Tuiles plate</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Tuiles mécaniques</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Ardoises</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Réparation</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Entretien</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideTwo"><span class="orange">.</span>Couverture(suite)</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Descente et gouttière</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Châssis de toit</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Souches</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Accessoires</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Isolation par l'extérieur</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideTwo"><span class="orange">.</span>Toiture Terrasse</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Bois</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Béton armé</a></li>
+                                    <li><a class="dropdown-item hideTwo" href="#"><span class="orange">.</span>Isolation par l'extérieur</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <h2 class="sectorSearchTitle" id="wall"><span class="orange">.</span>Mur, Sol et Plafond</h2>
+                                <p class="reHideThree">(Masquer)</p>
+                            </div>
+                        </div>
+                        <div class="row hideMenuThree">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideThree"><span class="orange">.</span>Mur</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Soutènement</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Carreaux de plâtre</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Placostyle</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Isolation</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Béton cellulaire</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Maçonnerie</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Pierre naturelle</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Carottage</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Ouverture avec linteau</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Peinture</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Bardage</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Enduits extérieur</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Parement</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideThree"><span class="orange">.</span>Sol</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Chape</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Plancher chauffant</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Carrelage</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Peinture de sol</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Sol souple</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Moquette</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Statifié</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Solivage bois</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Parquet massif</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Rénovation parquet massif</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Ragréage</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideThree"><span class="orange">.</span>Plafond</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Plâtre</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Placostyle</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Toile tendus</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Peinture</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideThree"><span class="orange">.</span>Isolation</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Par l'exterieur</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Par l'intérieur</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Comble habité</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Comble perdu</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Comble perdu</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Laine minérale</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Soufflage</a></li>
+                                    <li><a class="dropdown-item hideThree" href="#"><span class="orange">.</span>Acoustique</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="row hideMenuFour">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideFour"><span class="orange">.</span>Extérieur</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Fenêtre aluminium</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Fenêtre bois</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Fenêtre PVC</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Volet battant</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Volet roulant</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Chassis coulissant</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Baie vitrée</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Chassis à galandage</a></li>
-                            </ul>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <h2 class="sectorSearchTitle" id="menui"><span class="orange">.</span>Menuiserie</h2>
+                                <p class="reHideFour">(Masquer)</p>
+                            </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideFour"><span class="orange">.</span>Extérieur(suite)</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Chassis de toit</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Bloc-porte aluminium</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Bloc-porte bois</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Bloc-porte PVC</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Portail</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Porte de garage</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Serrurerie</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Dépannage Serrurerie</a></li>
-                            </ul>
+                        <div class="row hideMenuFour">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideFour"><span class="orange">.</span>Extérieur</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Fenêtre aluminium</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Fenêtre bois</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Fenêtre PVC</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Volet battant</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Volet roulant</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Chassis coulissant</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Baie vitrée</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Chassis à galandage</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideFour"><span class="orange">.</span>Extérieur(suite)</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Chassis de toit</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Bloc-porte aluminium</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Bloc-porte bois</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Bloc-porte PVC</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Portail</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Porte de garage</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Serrurerie</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Dépannage Serrurerie</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideFour"><span class="orange">.</span>Intérieur</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Bloc-porte</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Porte de placard</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Aménagement de placard</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Dressing</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Plan de travail</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideFour"><span class="orange">.</span>Intérieur(suite)</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Escalier</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Garde-corps</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Main courante</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Plinthe bois</a></li>
+                                    <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Accessoires</a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideFour"><span class="orange">.</span>Intérieur</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Bloc-porte</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Porte de placard</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Aménagement de placard</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Dressing</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Plan de travail</a></li>
-                            </ul>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <h2 class="sectorSearchTitle" id="plomb"><span class="orange">.</span>Plomberie, chauffage et électricité</h2>
+                                <p class="reHideFive">(Masquer)</p>
+                            </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideFour"><span class="orange">.</span>Intérieur(suite)</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Escalier</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Garde-corps</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Main courante</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Plinthe bois</a></li>
-                                <li><a class="dropdown-item hideFour" href="#"><span class="orange">.</span>Accessoires</a></li>
-                            </ul>
+                        <div class="row hideMenuFive">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideFive"><span class="orange">.</span>Plomberie</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Réseau sanitaire</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Réparation</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Débouchage</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Ballon d'eau chaude</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Chaudière</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Entretien chaudière</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Robineterie</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Baignoire</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Baignoire balnéo</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideFive"><span class="orange">.</span>Plomberie(suite)</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Douche</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Douche à l'Italienne</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Lavabo</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Wc</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Wc suspendu</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Wc japonnais</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Salle de bain</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Jacuzzi / sauna</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Cuisine</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideFive"><span class="orange">.</span>Chauffage</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Chaudière</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Entretien chaudière</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Cheminée</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Insert</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Chauffage electrique</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Poêle à granules</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Pompe à chaleur</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Plancher chauffant</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Citerne enterré</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Conduit de cheminée</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Ramonage</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>VMC</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Climatisation</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideFive"><span class="orange">.</span>Electricité</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Installation</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Réparation</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Mise au norme</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Consuel</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Contrôle d'installation</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Chauffage electrique</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Climatisation</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Domotique</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Réseaux et informatique</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Motorisation de porte</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Visiophonie</a></li>
+                                    <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Alarme</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                            <h2 class="sectorSearchTitle" id="plomb"><span class="orange">.</span>Plomberie, chauffage et électricité</h2>
-                            <p class="reHideFive">(Masquer)</p>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <h2 class="sectorSearchTitle" id="out"><span class="orange">.</span>Extérieur</h2>
+                                <p class="reHideSix">(Masquer)</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row hideMenuFive">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideFive"><span class="orange">.</span>Plomberie</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Réseau sanitaire</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Réparation</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Débouchage</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Ballon d'eau chaude</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Chaudière</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Entretien chaudière</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Robineterie</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Baignoire</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Baignoire balnéo</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideFive"><span class="orange">.</span>Plomberie(suite)</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Douche</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Douche à l'Italienne</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Lavabo</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Wc</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Wc suspendu</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Wc japonnais</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Salle de bain</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Jacuzzi / sauna</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Cuisine</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideFive"><span class="orange">.</span>Chauffage</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Chaudière</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Entretien chaudière</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Cheminée</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Insert</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Chauffage electrique</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Poêle à granules</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Pompe à chaleur</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Plancher chauffant</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Citerne enterré</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Conduit de cheminée</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Ramonage</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>VMC</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Climatisation</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideFive"><span class="orange">.</span>Electricité</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Installation</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Réparation</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Mise au norme</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Consuel</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Contrôle d'installation</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Chauffage electrique</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Climatisation</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Domotique</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Réseaux et informatique</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Motorisation de porte</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Visiophonie</a></li>
-                                <li><a class="dropdown-item hideFive" href="#"><span class="orange">.</span>Alarme</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                            <h2 class="sectorSearchTitle" id="out"><span class="orange">.</span>Extérieur</h2>
-                            <p class="reHideSix">(Masquer)</p>
-                        </div>
-                    </div>
-                    <div class="row hideMenuSix">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideSix"><span class="orange">.</span>Terrasse et chemin</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Béton armé</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Aménagement</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Carrelage</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Bois</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Composite</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Soutenement</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Pavage</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Bordurette</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>enrobé</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideSix"><span class="orange">.</span>Clôture</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Maçonnerie</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Grillage souple</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Grillage rigide</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Palissage</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Brise vue</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Portail</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Portillon</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideSix"><span class="orange">.</span>Aménagement</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Véranda</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Pergola</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Store banne</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Abri de jardin</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Bungalow</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Paysagerie</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <h5 class="hideSix"><span class="orange">.</span>Piscine</h5>
-                            <ul>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Maçonnerie enterrée</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Maçonnerie hors sol</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Coque enterrée</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Abri de piscine</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Equipement</a></li>
-                                <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Clôture</a></li>
-                            </ul>
+                        <div class="row hideMenuSix">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideSix"><span class="orange">.</span>Terrasse et chemin</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Béton armé</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Aménagement</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Carrelage</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Bois</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Composite</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Soutenement</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Pavage</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Bordurette</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>enrobé</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideSix"><span class="orange">.</span>Clôture</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Maçonnerie</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Grillage souple</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Grillage rigide</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Palissage</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Brise vue</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Portail</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Portillon</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideSix"><span class="orange">.</span>Aménagement</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Véranda</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Pergola</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Store banne</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Abri de jardin</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Bungalow</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Paysagerie</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <h5 class="hideSix"><span class="orange">.</span>Piscine</h5>
+                                <ul>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Maçonnerie enterrée</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Maçonnerie hors sol</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Coque enterrée</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Abri de piscine</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Equipement</a></li>
+                                    <li><a class="dropdown-item hideSix" href="#"><span class="orange">.</span>Clôture</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+<?php } else { ?>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
+            <h2><span class="orange">.</span>Résultat de votre recherche :</h2>
+        </div>
+    </div>
+    <div class="row secondCards">
+        <?php foreach ($productionSearchByZipcode as $smallProduction) { ?>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="professionnal/<?= $smallProduction->photo ?>" class="card-img firstImg" title="Travaux de l'entreprise <?= $smallProduction->name ?> : <?= $smallProduction->description ?>" alt="Travaux de l'entreprise <?= $smallProduction->name ?> : <?= $smallProduction->description ?>">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title"><?= $smallProduction->title ?></h4>
+                                <h5 class="card-title">Chantier réalisé à <?= $smallProduction->city ?> (<?= $smallProduction->zipcode ?>) par l'entreprise <?= $smallProduction->name ?></h5>
+                                <h5 class="card-title">De type : <?= $smallProduction->category ?> / <?= $smallProduction->type ?></h5>
+                                <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/productionDetail.php?id=<?= $smallProduction->id ?>'">Voir plus</button>
+                                <div class="socialMedia">
+                                    <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
+                                    <span><p></p></span>
+                                    <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
+                                    <span><p></p></span>
+                                    <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
+                                    <span><p></p></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+        <a href="/sectorSearch.php">Retour</a>
+    </div>
+    <?php
+}
 
-<?php include_once 'footerSecondary.php'; ?>
+include_once 'footerSecondary.php';
+?>

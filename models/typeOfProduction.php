@@ -10,8 +10,9 @@ class typeOfProduction extends database {
     }
     
     public function getTypeOfProductionWithCategory() {
-        $query = 'SELECT `id`, `type`, `id_al2jt_category` '
-                . 'FROM `al2jt_typeOfProduction` ';
+        $query = 'SELECT `id`, `type` '
+                . 'FROM `al2jt_typeOfProduction` '
+                . 'WHERE `id_al2jt_category` = :id';
                
         $queryExecute = $this->db->prepare($query);
         $queryExecute->bindValue(':id', $this->id_al2jt_category, PDO::PARAM_INT);

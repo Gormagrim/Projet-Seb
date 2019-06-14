@@ -2,19 +2,14 @@
 
 $formErrors = array();
 
-if (isset($_POST['zipSearch'])) {
-    require_once '../models/database.php';
-    require_once '../models/city.php';
-    require_once '../models/company.php';
+$professionnalUsers = new particularUsers();
+$production = new production();
+$company = new company();
 
-    $city = new city();
-    if (!empty($_POST['zipSearch'])) {
-        echo json_encode($city->searchZipcode(htmlspecialchars($_POST['zipSearch'])));
+if (!empty($_POST['zipcodeSearch'])) {
+    if (isset($_POST['zipcodeSearch'])) {
+        $productionSearchByZipcode = $production->searchProductionByZipcode(htmlspecialchars($_POST['zipcodeSearch']));
     }
 } else {
-    $city = new city();
-    
-    if (!empty($_POST['zipSearch'])) {
-            $zipSearch = htmlspecialchars($_POST['zipSearch']);
-        } 
+    $productionSearchByZipcode = $company->getProductionInformation();
 }

@@ -12,6 +12,7 @@ include_once '../models/type.php';
 include_once '../models/category.php';
 include_once '../models/typeOfProduction.php';
 include_once '../controllers/downloadedFilesModifyCtrl.php';
+include_once '../regex.php';
 
 
 if (count($_POST) == 0 || count($formErrors) > 0) {
@@ -19,11 +20,11 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
     <div class="row">
         <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 photoUpload">
             <h2><span class="orange">.</span>Modifier une réalisation</h2>
-            <form method="POST" action="downloadFiles.php" enctype="multipart/form-data">
+            <form method="POST" action="downloadedFilesModify.php?id=<?= $production->id ?>" enctype="multipart/form-data">
                 <div class="row">
                     <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                         <label for="produtionName"><span class="orange">.</span>Nom du chantier</label>
-                        <input type="text" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['title']) : $getProductionInfo->title ?>" name="produtionName" class="form-control" id="produtionName" placeholder="Nom du chantier" required />
+                        <input type="text" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['produtionName']) : $getProductionInfo->title ?>" name="produtionName" class="form-control" id="produtionName" placeholder="Nom du chantier" required />
                         <?php
                         // On affiche un alerte rouge qui contient le texte de l'erreur s'il y en à une.
                         if (isset($formErrors['produtionName'])) {
@@ -49,18 +50,28 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                 <div class="row">
                     <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
                         <label for="file"><span class="orange">.</span>Fichier (.jpg ou .jpeg)</label>
-                        <input class="form-control" type="file" name="file" id="file" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['photo']) : $getProductionInfo->photo ?>"/>
+                        <input class="form-control" type="file" name="file" id="file" value=""/>
                         <?php if (isset($formErrors['file'])) { ?>
                             <div class="alert-danger">
                                 <p><?= $formErrors['file'] ?></p>
                             </div>
                         <?php } ?>
                     </div>
+                    <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
+                        <label for="category"><span class="orange">.</span>Type de chantier</label>
+                        <select class="form-control" name="category" id="category" required>
+                            <?php foreach ($getCategory as $category) { ?>
+                                <option value="<?= $category->id ?>"><?= $category->category ?></option>
+                            <?php } ?>
+                        </select>
+                        <select class="form-control" name="productionType" id="productionType" required>
+                        </select>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
                         <label for="photoDescription"><span class="orange">.</span>Description de la photo</label>
-                        <input type="text" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['description']) : $getProductionInfo->description ?>" name="photoDescription" class="form-control" id="photoDescription" placeholder="Description de la photo" required />
+                        <input type="text" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['photoDescription']) : $getProductionInfo->description ?>" name="photoDescription" class="form-control" id="photoDescription" placeholder="Description de la photo" required />
                         <?php
                         // On affiche un alerte rouge qui contient le texte de l'erreur s'il y en à une.
                         if (isset($formErrors['photoDescription'])) {
@@ -70,45 +81,8 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                             </div>
                         <?php } ?>
                     </div>
-                    <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
-                        <label for="productionType"><span class="orange">.</span>Type de chantier</label>
-                        <input list="productionType" class="form-control productionType <?= isset($formErrors['productionType']) ? 'is-invalid' : (isset($productionType) ? 'is-valid' : '') ?>" type="text" name="productionType" id="productionType" placeholder="Type de chantier" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['productionType']) : $getProductionInfo->productionType ?>" required />
-                        <datalist id="productionType" class="search"></datalist>
-                        <?php if (isset($formErrors['productionType'])) {
-                            ?>
-                            <div class="invalid-feedback">
-                                <p><?= $formErrors['productionType'] ?></p>
-                            </div>
-                        <?php } ?>
-                    </div>
-<!--                    <div>
-                        <label for="category"><span class="orange">.</span>Type de chantier</label>
-                        <select name="category" id="category" required>
-                            <? php foreach ($getCategory as $category) { ?>
-                            <option value="<? = $category->id ?>">< ?= $category->category ?></option>
-                            <? php } ?>
-                        </select>
-                        <select name="productionType" id="productionType" required>
-                            <? php foreach ($getTypeOfProductionWithCategory as $type) { ?>
-                            <option value="<? = $type->id ?>">< ?= $type->type ?></option>
-                            <? php } ?>
-                        </select>
-                    </div>-->
+                    
                 </div>
-                <div class="row">
-                    <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
-                        <label for="search">Ville</label>
-                        <input list="navigateurs" class="form-control search <?= isset($formErrors['search']) ? 'is-invalid' : (isset($search) ? 'is-valid' : '') ?>" type="text" name="search" id="search" placeholder="Beauvais" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['city']) : $getProductionInfo->city . ' ' . $getProductionInfo->zipcode ?>" required />
-                        <datalist id="navigateurs" class="search"></datalist>
-                        <?php if (isset($formErrors['search'])) {
-                            ?>
-                            <div class="invalid-feedback">
-                                <p><?= $formErrors['search'] ?></p>
-                            </div>
-                        <?php } ?>
-                    </div>
-                </div>
-                <input class="form-control cityId" type="hidden" name="cityId" id="cityId" placeholder="" value=""  />  
                 <input type="submit" name="submit" value="Envoyer" class="btn btn-outline-warning registrationBtn" />
             </form>
             <?php
@@ -125,26 +99,6 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                     <p>Votre chantier a bien été modifié.</p>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
-                    <div class="card mb-3">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src="<?= $photo->photo ?>" class="card-img firstImg" title="Travaux de l'entreprise <?= $company->name ?>" alt="Exemple de travaux">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h4 class="card-title"><?= $company->name ?></h4>
-                                    <h5 class="card-title"><?= $production->title ?></h5>
-                                    <p class="card-text"><?= $production->descriptionText ?></p>
-                                    <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/entrepriseTest.php'">Voir plus</button>
-                                    <div class="socialMedia">
-                                        <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
-                                        <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
-                                        <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <a href="downloadFiles.php" title="Retour vers le formulaire" class="btn btn-info realisationBtn">Ajouter une nouvelle réalisation</a>
                 </div>
             </div>
@@ -153,5 +107,5 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
 
 
     <?php include_once '../footerSecondary.php'; ?>
-/
+    /
 

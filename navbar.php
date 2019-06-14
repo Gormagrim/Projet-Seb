@@ -46,33 +46,3 @@
                     </div>
                 </div>
             </div>
-            <!-- A N'UTILISER PEUT ETRE QU'UNE FOIS CONNECTE -->
-            <!--                <div class="col-2 col-sm-2 col-md-2 col-lg-2 lateral">
-                                <div class="row">
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 lateralNavigation">
-                                        <div class="lateralText">
-                                            <h3>Vos travaux dans :</h3>
-                                            <h2>l'Oise<span class="orange">.</span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 lateralNavigation">
-                                        <p class="lateralText">Recherche par :</p>
-                                        <ul class="lateralText">
-                                            <li class="lateralList">Secteur</li>
-                                            <li class="lateralList">Type de travaux</li>
-                                            <li class="lateralList">Entreprise</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 lateralNavigation">
-                                        <form action="/search" id="searchthis" method="get" class="searchLateral">
-                                            <input class="searchLateral" name="q" type="text" placeholder="Rechercher" />
-                                            <button type="button" class="btn btn-outline-warning searchLateral">Rechercher</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>-->
-            <!-- A partir d'ici entrer le contenu -->

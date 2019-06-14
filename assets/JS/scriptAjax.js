@@ -44,4 +44,18 @@ $(function () {
         }
         );
     });
+
+    $('#category').change(function () {
+        $.post('../../controllers/downloadFilesCtrl.php', {
+            searchCategory: $('#category option:selected').val()
+        }, function (data) {
+            var results = $.parseJSON(data);
+            $('#productionType').empty();
+            $.each(results, function (key, type) {
+                var display = '<option value="' + type.id + '">' + type.type + '</option>';
+                console.log(display);
+                $('#productionType').append(display);                
+            });
+        });
+    });
 });

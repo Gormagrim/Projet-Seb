@@ -23,21 +23,21 @@ $page = $_SERVER['PHP_SELF'];
                 <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="<?= $production->photo ?>" class="card-img firstImg" title="Travaux de l'entreprise <?= $production->name ?> : <?= $production->description ?>" alt="Exemple de travaux">
+                            <img src="<?= $production->photo ?>" class="card-img firstImg" title="Travaux de l'entreprise <?= $production->name ?> : <?= $production->description ?>" alt="Exemple de travaux" />
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h4 class="card-title"><?= $production->title ?></h4>
                                 <h3 class="card-title">Entreprise <?= $production->name ?></h3>
                                 <h5 class="card-title">Chantier réalisé à <?= $production->city ?> (<?= $production->zipcode ?>) de type : <?= $production->category ?> / <?= $production->type ?></h5>
-                                <p class="card-text"><?= $production->descriptionText ?></p>
+                                <p class="card-text"><?= substr ($production->descriptionText,0 , 400) ?></p>
                                 <?php if ($page == '/userFavorites.php' || $page == '/partUserProduction.php') { ?>
                                     <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/realisationTest.php'">Voir plus</button>
                                 <?php } else { ?>
                                     <div class="row">
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 prodModif">
-                                            <a href="/professionnal/downloadedFilesModify.php"><i class="fas fa-edit fa-2x Usermodification" title="Modifier mon chantier"></i></a>
-                                            <a href="/professionnal/deleteProfessionnalUser.php"><i class="fas fa-trash-alt fa-2x Usermodification" title="Supprimer mon chantier"></i></a>
+                                            <a href="/professionnal/downloadedFilesModify.php?id=<?= $production->id ?>"><i class="fas fa-edit fa-2x Usermodification" title="Modifier mon chantier"></i></a>
+                                            <a href="/professionnal/deleteProduction.php?id=<?= $production->id ?>"><i class="fas fa-trash-alt fa-2x Usermodification" title="Supprimer mon chantier"></i></a>
                                         </div>
                                     </div>
                                 <?php } ?>

@@ -7,6 +7,13 @@ $photo = new photo();
 
 if (!empty($_SESSION['id'])) {
     $professionnalUsers->id = $_SESSION['id'];
-    $getProductionInformation = $company->getCompanyList();
     $getOneCompanyInformation = $company->getOneCompanyInformation();
+}
+
+if (!empty($_POST['companySearch'])) {
+    if (isset($_POST['companySearch'])) {
+        $companySearch = $company->searchCompany(htmlspecialchars($_POST['companySearch']));
+    }
+} else {
+    $companySearch = $company->getCompanyList();
 }

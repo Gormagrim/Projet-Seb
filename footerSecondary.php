@@ -1,25 +1,25 @@
 </div> <!-- Fin de div container-fluid -->
 <footer>
     <div class="row footer">
-                <div class="col-12 col-sm-12 offset-md-2 col-md-2 offset-lg-2 col-lg-2">
-                    <p class="title"><span class="orange">.</span>A PROPOS</p>
-                    <p><a href=""><span class="orange">.</span>Politique de confidentialité</a></p>
-                    <p><a href=""><span class="orange">.</span>Conditions d'utilisation</a></p>
-                    <p><a href=""><span class="orange">.</span>Données personnelles</a></p>
-                    <p><a href=""><span class="orange">.</span>Mentions légales</a></p>
-                </div>
-                <div class="col-12 col-sm-12 offset-md-1 col-md-2 offset-lg-1 col-lg-2">
-                    <p class="title"><span class="orange">.</span>AIDE & SERVICES</p>
-                    <p><a href=""><span class="orange">.</span>F<span class="orange">.</span>A<span class="orange">.</span>Q</a></p>
-                    <p><a href=""><span class="orange">.</span>Aide</a></p>
-                </div>
-                <div class="col-12 col-sm-12 offset-md-1 col-md-2 offset-lg-1 col-lg-2">
-                    <p class="title"><span class="orange">.</span>NOUS SUIVRE</p>
-                    <a href="http://www.facebook.com"><img class="social" src="/assets/img/facebook.png" title="Facebook" alt="facebook"></a>
-                    <a href="http://www.twitter.com"><img class="social" src="/assets/img/twitter.png" title="Twitter" alt="twitter"></a>
-                    <a href="http://www.instagram.com"><img class="social" src="/assets/img/Instagram.png" title="Instagram" alt="instagram"></a>
-                    <a href="http://www.linkedin.com"><img class="social" src="/assets/img/linkedin.png" title="LinkedIn" alt="linkedin"></a>
-                </div>    
+        <div class="col-12 col-sm-12 offset-md-2 col-md-2 offset-lg-2 col-lg-2">
+            <p class="title"><span class="orange">.</span>A PROPOS</p>
+            <p><a href=""><span class="orange">.</span>Politique de confidentialité</a></p>
+            <p><a href=""><span class="orange">.</span>Conditions d'utilisation</a></p>
+            <p><a href=""><span class="orange">.</span>Données personnelles</a></p>
+            <p><a href=""><span class="orange">.</span>Mentions légales</a></p>
+        </div>
+        <div class="col-12 col-sm-12 offset-md-1 col-md-2 offset-lg-1 col-lg-2">
+            <p class="title"><span class="orange">.</span>AIDE & SERVICES</p>
+            <p><a href=""><span class="orange">.</span>F<span class="orange">.</span>A<span class="orange">.</span>Q</a></p>
+            <p><a href=""><span class="orange">.</span>Aide</a></p>
+        </div>
+        <div class="col-12 col-sm-12 offset-md-1 col-md-2 offset-lg-1 col-lg-2">
+            <p class="title"><span class="orange">.</span>NOUS SUIVRE</p>
+            <a href="http://www.facebook.com"><img class="social" src="/assets/img/facebook.png" title="Facebook" alt="facebook"></a>
+            <a href="http://www.twitter.com"><img class="social" src="/assets/img/twitter.png" title="Twitter" alt="twitter"></a>
+            <a href="http://www.instagram.com"><img class="social" src="/assets/img/Instagram.png" title="Instagram" alt="instagram"></a>
+            <a href="http://www.linkedin.com"><img class="social" src="/assets/img/linkedin.png" title="LinkedIn" alt="linkedin"></a>
+        </div>    
     </div> <!-- fin de row footer -->
     <div class="row copyright">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">

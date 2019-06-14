@@ -175,7 +175,7 @@ if (isset($_POST['searchCity'])) {
 
         if ($_POST['password'] != $_POST['passwordVerification']) {
             $formErrors['passwordAreDifferent'] = 'Veuillez confirmer votre mot de passe correctement.';
-        }else 
+        }
 
         if (!empty($_POST['termsOfUse'])) {
             $termsOfUse = htmlspecialchars($_POST['termsOfUse']);

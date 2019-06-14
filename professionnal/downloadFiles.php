@@ -83,29 +83,16 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                         <?php } ?>
                     </div>
                     <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
-                        <label for="productionType"><span class="orange">.</span>Type de chantier</label>
-                        <input list="productionType" class="form-control productionType <?= isset($formErrors['productionType']) ? 'is-invalid' : (isset($productionType) ? 'is-valid' : '') ?>" type="text" name="productionType" id="productionType" placeholder="Type de chantier" value="" required />
-                        <datalist id="productionType" class="search"></datalist>
-                        <?php if (isset($formErrors['productionType'])) {
-                            ?>
-                            <div class="invalid-feedback">
-                                <p><?= $formErrors['productionType'] ?></p>
-                            </div>
-                        <?php } ?>
-                    </div>
-<!--                    <div>
                         <label for="category"><span class="orange">.</span>Type de chantier</label>
-                        <select name="category" id="category" required>
-                            <? php foreach ($getCategory as $category) { ?>
-                            <option value="<? = $category->id ?>">< ?= $category->category ?></option>
-                            <? php } ?>
+                        <select class="form-control" name="category" id="category" required>
+                            <?php foreach ($getCategory as $category) { ?>
+                            <option value="<?= $category->id ?>"><?= $category->category ?></option>
+                            <?php } ?>
                         </select>
-                        <select name="productionType" id="productionType" required>
-                            <? php foreach ($getTypeOfProductionWithCategory as $type) { ?>
-                            <option value="<? = $type->id ?>">< ?= $type->type ?></option>
-                            <? php } ?>
+                        
+                        <select class="form-control" name="productionType" id="productionType" required>
                         </select>
-                    </div>-->
+                    </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
@@ -121,7 +108,7 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                     </div>
                 </div>
                 <input class="form-control cityId" type="hidden" name="cityId" id="cityId" placeholder="" value=""  />  
-                <input type="submit" name="submit" value="Envoyer" class="btn btn-outline-warning registrationBtn" />
+                <input type="submit" name="submit" value="Ajouter un chantier" class="btn btn-outline-warning registrationBtn" />
             </form>
             <?php
             /* Pour l'affichage des données si tout a été validé
