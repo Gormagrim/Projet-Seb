@@ -90,7 +90,7 @@ $page = $_SERVER['PHP_SELF'];
                 <?php } else { ?>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
-                            <h2><span class="orange">.</span>Résultat de votre recherche :</h2>
+                            <h2><span class="orange">.</span>Résultat de votre recherche de réalisations dont le type comprend "<?= $_GET['productionSearch'] ?>"</h2>
                         </div>
                     </div>
                     <div class="row secondCards">
@@ -122,6 +122,7 @@ $page = $_SERVER['PHP_SELF'];
                             </div>
                         <?php } ?>
                     </div>
+                    <button type="button" class="btn registrationBtn" onclick="history.go(-1)">Retour</button>
                 <?php } ?>
             </div>
         </div>

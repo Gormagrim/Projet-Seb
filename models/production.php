@@ -64,6 +64,19 @@ class production extends database {
         return $queryExecute->fetch(PDO::FETCH_OBJ);
     }
     
+    public function getProductionCategory() {
+        $query = 'SELECT `cat`.`category` '
+                . 'FROM `al2jt_production` AS `p` '
+                . 'INNER JOIN `al2jt_typeOfProduction` AS `t` ON `t`.`id` = `p`.`id_al2jt_typeOfProduction` '
+                . 'INNER JOIN `al2jt_category` AS `cat` ON `t`.`id_al2jt_category` = `cat`.`id` '
+                . 'WHERE `t`.`type` = :type ';
+        
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->bindValue(':type', $this->type, PDO::PARAM_STR);
+        $queryExecute->execute();
+        return $queryExecute->fetch(PDO::FETCH_OBJ);
+    }
+    
     public function deleteProduction() {
         $query = 'DELETE FROM `al2jt_production` '
                 . 'WHERE `id` = :id';
@@ -100,6 +113,22 @@ class production extends database {
         
         $queryExecute = $this->db->prepare($query);
         $queryExecute->bindValue(':zipSearch', $search.'%', PDO::PARAM_STR);
+        $queryExecute->execute();
+        return $queryExecute->fetchAll(PDO::FETCH_OBJ);
+    }
+    
+     public function searchProductionByType($search) {
+        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `t`.`id`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
+                . 'FROM `al2jt_production` AS `p` '
+                . 'INNER JOIN `al2jt_company` AS `comp` ON `comp`.`id` = `p`.`id_al2jt_company` '
+                . 'INNER JOIN `al2jt_photo` AS `photo` ON `p`.`id` = `photo`.`id_al2jt_production` '
+                . 'INNER JOIN `al2jt_typeOfProduction` AS `t` ON `t`.`id` = `p`.`id_al2jt_typeOfProduction` '
+                . 'INNER JOIN `al2jt_city` AS `c` ON `c`.`id` = `p`.`id_al2jt_city` '
+                . 'INNER JOIN `al2jt_category` AS `cat` ON `t`.`id_al2jt_category` = `cat`.`id` '
+                . 'WHERE `t`.`type` LIKE :type';
+        
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->bindValue(':type', $search.'%', PDO::PARAM_STR);
         $queryExecute->execute();
         return $queryExecute->fetchAll(PDO::FETCH_OBJ);
     }

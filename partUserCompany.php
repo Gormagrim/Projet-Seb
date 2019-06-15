@@ -86,7 +86,7 @@ $page = $_SERVER['PHP_SELF'];
                 <?php } else { ?>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
-                            <h2><span class="orange">.</span>Résultat de votre recherche :</h2>
+                            <h2><span class="orange">.</span>Résultat de votre recherche d'entreprise dont le nom comprend "<?= $_GET['companySearch'] ?>"</h2>
                         </div>
                     </div>
                     <div class="row secondCards">

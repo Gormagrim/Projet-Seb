@@ -3,7 +3,7 @@
 $production = new production();
 
 
-if (!empty($_GET['id'])) {
+if (isset($_GET['id'])) {
     $production->id = htmlspecialchars($_GET['id']);
     $getProductionInformation = $production->getOneProductionInformation();
 }

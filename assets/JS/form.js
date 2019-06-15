@@ -28,4 +28,6 @@ $(document).ready(function () {
             
         }
     });
+    
+    $('#phoneNumber').mask('00 00 00 00 00');
 });

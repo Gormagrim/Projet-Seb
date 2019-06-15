@@ -162,4 +162,6 @@ $(function () {
         $('.reHideSix').hide();
         $('.hideMenuSix').removeClass('animated zoomIn');
     });
+    
+    $('#phoneNumber').mask('00 00 00 00 00');
 });

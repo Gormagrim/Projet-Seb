@@ -10,8 +10,8 @@ if (!empty($_SESSION['id'])) {
     $getOneProductionInformation = $company->getThisProductionInformation();
 }
 
-if (!empty($_GET['productionSearch'])) {
-        $productionSearch = $production->searchProduction(htmlspecialchars($_GET['productionSearch']));
+if (isset($_GET['productionSearch'])) {
+    $productionSearch = $production->searchProduction(htmlspecialchars($_GET['productionSearch']));
 } else {
     $productionSearch = $company->getProductionInformation();
 }
