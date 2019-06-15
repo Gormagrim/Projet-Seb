@@ -57,6 +57,7 @@ class production extends database {
                 . 'INNER JOIN `al2jt_city` AS `c` ON `c`.`id` = `p`.`id_al2jt_city` '
                 . 'INNER JOIN `al2jt_category` AS `cat` ON `t`.`id_al2jt_category` = `cat`.`id` '
                 . 'WHERE `p`.`id` = :id';
+        
         $queryExecute = $this->db->prepare($query);
         $queryExecute->bindValue(':id', $this->id, PDO::PARAM_INT);
         $queryExecute->execute();

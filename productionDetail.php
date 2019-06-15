@@ -60,7 +60,7 @@ $page = $_SERVER['PHP_SELF'];
                 <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
                 <span><p></p></span>
             </div>
-            <a href="sectorSearch.php">retour</a>
+            <button type="button" class="btn registrationBtn" onclick="history.go(-1)">Retour</button>
         </div>
     </div>
 </div>

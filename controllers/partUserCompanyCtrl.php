@@ -10,10 +10,8 @@ if (!empty($_SESSION['id'])) {
     $getOneCompanyInformation = $company->getOneCompanyInformation();
 }
 
-if (!empty($_POST['companySearch'])) {
-    if (isset($_POST['companySearch'])) {
-        $companySearch = $company->searchCompany(htmlspecialchars($_POST['companySearch']));
-    }
+if (!empty($_GET['companySearch'])) {
+        $companySearch = $company->searchCompany(htmlspecialchars($_GET['companySearch']));
 } else {
     $companySearch = $company->getCompanyList();
 }

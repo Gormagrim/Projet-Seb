@@ -80,7 +80,7 @@ if ($page == '/registration.php' || $page == '/connection.php') {
                             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                                 <ul class="navbar-nav">
                                     <li class="nav-item helloName">
-                                        bonjour, <?= $particularUserInfo->firstname ?>
+                                        Bonjour, <?= $particularUserInfo->firstname ?>
                                     </li>
                                     <li class="nav-item">
                                         <button id="openNav" class="btn btn-outline-warning searchNav" onclick="slide_open()">Menu</button>

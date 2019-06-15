@@ -8,6 +8,7 @@ if (!empty($_GET['id'])) {
         if (!empty($_POST['delete'])) {
             if ($deleteProduction = $production->deleteProduction()) {
                 header('location: ../professionnal/professionnalProduction.php');
+                unlink($seeProduction->photo);
             }
         }
 

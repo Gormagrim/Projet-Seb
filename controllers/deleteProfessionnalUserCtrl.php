@@ -9,6 +9,9 @@ if (!empty($_SESSION['id'])) {
             if ($professionnalUsers->deleteUser()) {
                 session_destroy();
                 header('location: ../index.php');
+                if(!empty($professionnalUsers->presentationPhoto)){
+                    unlink($professionnalUsers->presentationPhoto);
+                }
             }
         }
     }

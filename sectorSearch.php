@@ -22,19 +22,20 @@ require_once 'controllers/sectorSearchCtrl.php';
     <p><a href="/userAccount.php"><span class="orange">.</span>Mon compte</a></p>
 </div>
 <div id="main">
-    <?php if (!isset($_POST['zipcodeSearch'])) { ?>
+    <?php if (!isset($_GET['zipcodeSearch'])) { ?>
         <div class="row">
             <div class="bigCompanyCard col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 sectorSearch">
                 <h2 class="sectorSearchMainTitle" id="topPage"><span class="orange">.</span>Recherche par secteur géographique ou par secteur d'activité :</h2>
                 <div class="row">
                     <div class="col-12 offset-sm-3 col-sm-6 offset-md-3 col-md-6 offset-lg-3 col-lg-6">
-                        <form class="form-inline position-center"  action="sectorSearch.php" method="POST">
+                        <form class="form-inline position-center"  action="sectorSearch.php" method="GET">
                             <label for="zipcodeSearch"><span class="orange">.</span>Votre code postal :</label>
                             <input class="form-control mr-sm-2 searchNav" id="zipcodeSearch" name="zipcodeSearch" type="search" placeholder="60000" />
                             <button class="btn btn-outline-warning hightBtn" type="submit">Rechercher</button>
                         </form>
                     </div>
                 </div>
+                
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <p>Cliquez sur une titre pour afficher le menu</p>
@@ -422,10 +423,8 @@ require_once 'controllers/sectorSearchCtrl.php';
                 </div>
             </div>
         <?php } ?>
-        <a href="/sectorSearch.php">Retour</a>
     </div>
     <?php
 }
-
 include_once 'footerSecondary.php';
 ?>

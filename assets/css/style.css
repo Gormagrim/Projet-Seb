@@ -645,6 +645,10 @@ img.companyCard {
     margin-bottom: 2em;
 }
 
+.mediaLike {
+    float: right;
+}
+
 .userIdentity {
     margin-bottom: 4em;
 }
