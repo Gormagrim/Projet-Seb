@@ -24,7 +24,7 @@ include_once 'navbar.php'; ?>
         <p>Ou vous souhaitez simplement regarder ce que font les professionnels pour vous en inspirer ?</p>
         <p>Vous voulez comparer les réalisations et trouver le pro que vous cherchez ?</p>
         <p>Besoin d'un devis?</p>
-        <button type="button" class="btn registrationBtn" onclick="javascript:location.href = 'registration.php'">S'inscrire</button>
+        <button type="button" class="btn registrationBtn" onclick="javascript:location.href = 'registration.php?id=particulier'">S'inscrire</button>
     </div>
     <div class="col-12 col-sm-12 col-md-12 offset-lg-2 col-lg-3 Professionnal">
         <h2><span class="orange">.</span>PROFESSIONNELS :</h2>
@@ -32,7 +32,7 @@ include_once 'navbar.php'; ?>
         <p>Augmentez votre visibilité et proposez vos services à de nouveaux clients?</p>
         <p>Venez exposer votre savoir-faire et gagner en renommée.</p>
         <p>Rejoignez l'une des plus grande communauté de votre région.</p>
-        <button type="button" class="btn registrationBtn" onclick="javascript:location.href = 'registration.php'">S'inscrire</button>
+        <button type="button" class="btn registrationBtn" onclick="javascript:location.href = 'registration.php?id=professionnel'">S'inscrire</button>
     </div>
 </div>
 <?php include_once 'footer.php'; ?>

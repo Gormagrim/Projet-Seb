@@ -71,7 +71,7 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                         <label for="phoneNumber">Numéro de téléphone de l'entreprise</label>
-                        <input class="form-control <?= isset($formErrors['phoneNumber']) ? 'is-invalid' : (isset($phoneNumber) ? 'is-valid' : '') ?>" type="text" name="phoneNumber" id="phoneNumber" placeholder="06.01.02.03.04" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['phoneNumber']) : $professionnalUserInfo->phoneNumber ?>" required />
+                        <input class="form-control <?= isset($formErrors['phoneNumber']) ? 'is-invalid' : (isset($phoneNumber) ? 'is-valid' : '') ?>" type="text" name="phoneNumber" id="phoneNumber" placeholder="06 01 02 03 04" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['phoneNumber']) : $professionnalUserInfo->phoneNumber ?>" required />
                         <?php if (isset($formErrors['phoneNumber'])) {
                             ?>
                             <div class="invalid-feedback">

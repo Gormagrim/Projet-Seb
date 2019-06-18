@@ -72,7 +72,7 @@ class production extends database {
                 . 'WHERE `t`.`type` = :type ';
         
         $queryExecute = $this->db->prepare($query);
-        $queryExecute->bindValue(':type', $this->type, PDO::PARAM_STR);
+        $queryExecute->bindValue(':type', $this->type, PDO::PARAM_INT);
         $queryExecute->execute();
         return $queryExecute->fetch(PDO::FETCH_OBJ);
     }
@@ -118,7 +118,7 @@ class production extends database {
     }
     
      public function searchProductionByType($search) {
-        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `t`.`id`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
+        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`,`t`.`id`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
                 . 'FROM `al2jt_production` AS `p` '
                 . 'INNER JOIN `al2jt_company` AS `comp` ON `comp`.`id` = `p`.`id_al2jt_company` '
                 . 'INNER JOIN `al2jt_photo` AS `photo` ON `p`.`id` = `photo`.`id_al2jt_production` '

@@ -25,10 +25,10 @@ require_once 'controllers/typeSearchCtrl.php';
 <div id="main">
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
-            <h2><span class="orange">.</span>Résultat de votre recherche de travaux de type <?= $getCategoryFromType->category ?> / <?= $production->type ?></h2>
+            <h2><span class="orange">.</span>Résultat de votre recherche de travaux de type <?= $getCategoryFromId->category ?> / <?= $production->type ?></h2>
         </div>
     </div>
-    <div class="row secondCards">
+    <div class="row secondCards" id="typeSearch">
         <?php foreach ($productionSearchByType as $smallProduction) { ?>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="card mb-3">
