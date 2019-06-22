@@ -14,8 +14,7 @@ $(function () {
     $('.sectorSearchTitle').click(function () {
         $('.hideOne').hide();
         $('.detail_' + $(this).attr('id')).show();
-        $(this).show('reHideOne');
-        console.log($(this).show('reHideOne'));
+        $('.reHideOne').show();
         $('.hideMenu').addClass('animated zoomIn');
         $('.hideMenuTwo').removeClass('animated zoomIn');
         $('.hideMenuThree').removeClass('animated zoomIn');

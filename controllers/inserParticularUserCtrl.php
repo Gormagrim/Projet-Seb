@@ -2,6 +2,7 @@
 
 $formErrors = array();
 
+
 if (isset($_POST['searchCity'])) {
     require_once '../models/database.php';
     require_once '../models/particularUsers.php';
@@ -15,6 +16,7 @@ if (isset($_POST['searchCity'])) {
 } else {
     $city = new city();
     $company = new company();
+    $isProfessionnal = (isset($_GET['type']) ? ($_GET['type'] == 'professionnel' ? true : false) : '');
     if (count($_POST) > 0) {
         $particularUsers = new particularUsers();
         $company = new company();
@@ -29,87 +31,90 @@ if (isset($_POST['searchCity'])) {
             $formErrors['id_al2jt_userGroup'] = 'Veuillez renseigner si vous êtes un particulier ou un professionnel.';
         }
 
-        if (!empty($_POST['gender'])) {
-            if ($_POST['gender'] == 'Madame' || $_POST['gender'] == 'Monsieur') {
-                $gender = htmlspecialchars($_POST['gender']);
-            } else {
-                $formErrors['gender'] = 'Merci de selectionner un genre existant.';
-            }
-        } else {
-            $formErrors['gender'] = 'Veuillez faire un choix.';
-        }
 
-        if ($_POST['id_al2jt_userGroup'] === '2' && (!isset($formErrors['id_al2jt_userGroup']))) {
-            // on vérifie que la variable $_POST['lastname'] existe ET n'est pas vide.
-            if (!empty($_POST['lastname'])) {
-                // Je vérifie bien que ma variable $_POST['lastname'] correspond à ma patternName.
-                if (preg_match($patternName, $_POST['lastname'])) {
-                    // On stocke dans la variable lastname la variable $_POST['lastname'] dont on a désactivé les balises HTML.
-                    $particularUsers->lastname = htmlspecialchars($_POST['lastname']);
+
+        if (!$isProfessionnal) {
+            if ($_POST['id_al2jt_userGroup'] === '2' && (!isset($formErrors['id_al2jt_userGroup']))) {
+                if (!empty($_POST['gender'])) {
+                    if ($_POST['gender'] == 'Madame' || $_POST['gender'] == 'Monsieur') {
+                        $gender = htmlspecialchars($_POST['gender']);
+                    } else {
+                        $formErrors['gender'] = 'Merci de selectionner un genre existant.';
+                    }
                 } else {
-                    // Si la saisie utilisateur ne correspond pas à la regex on va stocker une erreur lastname dans notre tableau d'erreurs.
-                    $formErrors['lastname'] = 'Votre nom de famille est incorrect.';
+                    $formErrors['gender'] = 'Veuillez faire un choix.';
                 }
-            } else {
-                // On va réutiliser notre erreur lastName parce que les deux ne peuvent pas exister en même temps.
-                $formErrors['lastname'] = 'Veuillez renseigner votre nom de famille.';
-            }
-
-            if (!empty($_POST['firstname'])) {
-                if (preg_match($patternName, $_POST['firstname'])) {
-                    $particularUsers->firstname = htmlspecialchars($_POST['firstname']);
+                // on vérifie que la variable $_POST['lastname'] existe ET n'est pas vide.
+                if (!empty($_POST['lastname'])) {
+                    // Je vérifie bien que ma variable $_POST['lastname'] correspond à ma patternName.
+                    if (preg_match($patternName, $_POST['lastname'])) {
+                        // On stocke dans la variable lastname la variable $_POST['lastname'] dont on a désactivé les balises HTML.
+                        $particularUsers->lastname = htmlspecialchars($_POST['lastname']);
+                    } else {
+                        // Si la saisie utilisateur ne correspond pas à la regex on va stocker une erreur lastname dans notre tableau d'erreurs.
+                        $formErrors['lastname'] = 'Votre nom de famille est incorrect.';
+                    }
                 } else {
-                    $formErrors['firstname'] = 'Votre prénom est incorrect.';
+                    // On va réutiliser notre erreur lastName parce que les deux ne peuvent pas exister en même temps.
+                    $formErrors['lastname'] = 'Veuillez renseigner votre nom de famille.';
                 }
-            } else {
-                $formErrors['firstname'] = 'Veuillez renseigner votre prénom.';
-            }
-        }
 
-        if ($_POST['id_al2jt_userGroup'] === '3' && (!isset($formErrors['id_al2jt_userGroup']))) {
-            if (!empty($_POST['companyName'])) {
-                if (preg_match($patternName, $_POST['companyName'])) {
-                    $company->name = htmlspecialchars($_POST['companyName']);
+                if (!empty($_POST['firstname'])) {
+                    if (preg_match($patternName, $_POST['firstname'])) {
+                        $particularUsers->firstname = htmlspecialchars($_POST['firstname']);
+                    } else {
+                        $formErrors['firstname'] = 'Votre prénom est incorrect.';
+                    }
                 } else {
-                    $formErrors['companyName'] = 'Le nom de l\'entreprise est incorrect.';
+                    $formErrors['firstname'] = 'Veuillez renseigner votre prénom.';
                 }
-            } else {
-                $formErrors['companyName'] = 'Veuillez renseigner le nom de votre entreprise.';
             }
-
-            if (!empty($_POST['siret'])) {
-                if (preg_match($patternSiretNumber, $_POST['siret'])) {
-                    $company->siret = htmlspecialchars($_POST['siret']);
+        } else if ($isProfessionnal) {
+            if ($_POST['id_al2jt_userGroup'] === '3' && (!isset($formErrors['id_al2jt_userGroup']))) {
+                if (!empty($_POST['companyName'])) {
+                    if (preg_match($patternName, $_POST['companyName'])) {
+                        $company->name = htmlspecialchars($_POST['companyName']);
+                    } else {
+                        $formErrors['companyName'] = 'Le nom de l\'entreprise est incorrect.';
+                    }
                 } else {
-                    $formErrors['siret'] = 'Le numéro de siret est incorrect.';
+                    $formErrors['companyName'] = 'Veuillez renseigner le nom de votre entreprise.';
                 }
-            } else {
-                $formErrors['siret'] = 'Veuillez renseigner le numéro de siret de votre entreprise.';
-            }
 
-            if (!empty($_POST['leaderLastname'])) {
-                if (preg_match($patternName, $_POST['leaderLastname'])) {
+                if (!empty($_POST['siret'])) {
+                    if (preg_match($patternSiretNumber, $_POST['siret'])) {
+                        $company->siret = htmlspecialchars($_POST['siret']);
+                    } else {
+                        $formErrors['siret'] = 'Le numéro de siret est incorrect.';
+                    }
+                } else {
+                    $formErrors['siret'] = 'Veuillez renseigner le numéro de siret de votre entreprise.';
+                }
+
+                if (!empty($_POST['leaderLastname'])) {
+                    if (preg_match($patternName, $_POST['leaderLastname'])) {
+                        if ($_POST['id_al2jt_userGroup'] === '3') {
+                            $company->leader = htmlspecialchars($_POST['leaderLastname']);
+                            $particularUsers->lastname = htmlspecialchars($_POST['leaderLastname']);
+                        }
+                    } else {
+                        $formErrors['leaderLastname'] = 'Votre nom est incorrect.';
+                    }
+                } else {
+                    $formErrors['leaderLastname'] = 'Veuillez renseigner votre nom.';
+                }
+
+                if (!empty($_POST['leaderFirstname'])) {
                     if ($_POST['id_al2jt_userGroup'] === '3') {
-                        $company->leader = htmlspecialchars($_POST['leaderLastname']);
-                        $particularUsers->lastname = htmlspecialchars($_POST['leaderLastname']);
+                        if (preg_match($patternName, $_POST['leaderFirstname'])) {
+                            $particularUsers->firstname = htmlspecialchars($_POST['leaderFirstname']);
+                        }
+                    } else {
+                        $formErrors['leaderFirstname'] = 'Votre prénom est incorrect.';
                     }
                 } else {
-                    $formErrors['leaderLastname'] = 'Votre nom est incorrect.';
+                    $formErrors['leaderFirstname'] = 'Veuillez renseigner votre prénom.';
                 }
-            } else {
-                $formErrors['leaderLastname'] = 'Veuillez renseigner votre nom.';
-            }
-
-            if (!empty($_POST['leaderFirstname'])) {
-                if ($_POST['id_al2jt_userGroup'] === '3') {
-                    if (preg_match($patternName, $_POST['leaderFirstname'])) {
-                        $particularUsers->firstname = htmlspecialchars($_POST['leaderFirstname']);
-                    }
-                } else {
-                    $formErrors['leaderFirstname'] = 'Votre prénom est incorrect.';
-                }
-            } else {
-                $formErrors['leaderFirstname'] = 'Veuillez renseigner votre prénom.';
             }
         }
 
@@ -153,9 +158,9 @@ if (isset($_POST['searchCity'])) {
             if (preg_match($patternMail, $_POST['mail'])) {
                 $particularUsers->mail = htmlspecialchars($_POST['mail']);
                 $check = $particularUsers->checkUser();
-            if ($check->number > 0) {
-                $formErrors['mail'] = 'Un compte avec ce mail existe déjà';
-            }
+                if ($check->number > 0) {
+                    $formErrors['mail'] = 'Un compte avec ce mail existe déjà';
+                }
             } else {
                 $formErrors['mail'] = 'Votre adresse mail est incorrecte.';
             }
@@ -184,13 +189,15 @@ if (isset($_POST['searchCity'])) {
         }
 
         if (count($formErrors) == 0) {
-            $check = $particularUsers->checkUser();
             if ($particularUsersInsert = $particularUsers->inserParticularUser()) {
                 if ($_POST['id_al2jt_userGroup'] === '3') {
                     $company->id_al2jt_user = $particularUsersInsert;
-                    $companyInser = $company->inserCompany();
+                    if ($company->inserCompany()) {
+                        $formSuccess = 'Enregistrement de votre compte et de l\'entreprise effectué';
+                    } else {
+                        $formSuccess = 'Enregistrement de votre compte  effectué. Une erreur est survenue lors de la création de l\entreprise';
+                    }
                 }
-                $formSuccess = 'Enregistrement effectué';
             } else {
                 $formErrors['add'] = 'Une erreur est survenue';
 //                DELETE $particularUsersInsert à prevoir !!!!!!

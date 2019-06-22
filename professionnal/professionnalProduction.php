@@ -55,6 +55,7 @@ $page = $_SERVER['PHP_SELF'];
                 </div>
             </div>
         <?php } ?>
+        <button type="button" class="btn registrationBtn" onclick="history.go(-1)">Retour</button>
     </div>
 </div>
 

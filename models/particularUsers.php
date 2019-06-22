@@ -137,6 +137,54 @@ class particularUsers extends database {
         $queryExecute->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $queryExecute->execute();
     }
+    
+    public function countParticularUser() {
+        $query = 'SELECT COUNT(`u`.`id`) AS `user`, `ug`.`type` '
+                . 'FROM `al2jt_user` AS `u` '
+                . 'INNER JOIN `al2jt_userGroup` AS `ug` ON `u`.`id_al2jt_userGroup` = `ug`.`id` '
+                . 'WHERE `ug`.`type` = \'Particulier\' ';
+               
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->execute();
+        return $queryExecute->fetch(PDO::FETCH_OBJ);
+    }
+    
+    public function countProfessionnalUser() {
+        $query = 'SELECT COUNT(`u`.`id`) AS `user`, `ug`.`type` '
+                . 'FROM `al2jt_user` AS `u` '
+                . 'INNER JOIN `al2jt_userGroup` AS `ug` ON `u`.`id_al2jt_userGroup` = `ug`.`id` '
+                . 'WHERE `ug`.`type` = \'Professionnel\' ';
+               
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->execute();
+        return $queryExecute->fetch(PDO::FETCH_OBJ);
+    }
+    
+    public function getPartUserList() {
+        $query = 'SELECT `u`.`id`, `u`.`lastname`, `u`.`firstname`, `u`.`phoneNumber`, `u`.`address`, `u`.`mail`, `ug`.`type`, `u`.`id_al2jt_city`, `c`.`city`, `c`.`zipcode` '
+                . 'FROM `al2jt_user` AS `u` '
+                . 'INNER JOIN `al2jt_city` AS `c` ON `u`.`id_al2jt_city` = `c`.`id` '
+                . 'INNER JOIN `al2jt_userGroup` AS `ug` ON `u`.`id_al2jt_userGroup` = `ug`.`id` '
+                . 'WHERE `ug`.`id` = 2 '
+                . 'GROUP BY `u`.`id` ';
+        
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->execute();
+        return $queryExecute->fetchAll(PDO::FETCH_OBJ);
+    }
+    
+    public function getProUserList() {
+        $query = 'SELECT `u`.`id`, `u`.`lastname`, `u`.`firstname`,`u`.`mail`, `u`.`id_al2jt_city`, `c`.`address`, `city`.`city`, `city`.`zipcode`, `ug`.`type`, `c`.`name`, `c`.`siret`, `c`.`presentationPhoto`, `c`.`leader`, `c`.`phoneNumber`, `c`.`numberOfEmploy` '
+                . 'FROM `al2jt_user` AS `u` '
+                . 'INNER JOIN `al2jt_company` AS `c` ON `u`.`id` = `c`.`id_al2jt_user` '
+                . 'INNER JOIN `al2jt_city` AS `city` ON `u`.`id_al2jt_city` = `city`.`id` '
+                . 'INNER JOIN `al2jt_userGroup` AS `ug` ON `u`.`id_al2jt_userGroup` = `ug`.`id` '
+                . 'WHERE `ug`.`id` = 3 ';
+        
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->execute();
+        return $queryExecute->fetchAll(PDO::FETCH_OBJ);
+    }
 
     public function __destruct() {
         $this->db = NULL;

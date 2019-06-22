@@ -11,6 +11,7 @@ class production extends database {
     public $id_al2jt_user = 0;
     public $photo = '';
     public $description = '';
+    public $category = '';
 
     public function __construct() {
         parent::__construct();
@@ -80,6 +81,7 @@ class production extends database {
     public function deleteProduction() {
         $query = 'DELETE FROM `al2jt_production` '
                 . 'WHERE `id` = :id';
+        
         $queryExecute = $this->db->prepare($query);
         $queryExecute->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $queryExecute->execute();
@@ -118,7 +120,7 @@ class production extends database {
     }
     
      public function searchProductionByType($search) {
-        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`,`t`.`id`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
+        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
                 . 'FROM `al2jt_production` AS `p` '
                 . 'INNER JOIN `al2jt_company` AS `comp` ON `comp`.`id` = `p`.`id_al2jt_company` '
                 . 'INNER JOIN `al2jt_photo` AS `photo` ON `p`.`id` = `photo`.`id_al2jt_production` '
@@ -132,6 +134,32 @@ class production extends database {
         $queryExecute->execute();
         return $queryExecute->fetchAll(PDO::FETCH_OBJ);
     }
+    
+    public function getNumberOfProduction() {
+        $query = 'SELECT COUNT(`p`.`id`) AS `number` '
+                . 'FROM `al2jt_production` AS `p` '
+                . 'INNER JOIN `al2jt_company` AS `comp` ON `comp`.`id` = `p`.`id_al2jt_company` '
+                . 'INNER JOIN `al2jt_user` AS `u` ON `comp`.`id_al2jt_user` = `u`.`id` ';
+        
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->execute();
+        return $queryExecute->fetch(PDO::FETCH_OBJ);
+    }
+    
+     public function getProductionList() {
+        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
+                . 'FROM `al2jt_production` AS `p` '
+                . 'INNER JOIN `al2jt_company` AS `comp` ON `comp`.`id` = `p`.`id_al2jt_company` '
+                . 'INNER JOIN `al2jt_photo` AS `photo` ON `p`.`id` = `photo`.`id_al2jt_production` '
+                . 'INNER JOIN `al2jt_typeOfProduction` AS `t` ON `t`.`id` = `p`.`id_al2jt_typeOfProduction` '
+                . 'INNER JOIN `al2jt_city` AS `c` ON `c`.`id` = `p`.`id_al2jt_city` '
+                . 'INNER JOIN `al2jt_category` AS `cat` ON `t`.`id_al2jt_category` = `cat`.`id` '
+                . 'ORDER BY `comp`.`name` ';
+        
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->execute();
+        return $queryExecute->fetchAll(PDO::FETCH_OBJ);
+     }
 
     public function __destruct() {
         $this->db = NULL;

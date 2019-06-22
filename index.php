@@ -1,6 +1,11 @@
 <?php 
 session_start();
-include_once 'navbar.php'; ?>
+include_once 'navbar.php';
+require_once 'models/database.php';
+require_once 'models/particularUsers.php';
+require_once 'models/production.php';
+require_once 'controllers/indexCtrl.php';
+?>
 <div class="row">                
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 mainTitle separation"> 
        <h2 style="text-shadow:1px 1px 0 #ffa40d"><span class="orange">.</span>QUE NOUS PROPOSONS VOUS ?</h2>
@@ -24,7 +29,8 @@ include_once 'navbar.php'; ?>
         <p>Ou vous souhaitez simplement regarder ce que font les professionnels pour vous en inspirer ?</p>
         <p>Vous voulez comparer les réalisations et trouver le pro que vous cherchez ?</p>
         <p>Besoin d'un devis?</p>
-        <button type="button" class="btn registrationBtn" onclick="javascript:location.href = 'registration.php?id=particulier'">S'inscrire</button>
+        <p><span class="orangeText"><?= $countParticularUsers->user ?></span> particuliers sont inscris, rejoignez les !</p>
+        <button type="button" class="btn registrationBtn" name="particular" onclick="javascript:location.href = 'registration.php?type=particulier'">S'inscrire</button>
     </div>
     <div class="col-12 col-sm-12 col-md-12 offset-lg-2 col-lg-3 Professionnal">
         <h2><span class="orange">.</span>PROFESSIONNELS :</h2>
@@ -32,7 +38,8 @@ include_once 'navbar.php'; ?>
         <p>Augmentez votre visibilité et proposez vos services à de nouveaux clients?</p>
         <p>Venez exposer votre savoir-faire et gagner en renommée.</p>
         <p>Rejoignez l'une des plus grande communauté de votre région.</p>
-        <button type="button" class="btn registrationBtn" onclick="javascript:location.href = 'registration.php?id=professionnel'">S'inscrire</button>
+        <p><span class="orangeText"><?= $countProfessionnalUser->user ?></span> entreprises sont déjà en ligne et <span class="orangeText"><?= $getNumberOfProduction->number ?></span> chantiers, n'attendez plus !</p>
+        <button type="button" class="btn registrationBtn" name="professionnal" onclick="javascript:location.href = 'registration.php?type=professionnel'">S'inscrire</button>
     </div>
 </div>
 <?php include_once 'footer.php'; ?>

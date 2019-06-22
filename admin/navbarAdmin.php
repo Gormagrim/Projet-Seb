@@ -1,3 +1,8 @@
+<?php
+include_once '../models/database.php';
+include_once '../models/particularUsers.php';
+include_once '../controllers/navbarSecondaryCtrl.php';
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
     <head>
@@ -20,16 +25,16 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Mon compte</a>
+                        <a class="nav-link" href="/admin/adminPartUserList.php">Liste des Particuliers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ajouter un chantier</a>
+                        <a class="nav-link" href="/admin/adminProUserList.php">Liste des Pro</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacts</a>
+                        <a class="nav-link" href="/admin/adminProductionList.php">Liste des Chantiers</a>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-warning" id="deconnexionBtn" onclick="javascript:location.href = '#'">Déconnexion</button>
+                        <button type="button" class="btn btn-outline-warning" id="deconnexionBtn" onclick="javascript:location.href = '/controllers/deconnectionCtrl.php'">Déconnexion</button>
                     </li>
                 </ul>
             </div>

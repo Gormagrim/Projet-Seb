@@ -56,10 +56,10 @@ $concat = array(',', ' ');
                             <div class="row hideMenu">
                                 <?php foreach ($oneOuvrage as $oneOuvrageKey => $CatOfOuvrage) { ?>
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 hideOne detail_<?= str_replace($concat, '', $typeArrayKey) ?>">
-                                        <h5 class=""  ><span class="orange">.</span><?= $oneOuvrageKey ?></h5>
+                                        <h5 class="searchMarg"  ><span class="orange">.</span><?= $oneOuvrageKey ?></h5>
                                         <ul>
                                             <?php foreach ($CatOfOuvrage as $CatOfOuvrageAndCat) { ?>
-                                                <li><a class="dropdown-item " href="typeSearch.php?type=<?= $CatOfOuvrageAndCat ?>"><span class="orange">.</span><?= $CatOfOuvrageAndCat ?></a></li>
+                                                <li><a class="dropdown-item" href="typeSearch.php?type=<?= $CatOfOuvrageAndCat ?>"><span class="orange">.</span><?= $CatOfOuvrageAndCat ?></a></li>
                                             <?php } ?>
                                         </ul>
                                     </div>

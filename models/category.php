@@ -21,14 +21,13 @@ class category extends database {
     }
 
     public function getCategoryFromType() {
-        $query = 'SELECT  `c`.`category`, `t`.`type`, `t`.`id` '
+        $query = 'SELECT  `c`.`category`, `t`.`type` '
                 . 'FROM `al2jt_category` AS `c` '
                 . 'INNER JOIN `al2jt_typeOfProduction` AS `t` ON `c`.`id` = `t`.`id_al2jt_category` '
-                . 'INNER JOIN `al2jt_production` AS `p` ON `p`.`id_al2jt_typeOfProduction` = `t`.`id` '
-                . 'WHERE `p`.`type` = :id ';
+                . 'WHERE `t`.`type` = :type ';
 
         $queryExecute = $this->db->prepare($query);
-        $queryExecute->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $queryExecute->bindValue(':type', $this->type, PDO::PARAM_STR);
         $queryExecute->execute();
         return $queryExecute->fetch(PDO::FETCH_OBJ);
     }

@@ -45,6 +45,7 @@ $(function () {
         );
     });
 
+    /* Gestion AJAX des listes déroulante de recherche de catégory et type pour la création / modification de chantier */
     $('#category').change(function () {
         $.post('../../controllers/downloadFilesCtrl.php', {
             searchCategory: $('#category option:selected').val()
@@ -53,8 +54,20 @@ $(function () {
             $('#productionType').empty();
             $.each(results, function (key, type) {
                 var display = '<option value="' + type.id + '">' + type.type + '</option>';
-                $('#productionType').append(display);                
+                $('#productionType').append(display);
             });
         });
     });
+
+    /* Gestion AJAX des likes pour les chantiers */
+    $('.likeIcon').on('click',function () {
+        $.post('../../controllers/productionDetailCtrl.php',{
+            placeLike: $(this).attr('data-like')
+        }, function(data){
+            $('#placeLike_' + data.id).removeClass('likeProduction');
+            $('#placeLike_' + data.id).addClass('likedProduction');
+        },
+        'JSON');
+    });
+
 });

@@ -9,6 +9,7 @@ include_once 'models/company.php';
 include_once 'models/photo.php';
 include_once 'models/production.php';
 include_once 'models/type.php';
+include_once 'models/likeProduction.php';
 include_once 'controllers/productionDetailCtrl.php';
 $page = $_SERVER['PHP_SELF'];
 ?>
@@ -53,11 +54,11 @@ $page = $_SERVER['PHP_SELF'];
                 </div>
             </div>
             <div class="socialMedia">
-                <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
+                <i title="J'aime" id="placeLike_<?= $getProductionInformation->id ?>" data-like ="<?= $getProductionInformation->id ?>" class="fas fa-sun fa-2x likeProduction likeIcon"></i>
                 <span><p></p></span>
-                <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
+                <p title="J'aime moins"><i id="dislikeProduction" data-like="<?= $getProductionInformation->id ?>" class="fas fa-snowflake fa-2x dislikeProduction dislikeIcon"></i></p>
                 <span><p></p></span>
-                <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
+                <p title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></p>
                 <span><p></p></span>
             </div>
             <button type="button" class="btn registrationBtn" onclick="history.go(-1)">Retour</button>

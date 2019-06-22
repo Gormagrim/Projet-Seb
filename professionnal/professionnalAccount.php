@@ -67,11 +67,6 @@ include_once 'navbarProfessionnal.php';
                 </div>
             <?php } ?>
         </div>
-        <div class="row phone">
-            <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
-                <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Nombre de "j'aime moins" : </span></p>
-            </div>
-        </div>
         <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
             <p class="companyCard"><a href="/professionnal/professionnalEstimate.php"><span class="orange">.</span>Devis envoyés</a></p>
         </div>

@@ -38,7 +38,9 @@ if (count($_POST) > 0) {
                     header('Location: ../particularUser.php');
                 } elseif ($hash->id_al2jt_userGroup == 3) {
                     header('Location: ../professionnal/professionnalUser.php');
-                }
+                } elseif ($hash->id_al2jt_userGroup == 1) {
+                    header('Location: ../admin/adminUser.php');
+            }
             } else {
                 $formErrors['mail'] = 'L\'email et/ou le mot de passe est invalide';
                 $formErrors['password'] = 'L\'email et/ou le mot de passe est invalide';

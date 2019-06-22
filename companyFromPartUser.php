@@ -35,11 +35,13 @@ include_once 'controllers/companyFromPartUserCtrl.php';
                     <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Nom du Dirigeant :</span> Monsieur <?= $getCompanyInformation->leader ?></p>
                 </div>
             </div>
+            <?php if(isset($getCompanyInformation->presentationPhoto)) { ?>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-9 offset-md-1 col-md-9 offset-lg-1 col-lg-9 userIdentity companyPhoto">
                     <img class="companyCard" src="/professionnal/<?= $getCompanyInformation->presentationPhoto ?>" class="card-img firstImg" title="Siège de l'entreprise <?= $getCompanyInformation->name ?>" alt="Siège de l'entreprise <?= $getCompanyInformation->name ?>" />
                 </div>
             </div>
+            <?php } ?>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
                     <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Adresse :</span> <?= $getCompanyInformation->address ?></p>

@@ -9,6 +9,7 @@ include_once 'models/company.php';
 include_once 'models/photo.php';
 include_once 'models/production.php';
 include_once 'models/type.php';
+include_once 'models/likeProduction.php';
 include_once 'controllers/partUserProductionCtrl.php';
 $page = $_SERVER['PHP_SELF'];
 ?>
@@ -74,11 +75,11 @@ $page = $_SERVER['PHP_SELF'];
                                                 <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '#'">Modifier</button>
                                             <?php } ?>
                                             <div class="socialMedia">
-                                                <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
+                                                <p title="J'aime"><i id="likeProduction_<?= $getOneProductionInformation->id ?>" name="likeProduction" data-like ="<?= $getOneProductionInformation->id ?>" class="fas fa-sun fa-2x likeProduction"></i></p>
                                                 <span><p></p></span>
-                                                <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
+                                                <p title="J'aime moins"><i id="dislikeProduction" name="dislikeProduction" data-like="<?= $getOneProductionInformation->id ?>" class="fas fa-snowflake fa-2x dislikeProduction"></i></p>
                                                 <span><p></p></span>
-                                                <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
+                                                <p title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></p>
                                                 <span><p></p></span>
                                             </div>
                                         </div>
@@ -108,11 +109,11 @@ $page = $_SERVER['PHP_SELF'];
                                                 <h5 class="card-title">De type : <?= $smallProduction->category ?> / <?= $smallProduction->type ?></h5>
                                                 <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/productionDetail.php?id=<?= $smallProduction->id ?>'">Voir plus</button>
                                                 <div class="socialMedia">
-                                                    <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
+                                                    <p title="J'aime"><i id="placeLike_<?= $smallProduction->id ?>" data-like ="<?= $smallProduction->id ?>" class="fas fa-sun fa-2x likeProduction likeIcon"></i></p>
                                                     <span><p></p></span>
-                                                    <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
+                                                    <p title="J'aime moins"><i id="dislikeProduction" data-like="<?= $smallProduction->id ?>" class="fas fa-snowflake fa-2x dislikeProduction dislikeIcon"></i></p>
                                                     <span><p></p></span>
-                                                    <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
+                                                    <p title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></p>
                                                     <span><p></p></span>
                                                 </div>
                                             </div>

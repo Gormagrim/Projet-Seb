@@ -26,6 +26,13 @@ $page = $_SERVER['PHP_SELF'];
                     </div>
                 <?php } ?>
                 <p><a class="lostPassword" href="#">mot de passe oublié ?</a></p>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <p class="askRegistration">Vous n'avez pas de compte?</p>
+                        <p class="askRegistration"><span class="orange">.</span>Si vous êtes un particulier cliquez <a class="registrationLink" href="/registration.php?type=particulier">ici</a>.</p>
+                        <p class="askRegistration"><span class="orange">.</span>Si vous êtes un professionnel cliquez <a class="registrationLink" href="/registration.php?type=professionnel">ici</a>.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

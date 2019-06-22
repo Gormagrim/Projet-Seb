@@ -154,6 +154,12 @@ h2 {
     font-weight: bold;
 }
 
+.orangeText {
+    color: #ffa000;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
 .nav-item.dropdown.hideMenu, .nav-item.hideMenu {
     display: none;
 }
@@ -418,14 +424,19 @@ legend {
     background-image: url(/assets/img/png/valid.png);
 }
 
-.professionnalUser {
-    display: none;
+.jumbotron {
+    margin-top: 4rem;
+    margin-bottom: 18rem;
 }
+
+/*.professionnalUser {
+    display: none;
+}*/
 
 /* connection */
 
 .connection {
-    margin-top: 10em;
+    margin-top: 4em;
 }
 
 .formConnection h2 {
@@ -440,6 +451,15 @@ legend {
     color: #ffa000;
     font-size: 0.8em;
     padding-left: 0.5em;
+}
+
+a.registrationLink {
+    color: #ffa000;
+}
+
+p.askRegistration {
+    font-size: 0.8rem;
+    margin-bottom: 0;
 }
 
 .connection input, .connection select {
@@ -502,7 +522,8 @@ h5.card-title {
 }
 
 .cardBtn {
-    margin: 0.5em;;
+    margin-top: 10em;
+    margin-left: 5em;
 }
 
 i {
@@ -520,8 +541,11 @@ i:hover {
     float: right;
 }
 
+.likedProduction {
+    color: #dc143c
+}
 
-/* sdieMenu */
+/* sideMenu */
 
 .active {
     background-color: #ffa000;
@@ -592,7 +616,7 @@ i:hover {
     background-color: #f5f5dc;
     opacity: 0.9;
     margin-top: 8em;
-    margin-bottom: 4em;
+    margin-bottom: 10em;
 }
 
 h2.companyCard {
@@ -637,6 +661,7 @@ img.companyCard {
 }
 
 .Usermodification {
+    margin-top: 1em;
     float: left;
 }
 
@@ -663,6 +688,10 @@ img.companyCard {
 
 .userCards a:hover {
     color: #ffa000;
+}
+
+.useraccountModify {
+    margin-bottom: 12em;
 }
 
 
@@ -775,7 +804,7 @@ ul {
     margin-top: 1.5em;
 }
 
-.socialMedia p {
+/*.socialMedia p {
     text-align: center;
     border: 1px solid #ffa000;
     border-radius: 50%;
@@ -787,7 +816,7 @@ ul {
     position: relative;
     margin-top: 2em;
     margin-left: -1em;
-}
+}*/
 
 .socialMedia span {
     margin-bottom: 0.6em;

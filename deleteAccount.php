@@ -31,6 +31,7 @@ include_once 'function.php';
             </form>
         </div>
     </div>
+    <button type="button" class="btn registrationBtn" onclick="history.go(-1)">Retour</button>
 </div>
 
 <?php include_once 'footerSecondary.php'; ?>
