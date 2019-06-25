@@ -14,12 +14,13 @@ include_once 'navbarProfessionnal.php';
 <div id="main">
     <div class="row">
         <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 userCards" id="deleteProduction">
-            <h2>Voulez-vous vraiment supprimer le chantier <?php $production->title  ?> ?</h2>
+            <h2>Voulez-vous vraiment supprimer le chantier <?php $production->title ?> ?</h2>
             <form action="deleteProduction.php?id=<?= $production->id ?>" method="POST">
-            <input type="submit" name="delete" class="btn btn-outline-warning registrationBtn" value="Confirmer" />
+                <input type="submit" name="delete" class="btn btn-outline-warning registrationBtn" value="Confirmer" />
             </form>
         </div>
     </div>
+    <button type="button" class="btn registrationBtn useraccountModify" onclick="history.go(-1)">Retour</button>
 </div>
 
 <?php include_once '../footerSecondary.php'; ?>

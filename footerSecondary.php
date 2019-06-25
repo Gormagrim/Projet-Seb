@@ -4,9 +4,9 @@
         <div class="col-12 col-sm-12 offset-md-2 col-md-2 offset-lg-2 col-lg-2">
             <p class="title"><span class="orange">.</span>A PROPOS</p>
             <p><a href=""><span class="orange">.</span>Politique de confidentialité</a></p>
-            <p><a href=""><span class="orange">.</span>Conditions d'utilisation</a></p>
+            <p><a href="/cgu.php"><span class="orange">.</span>Conditions d'utilisation</a></p>
             <p><a href=""><span class="orange">.</span>Données personnelles</a></p>
-            <p><a href=""><span class="orange">.</span>Mentions légales</a></p>
+            <p><a href="/mentionsLegales.php"><span class="orange">.</span>Mentions légales</a></p>
         </div>
         <div class="col-12 col-sm-12 offset-md-1 col-md-2 offset-lg-1 col-lg-2">
             <p class="title"><span class="orange">.</span>AIDE & SERVICES</p>

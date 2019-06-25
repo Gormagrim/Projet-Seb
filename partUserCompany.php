@@ -9,6 +9,7 @@ include_once 'models/company.php';
 include_once 'models/photo.php';
 include_once 'models/production.php';
 include_once 'models/type.php';
+include_once 'models/favoriteCompany.php';
 include_once 'controllers/partUserCompanyCtrl.php';
 $page = $_SERVER['PHP_SELF'];
 ?>
@@ -72,7 +73,7 @@ $page = $_SERVER['PHP_SELF'];
                                             <span><p></p></span>
                                             <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
                                             <span><p></p></span>
-                                            <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
+                                            <i title="Ajouter aux favoris" class="far fa-plus-square fa-2x"></i>
                                             <span><p></p></span>
                                         </div>
                                     </div>

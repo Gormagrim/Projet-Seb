@@ -4,6 +4,7 @@ $professionnalUsers = new particularUsers();
 $company = new company();
 $production = new production();
 $photo = new photo();
+$fovoriteCompany = new fovoriteCompany();
 
 if (!empty($_SESSION['id'])) {
     $professionnalUsers->id = $_SESSION['id'];
@@ -11,7 +12,9 @@ if (!empty($_SESSION['id'])) {
 }
 
 if (!empty($_GET['companySearch'])) {
-        $companySearch = $company->searchCompany(htmlspecialchars($_GET['companySearch']));
+    $companySearch = $company->searchCompany(htmlspecialchars($_GET['companySearch']));
 } else {
     $companySearch = $company->getCompanyList();
 }
+
+

@@ -12,7 +12,7 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
 <div class="row">
     <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 userCards">
         <?php
-        if (count($_POST) == 0 || count($formErrors) > 0) { 
+        if (count($_POST) == 0 || count($formErrors) > 0) {
             if (isset($formErrors['add'])) {
                 ?>
                 <p><?= $formErrors['add'] ?></p>   
@@ -115,7 +115,7 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
                 <div class="row">
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="presentationPhoto"><span class="orange">.</span>Photo de présentation (.jpg ou .jpeg)</label>
+                            <label for="presentationPhoto"><span class="orange">.</span>Photo de présentation (.png, .jpg ou .jpeg)</label>
                             <input class="form-control" type="file" name="presentationPhoto" id="presentationPhoto" />
                         </div>
                         <?php if (isset($formErrors['presentationPhoto'])) { ?>
@@ -151,10 +151,12 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
             </form>
         </div>
     </div>
+    <button type="button" class="btn registrationBtn useraccountModify" onclick="history.go(-1)">Retour</button>
 <?php } else { ?>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 userCards">
-                <h2>Votre profil a bien été modifié</h2>
-            </div>
-<?php } ?>
-</div>
-<?php include_once '../footerSecondary.php' ?>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 userCards">
+            <h2>Votre profil a bien été modifié</h2>
+        </div>
+    </div>
+<?php } 
+
+include_once '../footerSecondary.php' ?>

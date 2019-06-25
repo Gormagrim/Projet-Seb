@@ -1,7 +1,14 @@
 <?php
-
+/*
+ * CONTROLLER de ma méthode "inserParticularUser()"
+ * 
+ * je crée un tableau d'erreur vide, il permettra le stockage des différents messages d'erreurs de mon formulaire
+ */
 $formErrors = array();
-
+/*
+ * Je stocke tout ce dont j'ai besoin pour ma méthode Ajax de recherche de ville dans le premier if
+ * Et je dis que  s'il existe un $_POST['searchCity'] alors je lance la méthode Ajax
+ */
 
 if (isset($_POST['searchCity'])) {
     require_once '../models/database.php';
@@ -16,13 +23,30 @@ if (isset($_POST['searchCity'])) {
 } else {
     $city = new city();
     $company = new company();
+    /*
+     * Je stocke dans une variable un ternaire qui me permet de savoir si le $_GET['type'] est égal à "professionnel"
+     * Si c'est le cas, je stocke dans ma variable "true" (booléen), ça me permet de gérer l'affichage de mon
+     * formulaire d'inscription en fonction de l'onglet choisi sur la page d'accueil.
+     */
     $isProfessionnal = (isset($_GET['type']) ? ($_GET['type'] == 'professionnel' ? true : false) : '');
+    /*
+ * je crée une condition où je compte si le nombre de $_POST est supérieur à 0
+ * je vérifie sur les données renseignées sont valides avant d'éxecuter ma méthode "insertParticularUsers()"
+ */
     if (count($_POST) > 0) {
+        /*
+     * j'instancie mon objet particularUsers() 
+     * je crée une variable ($particularUsers) qui devient un objet $particularUsers et à accès à tous les attributs et toutes les méthodes
+     * je fais le même chose pour mon objet company() pour le professionnel
+     */
         $particularUsers = new particularUsers();
         $company = new company();
-
+        // on vérifie que la variable $_POST['id_al2jt_userGroup'] existe ET n'est pas vide.
         if (!empty($_POST['id_al2jt_userGroup'])) {
             if ($_POST['id_al2jt_userGroup'] === '2' || $_POST['id_al2jt_userGroup'] === '3') {
+                /*
+             * on initialise l'objet $particularUsers et son attribut ($particularUsers->id_al2jt_userGroup) en lui donnant la valeur de ma variable ($_POST['id_al2jt_userGroup'])
+             */
                 $particularUsers->id_al2jt_userGroup = $_POST['id_al2jt_userGroup'];
             } else {
                 $formErrors['id_al2jt_userGroup'] = 'Votre choix est incorrect.';
@@ -48,7 +72,10 @@ if (isset($_POST['searchCity'])) {
                 if (!empty($_POST['lastname'])) {
                     // Je vérifie bien que ma variable $_POST['lastname'] correspond à ma patternName.
                     if (preg_match($patternName, $_POST['lastname'])) {
-                        // On stocke dans la variable lastname la variable $_POST['lastname'] dont on a désactivé les balises HTML.
+                        /* On stocke dans la variable lastname la variable $_POST['lastname'] dont on a désactivé les balises HTML.
+                         * Pour échapper le code HTML, il suffit d'utiliser la fonction htmlspecialchars qui va transformer les chevrons des balises HTML<>en &lt; et &gt; respectivement. 
+                         * Cela provoquera l'affichage de la balise plutôt que son exécution.
+                         */
                         $particularUsers->lastname = htmlspecialchars($_POST['lastname']);
                     } else {
                         // Si la saisie utilisateur ne correspond pas à la regex on va stocker une erreur lastname dans notre tableau d'erreurs.

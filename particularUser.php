@@ -6,8 +6,6 @@ include_once 'models/city.php';
 include_once 'models/userGroup.php';
 include_once 'controllers/particularUserCtrl.php';
 include_once 'navbarSecondary.php';
-include_once 'TestBaseDeDonnées.php';
-include_once 'function.php';
 ?>
     <!-- Début Menu Slide --> 
 

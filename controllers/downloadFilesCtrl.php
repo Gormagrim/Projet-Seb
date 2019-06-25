@@ -49,7 +49,7 @@ if (isset($_POST['searchCategory'])) {
                     // On stock dans $fileInfos les informations concernant le chemin du fichier.
                     $fileInfos = pathinfo($_FILES['file']['name']);
                     // On crée un tableau contenant les extensions autorisées.
-                    $fileExtension = ['jpeg', 'jpg', 'JPG'];
+                    $fileExtension = ['png', 'jpeg', 'jpg', 'JPG'];
                     // On verifie si l'extension de notre fichier est dans le tableau des extension autorisées.
                     if (in_array($fileInfos['extension'], $fileExtension)) {
                         //On définit le chemin vers lequel uploader le fichier

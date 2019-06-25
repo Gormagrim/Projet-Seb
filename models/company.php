@@ -144,6 +144,19 @@ class company extends database {
         return $queryExecute->fetch(PDO::FETCH_OBJ);
     }
     
+    public function checkProductionNumberWithId() {
+        $query = 'SELECT COUNT(`p`.`id`) AS `prodNumber` '
+                . 'FROM `al2jt_company` AS `comp` '
+                . 'INNER JOIN `al2jt_production` AS `p` ON `comp`.`id` = `p`.`id_al2jt_company` '
+                . 'INNER JOIN `al2jt_user` AS `u` ON `comp`.`id_al2jt_user` = `u`.`id` '
+                . 'WHERE `u`.`id` = :id ';
+        
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $queryExecute->execute();
+        return $queryExecute->fetch(PDO::FETCH_OBJ);
+    }
+    
     public function __destruct() {
         $this->db = NULL;
     }

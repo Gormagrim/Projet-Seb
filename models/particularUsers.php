@@ -1,6 +1,23 @@
 <?php
 
+/*
+ * MODEL de l'utilisateur
+ * 
+ * je crée ma classe particularUsers (objet) dans mon model
+ * Je crée une classe par table présente dans ma base de données
+ * 
+ */
+
 class particularUsers extends database {
+    
+    /*
+     * je crée mes attributs en fonction des champs de ma table user
+     * $id est un attribut
+     * un attribut est égal à un champ
+     * 0 de l'attribut $id est une valeur par défaut 
+     * je mets une valeur par défaut pour sécuriser l'affichage
+     * On définit nos attributs en "public" pour pouvoir les appeler en dehors de ma classe 
+     */
 
     public $id = 0;
     public $lastname = '';
@@ -11,15 +28,36 @@ class particularUsers extends database {
     public $password = '';
     public $id_al2jt_userGroup = 0;
     public $id_al2jt_city = 0;
+    
+    /*
+     * Attention si je crée la méthode magique "contruct", je dois également crée la méthode magique "destruct"
+     * Entre ses deux méthodes je crée des méthodes me permettant l'affichage des informations dont j'ai besoin
+     */
 
     public function __construct() {
         parent::__construct();
     }
 
     public function inserParticularUser() {
+        /*
+         * dans ma variable $query, je crée une requête SQL pour insérer dans la table particularUsers l'ensemble des attributs qui se trouvent entre parenthèses 
+         * j'utilise le mot-clé "value" pour insérer mes données dans la tables particularUsers 
+         * On utilise les marqueurs nominatifs pour récupèrer les données renseignés dans le formulaire par l'utilisateur
+         * 
+         */
         $query = 'INSERT INTO `al2jt_user` (`lastname`, `firstname`, `phoneNumber`, `address`, `mail`, `password`, `id_al2jt_userGroup`, `id_al2jt_city`) '
                 . 'VALUES (:lastname, :firstname, :phoneNumber, :address, :mail, :password, :id_al2jt_userGroup, :id_al2jt_city) ';
+        /*
+         * Une requête préparée (prepare($query)), c'est en quelque sorte une requête stockée en mémoire (pour la session courante), et que l'on peut exécuter à loisir (execute())
+         */
         $queryExecute = $this->db->prepare($query);
+        /*
+         * bindValue est une méthode qui nous permet de sécuriser ma requête
+         * il faut renseigner 3 données : 
+         *  - le marqueur nominatif
+         *  - la valeur à lui associer ($this->attribut) 
+         *  - le type de valeur à envoyer, on utilise pour cela les constantes de PDO. (PDO::PARAM_INT (pour un entier) ou PDO::PARAM_STR (pour une chaîne de caractères))
+         */
 
         $queryExecute->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
         $queryExecute->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
@@ -29,6 +67,9 @@ class particularUsers extends database {
         $queryExecute->bindValue(':password', $this->password, PDO::PARAM_STR);
         $queryExecute->bindValue(':id_al2jt_userGroup', $this->id_al2jt_userGroup, PDO::PARAM_INT);
         $queryExecute->bindValue(':id_al2jt_city', $this->id_al2jt_city, PDO::PARAM_INT);
+        /*
+         * return me sert à exécuter la requête. Je le fais sur $this->db->lastInsertId() pour récupérer la dernière id inserée dans la table car je n'ai pas souhaité faire de transaction.
+         */
         $queryExecute->execute();
         return $this->db->lastInsertId();
     }
@@ -111,7 +152,7 @@ class particularUsers extends database {
         $query = 'UPDATE `al2jt_user` AS `u` '
                 . 'INNER JOIN `al2jt_company` AS `c` ON `u`.`id` = `c`.`id_al2jt_user` '
                 . 'INNER JOIN `al2jt_city` AS `city` ON `u`.`id_al2jt_city` = `city`.`id` '
-                . 'SET `u`.`lastname` = :lastname, `u`.`firstname` = :firstname, `u`.`phoneNumber` = :phoneNumber, `u`.`address` = :address, `u`.`mail` = :mail, `u`.`id_al2jt_city` = :id_al2jt_city, `c`.`name` = :name, `c`.`siret` = :siret, `c`.`presentationPhoto` = :presentationPhoto, `c`.`leader` = :leader, `c`.`numberOfEmploy` = :numberOfEmploy  '
+                . 'SET `u`.`lastname` = :lastname, `u`.`firstname` = :firstname, `c`.`phoneNumber` = :phoneNumber, `c`.`address` = :address, `u`.`mail` = :mail, `u`.`id_al2jt_city` = :id_al2jt_city, `c`.`name` = :name, `c`.`siret` = :siret, `c`.`presentationPhoto` = :presentationPhoto, `c`.`leader` = :leader, `c`.`numberOfEmploy` = :numberOfEmploy  '
                 . 'WHERE `u`.`id` = :id ';
         $queryExecute = $this->db->prepare($query);
 

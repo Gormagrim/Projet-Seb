@@ -14,7 +14,7 @@ include_once '../controllers/navbarSecondaryCtrl.php';
         <link rel="stylesheet" href="../assets/css/style.css" />
         <link rel="stylesheet" href="../assets/css/admin.css" />
         <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet" />
-        <title>Projet BTP</title>
+        <title>izi.travaux.com/admin</title>
     </head>
     <body>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light navbarSecondary">

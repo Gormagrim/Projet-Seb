@@ -1,21 +1,40 @@
 <?php
+/*
+ * VIEW de mon controlleur inserParticularUserCtrl.php
+ * 
+ */
 include_once 'navbarSecondary.php';
+/*
+ * on utilise require pour arrêter le script en cas d'erreur et once pour vérifier si le fichier a déjà été inclus, et si c'est le cas, ne l'inclut pas une deuxième fois. 
+ */
 require_once 'regex.php';
+/*
+ * Attention il ne faut pas oublier d'inclure mon model particularUser et mon controller addParticularUserCtrl pour pouvoir éxecuter ma requête
+ * J'inclue également mon model database qui me permet de me connecter à la base de données.
+ * Les autres classes des différents models hériteront de cette classe du model database grâce au mot-clé extends
+ */
 require_once 'models/database.php';
 require_once 'models/city.php';
 require_once 'models/particularUsers.php';
 require_once 'models/company.php';
 require_once 'controllers/inserParticularUserCtrl.php';
 
-$page = $_SERVER['PHP_SELF'];
 ?>
-
 
 <div class="registrationSection row">
     <div class="offset-1 col-10 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-3 col-lg-6 registration">
         <?php
-// On affiche le formulaire si rien a été envoyé ou qu'il y a une erreur dans ce qui à été saisi.
+        /*
+         * je gère l'affichage de mon formulaire : 
+         * si le calcul de $_POST est égal à 0 ou si il y a des erreurs dans mon tableau d'erreur 
+         * alors je laisse afficher le formulaire (sinon j'affiche les informations renseignées). 
+         * 
+         */
         if (count($_POST) == 0 || count($formErrors) > 0) {
+            /*
+             * je vérifie également avec mon tableau d'erreur que ma requête SQL s'est bien éxecutée, 
+             * si ce n'est pas le cas j'affiche mon message d'erreur
+             */
             if (isset($formErrors['add'])) {
                 ?>
                 <p><?= $formErrors['add'] ?></p>
@@ -58,7 +77,7 @@ $page = $_SERVER['PHP_SELF'];
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                                        <label class="d-flex justify-content-start" for="lastname">Nom de famille</label>
+                                        <label class="d-flex justify-content-start" for="lastname">Nom de famille</label>                                   
                                         <input class="form-control lastname <?= isset($formErrors['lastname']) ? 'is-invalid' : (isset($lastname) ? 'is-valid' : '') ?>" type="text" name="lastname" id="lastname" placeholder="Doe" value="<?= isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>" <?= $isProfessionnal ? '' : 'required' ?> />
                                         <?php if (isset($formErrors['lastname'])) {
                                             ?>
@@ -230,12 +249,17 @@ $page = $_SERVER['PHP_SELF'];
             </div>
         </div>
     </div>
-<div class="row">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-        <button type="button" class="btn registrationBtn" onclick="history.go(-1)">Retour</button>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <button type="button" class="btn registrationBtn" onclick="history.go(-1)">Retour</button>
+        </div>
     </div>
-</div>
-<?php } else { ?>
+    <?php
+    /*
+     * Si les vérifications de mon formulaire se sont bien éxecutées alors j'affiche le message de succès
+     */
+} else {
+    ?>
     <?php if (isset($formSuccess)) { ?>
         <p><?= $formSuccess ?></p>
     <?php } ?>
@@ -243,8 +267,6 @@ $page = $_SERVER['PHP_SELF'];
         <h2>Votre inscription a été validée</h2>
     </div>
     <button type="button" class="btn btn-outline-warning registrationBtn" onclick="javascript:location.href = 'connection.php'">Suivant</button>
-
-
 <?php } ?>
 </div>
 </div>

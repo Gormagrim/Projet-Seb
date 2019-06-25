@@ -60,7 +60,7 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                         <?php } ?>
                     </div>
                     <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6">
-                        <label for="file"><span class="orange">.</span>Fichier (.jpg ou .jpeg)</label>
+                        <label for="file"><span class="orange">.</span>Fichier (.png, .jpg ou .jpeg)</label>
                         <input class="form-control" type="file" name="file" id="file" />
                         <?php if (isset($formErrors['file'])) { ?>
                             <div class="alert-danger">
@@ -86,10 +86,10 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                         <label for="category"><span class="orange">.</span>Type de chantier</label>
                         <select class="form-control" name="category" id="category" required>
                             <?php foreach ($getCategory as $category) { ?>
-                            <option value="<?= $category->id ?>"><?= $category->category ?></option>
+                                <option value="<?= $category->id ?>"><?= $category->category ?></option>
                             <?php } ?>
                         </select>
-                        
+
                         <select class="form-control" name="productionType" id="productionType" required>
                         </select>
                     </div>
@@ -110,45 +110,49 @@ if (count($_POST) == 0 || count($formErrors) > 0) {
                 <input class="form-control cityId" type="hidden" name="cityId" id="cityId" placeholder="" value=""  />  
                 <input type="submit" name="submit" value="Ajouter un chantier" class="btn btn-outline-warning registrationBtn" />
             </form>
-            <?php
-            /* Pour l'affichage des données si tout a été validé
-             * On affiche une alerte verte pour prévenir que l'utilisateur que tout s'est bien passé:
-             * On affiche les variables lastname , firstname et title car elle contiennent la saisie de l'utilisateur si tout s'est bien passée
-             * On utilise la balises br uniquement dans un p
-             * On a ajouté un bouton de retour au formulaire pour simplifier la navigation.
-             */
-        } else {
-            ?>
-            <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 firstCard">
-                <div class="alert-success realisationTop">
-                    <p>Vos données ont bien été envoyées et votre fichier a bien été transmis.</p>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
-                    <div class="card mb-3">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src="<?= $photo->photo ?>" class="card-img firstImg" title="Travaux de l'entreprise <?= $company->name ?>" alt="Exemple de travaux">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h4 class="card-title"><?= $company->name ?></h4>
-                                    <h5 class="card-title"><?= $production->title ?></h5>
-                                    <p class="card-text"><?= $production->descriptionText ?></p>
-                                    <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/entrepriseTest.php'">Voir plus</button>
-                                    <div class="socialMedia">
-                                        <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
-                                        <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
-                                        <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
-                                    </div>
-                                </div>
+        </div>
+    </div>
+    <button type="button" class="btn registrationBtn useraccountModify" onclick="history.go(-1)">Retour</button>
+
+    <?php
+    /* Pour l'affichage des données si tout a été validé
+     * On affiche une alerte verte pour prévenir que l'utilisateur que tout s'est bien passé:
+     * On affiche les variables lastname , firstname et title car elle contiennent la saisie de l'utilisateur si tout s'est bien passée
+     * On utilise la balises br uniquement dans un p
+     * On a ajouté un bouton de retour au formulaire pour simplifier la navigation.
+     */
+} else {
+    ?>
+    <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 firstCard">
+        <div class="alert-success realisationTop">
+            <p>Vos données ont bien été envoyées et votre fichier a bien été transmis.</p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 firstCard">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="<?= $photo->photo ?>" class="card-img firstImg" title="Travaux de l'entreprise <?= $company->name ?>" alt="Exemple de travaux">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title"><?= $company->name ?></h4>
+                            <h5 class="card-title"><?= $production->title ?></h5>
+                            <p class="card-text"><?= $production->descriptionText ?></p>
+                            <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/entrepriseTest.php'">Voir plus</button>
+                            <div class="socialMedia">
+                                <a href="#"><i class="fas fa-sun fa-2x" title="J'aime"></i></a>
+                                <a href="#"><i class="fas fa-snowflake fa-2x" title="J'aime moins"></i></a>
+                                <a href="#"><i class="far fa-plus-square fa-2x" title="Ajouter aux favoris"></i></a>
                             </div>
                         </div>
                     </div>
-                    <a href="downloadFiles.php" title="Retour vers le formulaire" class="btn btn-info realisationBtn">Ajouter une nouvelle réalisation</a>
                 </div>
             </div>
-        <?php } ?>
+            <a href="downloadFiles.php" title="Retour vers le formulaire" class="btn btn-info realisationBtn">Ajouter une nouvelle réalisation</a>
+        </div>
     </div>
+<?php } ?>
 
 
-    <?php include_once '../footerSecondary.php'; ?>
+
+<?php include_once '../footerSecondary.php'; ?>
