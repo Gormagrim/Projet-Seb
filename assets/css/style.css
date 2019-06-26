@@ -541,8 +541,8 @@ i:hover {
     float: right;
 }
 
-.likedProduction {
-    color: #dc143c
+i .likedProduction {
+    color: firebrick;
 }
 
 /* sideMenu */
@@ -891,4 +891,32 @@ img.proUserPresentationPhoto {
 
 .proAccModif {
     margin-bottom: 18em;
+}
+
+/* erreur-404.php */
+
+h1.erreur, h2.erreur {
+    margin-top: 10rem;
+    text-align: center;
+    color: #fff;
+}
+
+h1.erreur {
+    font-size: 5rem;
+}
+
+h2.erreur404 {
+    margin-top: 2rem;
+    color: #ffa000;
+}
+
+p.erreur {
+    margin-bottom: 18.2rem;
+    color: #ffa000;
+    text-align: center;
+    font-size: 2rem;
+}
+
+body#erreur404 {
+    background-image: url(../img/erreur404.jpg);
 }

@@ -30,7 +30,7 @@ require_once 'controllers/indexCtrl.php';
         <p>Vous voulez comparer les réalisations et trouver le pro que vous cherchez ?</p>
         <p>Besoin d'un devis?</p>
         <p><span class="orangeText"><?= $countParticularUsers->user ?></span> particuliers sont inscris, rejoignez les !</p>
-        <button type="button" class="btn registrationBtn" name="particular" onclick="javascript:location.href = 'registration.php?type=particulier'">S'inscrire</button>
+        <button type="button" class="btn registrationBtn" name="particular" onclick="javascript:location.href = 'inscription-particulier.html'">S'inscrire</button>
     </div>
     <div class="col-12 col-sm-12 col-md-12 offset-lg-2 col-lg-3 Professionnal">
         <h2><span class="orange">.</span>PROFESSIONNELS :</h2>
@@ -39,7 +39,7 @@ require_once 'controllers/indexCtrl.php';
         <p>Venez exposer votre savoir-faire et gagner en renommée.</p>
         <p>Rejoignez l'une des plus grande communauté de votre région.</p>
         <p><span class="orangeText"><?= $countProfessionnalUser->user ?></span> entreprises sont déjà en ligne et <span class="orangeText"><?= $getNumberOfProduction->number ?></span> chantiers, n'attendez plus !</p>
-        <button type="button" class="btn registrationBtn" name="professionnal" onclick="javascript:location.href = 'registration.php?type=professionnel'">S'inscrire</button>
+        <button type="button" class="btn registrationBtn" name="professionnal" onclick="javascript:location.href = 'inscription-professionnel.html'">S'inscrire</button>
     </div>
 </div>
 <?php include_once 'footer.php'; ?>

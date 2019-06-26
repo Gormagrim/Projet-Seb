@@ -16,8 +16,8 @@ include_once 'navbarProfessionnal.php';
             <input type="submit" name="deleteProUser" class="btn btn-outline-warning registrationBtn" value="Confirmer" />
         </form>
     </div>
-    <button type="button" class="btn registrationBtn useraccountModify" onclick="history.go(-1)">Retour</button>
 </div>
+<button type="button" class="btn registrationBtn useraccountModify" onclick="history.go(-1)">Retour</button>
 
 <?php include_once '../footerSecondary.php'; ?>
 

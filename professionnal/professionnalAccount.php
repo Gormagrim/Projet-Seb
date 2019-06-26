@@ -66,9 +66,9 @@ include_once 'navbarProfessionnal.php';
                     <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Nombre d'employés : </span><?= $professionnalUserInfo->numberOfEmploy ?></p>
                 </div>
             <?php } ?>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Nombre de chantiers sur le site : </span></p>
-                </div>
+<!--            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Nombre de chantiers sur le site : </span></p>
+            </div>-->
         </div>
         <div class="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10">
             <p class="companyCard"><a href="/professionnal/professionnalEstimate.php"><span class="orange">.</span>Devis envoyés</a></p>

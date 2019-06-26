@@ -17,15 +17,15 @@ $page = $_SERVER['PHP_SELF'];
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left sideBarMenu" style="display:none" id="mySidebar">
     <button class="w3-bar-item slide-button w3-large slideMenuCloseBtn" onclick="slide_close()">Fermer le Menu &times;</button>
     <p><span class="orange">.</span>Recherches par :</p>
-    <a href="/partUserCompany.php" class="w3-bar-item slide-button"><span class="orange">.</span>Entreprises</a>
-    <a href="/partUserProduction.php" class="w3-bar-item slide-button"><span class="orange">.</span>Réalisations</a>
-    <a href="/sectorSearch.php" class="w3-bar-item slide-button"><span class="orange">.</span>Secteurs</a>
+    <a href="/recherche-entreprise.html" class="w3-bar-item slide-button"><span class="orange">.</span>Entreprises</a>
+    <a href="/recherche-travaux.html" class="w3-bar-item slide-button"><span class="orange">.</span>Réalisations</a>
+    <a href="/recherche-secteur.html" class="w3-bar-item slide-button"><span class="orange">.</span>Secteurs</a>
     <p><span class="orange">.</span>Mon activité :</p>
     <a href="/estimate.php" class="w3-bar-item slide-button"><span class="orange">.</span>Mes devis</a>
     <a href="/userWorks.php" class="w3-bar-item slide-button"><span class="orange">.</span>Mes travaux</a>
     <a href="/userFavorites.php" class="w3-bar-item slide-button"><span class="orange">.</span>Mes favoris</a>
     <a href="/userContact.php" class="w3-bar-item slide-button"><span class="orange">.</span>Mes contacts</a>
-    <p><a href="/userAccount.php"><span class="orange">.</span>Mon compte</a></p>
+    <p><a href="/mon-compte.html"><span class="orange">.</span>Mon compte</a></p>
 </div>
 <div id="main">
     <div class="row">
@@ -54,7 +54,11 @@ $page = $_SERVER['PHP_SELF'];
                 </div>
             </div>
             <div class="socialMedia">
+                <?php if ($checkLikeProduction->number == 0) { ?>
                 <i title="J'aime" id="placeLike_<?= $getProductionInformation->id ?>" data-like ="<?= $getProductionInformation->id ?>" class="fas fa-sun fa-2x likeProduction likeIcon"></i>
+                <?php } elseif($checkLikeProduction->number == 1) { ?>
+                <i title="J'aime" id="placeLike_<?= $getProductionInformation->id ?>" data-like ="<?= $getProductionInformation->id ?>" class="fas fa-sun fa-2x likeProduction likedProduction likeIcon"></i>
+                <?php } ?>
                 <span><p></p></span>
                 <p title="J'aime moins"><i id="dislikeProduction" data-like="<?= $getProductionInformation->id ?>" class="fas fa-snowflake fa-2x dislikeProduction dislikeIcon"></i></p>
                 <span><p></p></span>

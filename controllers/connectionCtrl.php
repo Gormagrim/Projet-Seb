@@ -35,7 +35,7 @@ if (count($_POST) > 0) {
                 session_start();
                 $_SESSION['id'] = $hash->id;
                 if ($hash->id_al2jt_userGroup == 2) {
-                    header('Location: ../particularUser.php');
+                    header('Location: bienvenue.html');
                 } elseif ($hash->id_al2jt_userGroup == 3) {
                     header('Location: ../professionnal/professionnalUser.php');
                 } elseif ($hash->id_al2jt_userGroup == 1) {

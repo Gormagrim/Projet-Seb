@@ -64,10 +64,10 @@ $(function () {
         $.post('../../controllers/productionDetailCtrl.php',{
             placeLike: $(this).attr('data-like')
         }, function(data){
-            $('#placeLike_' + data.id).removeClass('likeProduction');
-            $('#placeLike_' + data.id).addClass('likedProduction');
+            var like = $('#placeLike_' + data.id);
+            $(like).removeClass('likeProduction');
+            $(like).addClass('likedProduction'); 
         },
         'JSON');
     });
-
 });

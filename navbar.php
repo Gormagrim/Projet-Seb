@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-warning hightBtn" id="indexConnexionBtn" onclick="javascript:location.href = 'connection.php'">Connexion</button>
+                        <button type="button" class="btn btn-outline-warning hightBtn" id="indexConnexionBtn" onclick="javascript:location.href = 'connexion.html'">Connexion</button>
                     </li>
                 </ul>
             </div>

@@ -20,14 +20,14 @@ if ($page == '/registration.php' || $page == '/connection.php' || $page == '/men
         </head>
         <body>
             <nav class="navbar fixed-top navbar-expand-lg navbar-light navbar-dark solid navbarSecondary">
-                <a href="/index.php" class="navbar-left">izi<span class="orange">.</span>travaux<span class="orange">.</span>com</a>
+                <a href="/accueuil.html" class="navbar-left">izi<span class="orange">.</span>travaux<span class="orange">.</span>com</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <button type="button" class="btn btn-outline-warning" id="connexionBtn" onclick="javascript:location.href = 'connection.php'">Connexion</button>
+                            <button type="button" class="btn btn-outline-warning" id="connexionBtn" onclick="javascript:location.href = 'connexion.html'">Connexion</button>
                         </li>
                         <li class="nav-item dropdown hideMenu">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOne" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

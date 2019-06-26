@@ -17,7 +17,8 @@ class likeProduction extends database {
         $queryExecute = $this->db->prepare($query);
         $queryExecute->bindValue(':id_al2jt_production', $this->id_al2jt_production, PDO::PARAM_INT);
         $queryExecute->bindValue(':id_al2jt_user', $this->id_al2jt_user, PDO::PARAM_INT);
-        return $queryExecute->execute();  
+        $queryExecute->execute();
+        return $this->db->lastInsertId();
     }
     
     public function checkLikeProduction() {
