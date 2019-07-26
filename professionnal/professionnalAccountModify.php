@@ -79,16 +79,6 @@ include_once '../controllers/professionnalAccountModifyCtrl.php';
                             </div>
                         <?php } ?>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                        <label for="mail">Adresse mail de l'entreprise</label>
-                        <input class="form-control <?= isset($formErrors['mail']) ? 'is-invalid' : (isset($mail) ? 'is-valid' : '') ?>" type="email" name="mail" id="mail" placeholder="exemple@mail.com" value="<?= count($formErrors) > 0 ? htmlspecialchars($_POST['mail']) : $professionnalUserInfo->mail ?>" required />
-                        <?php if (isset($formErrors['mail'])) {
-                            ?>
-                            <div class="invalid-feedback">
-                                <p><?= $formErrors['mail'] ?></p>
-                            </div>
-                        <?php } ?>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">

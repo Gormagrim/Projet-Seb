@@ -1,3 +1,4 @@
+//Js pour le side Menu basé sur w3school
 function slide_open() {
     document.getElementById("main").style.marginLeft = "15%";
     document.getElementById("mySidebar").style.width = "15%";
@@ -9,7 +10,7 @@ function slide_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("openNav").style.display = "inline-block";
 }
-
+    // JS pour le menu de la page sectorsearch
 $(function () {
     $('.sectorSearchTitle').click(function () {
         $('.hideOne').hide();

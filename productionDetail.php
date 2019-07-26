@@ -9,7 +9,9 @@ include_once 'models/company.php';
 include_once 'models/photo.php';
 include_once 'models/production.php';
 include_once 'models/type.php';
+include_once 'models/dislikeProduction.php';
 include_once 'models/likeProduction.php';
+include_once 'models/favoriteProduction.php';
 include_once 'controllers/productionDetailCtrl.php';
 $page = $_SERVER['PHP_SELF'];
 ?>
@@ -53,17 +55,13 @@ $page = $_SERVER['PHP_SELF'];
                     <p><span class="orange">.</span><span class="accountDetails">Descriptif des travaux réalisés : </span><br /><br /><?= $getProductionInformation->descriptionText ?></p>
                 </div>
             </div>
-            <div class="socialMedia">
-                <?php if ($checkLikeProduction->number == 0) { ?>
-                <i title="J'aime" id="placeLike_<?= $getProductionInformation->id ?>" data-like ="<?= $getProductionInformation->id ?>" class="fas fa-sun fa-2x likeProduction likeIcon"></i>
-                <?php } elseif($checkLikeProduction->number == 1) { ?>
-                <i title="J'aime" id="placeLike_<?= $getProductionInformation->id ?>" data-like ="<?= $getProductionInformation->id ?>" class="fas fa-sun fa-2x likeProduction likedProduction likeIcon"></i>
-                <?php } ?>
-                <span><p></p></span>
-                <p title="J'aime moins"><i id="dislikeProduction" data-like="<?= $getProductionInformation->id ?>" class="fas fa-snowflake fa-2x dislikeProduction dislikeIcon"></i></p>
-                <span><p></p></span>
-                <p title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></p>
-                <span><p></p></span>
+            <div class="media">
+                <i title="<?= $checkLikeProduction->number == 1 ? 'J\'aime déjà' : 'J\'aime' ?>" id="placeLike_<?= $getProductionInformation->id ?>" data-like ="<?= $getProductionInformation->id ?>" class="fas fa-sun fa-2x likeProduction <?= $checkLikeProduction->number == 1 ? 'likedProduction' : '' ?> likeIcon"></i>
+                <span class="badge badge-primary badge-pill <?= $checkLikeProduction->number == 1 ? 'likedProductionSpan' : '' ?>"><?= $numberOfLike->likeNumber ?></span>
+                <i title="<?= $checkDislikeProduction->number == 1 ? 'J\'aime moins...' : 'J\'aime moins' ?>" id="placeDislike_<?= $getProductionInformation->id ?>" data-dislike="<?= $getProductionInformation->id ?>" class="fas fa-snowflake fa-2x dislikeProduction <?= $checkDislikeProduction->number == 1 ? 'dislikedProduction' : '' ?> dislikeIcon"></i>
+                <span class="badge badge-primary badge-pill <?= $checkDislikeProduction->number == 1 ? 'dislikedProductionSpan' : '' ?>"><?= $numberOfDislike->number ?></span>
+                <i title="<?= $checkFavoriteProduction->number == 1 ? 'Déjà favoris' : 'Ajouter à mes favoris' ?>" id="placeFavorite_<?= $getProductionInformation->id ?>" data-favorite="<?= $getProductionInformation->id ?>" class="far fa-plus-square fa-2x <?= $checkFavoriteProduction->number == 1 ? 'isFavorite' : '' ?> addFavorite"></i>
+                <span class="badge badge-primary badge-pill <?= $checkFavoriteProduction->number == 1 ? 'isFavoriteSpan' : '' ?>"><?= $numberOfFavorite->number ?></span>
             </div>
             <button type="button" class="btn registrationBtn" onclick="history.go(-1)">Retour</button>
         </div>

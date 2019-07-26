@@ -156,7 +156,11 @@ h2 {
 
 .orangeText {
     color: #ffa000;
-    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.greenText {
+    color: #2f4f4f;
     font-size: 1.5rem;
 }
 
@@ -501,15 +505,7 @@ h5.card-title {
     z-index: 100;
     margin-top: 2.5em;
     margin-left: 0.5em;
-}
-
-/* VOIR SI JE GARDE LES HOVERS SUR LES PHOTOS... */
-.firstImg:hover, .secondImg:hover {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-    z-index: 999;
-    border-radius: 0;
-    box-shadow: 5px 5px 10px #403d39;
+    max-height: 18rem;
 }
 
 .bg-white {
@@ -522,8 +518,8 @@ h5.card-title {
 }
 
 .cardBtn {
-    margin-top: 10em;
-    margin-left: 5em;
+    margin-top: 2em;
+    margin-left: 2em;
 }
 
 i {
@@ -541,8 +537,60 @@ i:hover {
     float: right;
 }
 
-i .likedProduction {
-    color: firebrick;
+.likedProduction {
+    color: firebrick !important;
+}
+
+.likedProductionSpan {
+    background-color: firebrick !important;
+}
+
+.dislikedProduction {
+    color : lightblue !important;
+}
+
+.dislikedProductionSpan {
+    background-color: lightblue !important;
+}
+
+.isFavorite {
+    color : lightgreen !important;
+}
+
+.isFavoriteSpan {
+    background-color: lightgreen !important;
+}
+
+.likedCompany {
+    color: firebrick !important;
+}
+
+.likedCompanySpan {
+    background-color: firebrick !important;
+}
+
+.dislikedCompany {
+    color : lightblue !important;
+}
+
+.dislikedCompanySpan {
+    background-color: lightblue !important;
+}
+
+.isFavoriteComp {
+    color : lightgreen !important;
+}
+
+.isFavoriteCompSpan {
+    background-color: lightgreen !important;
+}
+
+.fa-minus-square {
+    margin-right: 5rem;
+}
+
+a.production {
+    color: #ffa000;
 }
 
 /* sideMenu */
@@ -608,7 +656,8 @@ i .likedProduction {
 /* entrepriseTest.php */
 
 .card {
-    min-height: 30rem;
+    max-height: 30rem;
+    min-height: 20rem;
 }
 
 .bigCompanyCard {
@@ -830,6 +879,15 @@ div.socialMedia {
     z-index: 998;
 }
 
+.badge-primary {
+    background-color: #ffa000;
+}
+
+.media {
+    margin-top: 0.5rem;
+    float: right;
+}
+
 /* pofessionnalUser.php */
 
 .welcomePro {
@@ -855,8 +913,9 @@ a.estimateSent:hover {
 /* professionnalAccount.php */
 
 img.proUserPresentationPhoto {
-    width: 50rem;
-    display:block;
+    max-width: 50rem;
+    max-height: auto;
+    display: block;
     justify-content: center;
     margin-right:auto;
     margin-left:auto;

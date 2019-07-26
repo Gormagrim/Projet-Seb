@@ -4,7 +4,7 @@ $professionnalUsers = new particularUsers();
 $company = new company();
 $production = new production();
 $photo = new photo();
-$fovoriteCompany = new fovoriteCompany();
+$favoriteCompany = new favoriteCompany();
 
 if (!empty($_SESSION['id'])) {
     $professionnalUsers->id = $_SESSION['id'];

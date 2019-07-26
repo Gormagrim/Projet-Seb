@@ -42,14 +42,6 @@ require_once 'controllers/typeSearchCtrl.php';
                                 <h5 class="card-title">Chantier réalisé à <?= $smallProduction->city ?> (<?= $smallProduction->zipcode ?>) par l'entreprise <?= $smallProduction->name ?></h5>
                                 <h5 class="card-title">De type : <?= $smallProduction->category ?> / <?= $smallProduction->type ?></h5>
                                 <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/productionDetail.php?id=<?= $smallProduction->id ?>'">Voir plus</button>
-                                <div class="socialMedia">
-                                    <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
-                                    <span><p></p></span>
-                                    <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
-                                    <span><p></p></span>
-                                    <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
-                                    <span><p></p></span>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -22,6 +22,9 @@
                         <a class="nav-link" href="/professionnal/professionnalAccount.php">Mon compte</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/professionnal/professionnalProduction.php">Mes chantiers</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/professionnal/downloadFiles.php">Ajouter un chantier</a>
                     </li>
                     <li class="nav-item">

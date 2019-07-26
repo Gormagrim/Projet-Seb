@@ -66,7 +66,61 @@ $(function () {
         }, function(data){
             var like = $('#placeLike_' + data.id);
             $(like).removeClass('likeProduction');
-            $(like).addClass('likedProduction'); 
+            $(like).addClass('likedProduction');
+            $(like).addClass('animated flip');
+        },
+        'JSON');
+    });
+    
+    /* Gestion AJAX des dislikes pour les chantiers */
+    $('.dislikeIcon').on('click',function () {
+        $.post('../../controllers/productionDetailCtrl.php',{
+            placeDislike: $(this).attr('data-dislike')
+        }, function(data){
+            var dislike = $('#placeDislike_' + data.id);
+            $(dislike).removeClass('dislikeProduction');
+            $(dislike).addClass('DislikedProduction');
+            $(dislike).addClass('animated flip');
+        },
+        'JSON');
+    });
+    
+    /* Gestion AJAX des favoris pour les chantiers */
+    $('.addFavorite').on('click',function () {
+        $.post('../../controllers/productionDetailCtrl.php',{
+            placeFavorite: $(this).attr('data-favorite')
+        }, function(data){
+            var favorite = $('#placeFavorite_' + data.id);
+        },
+        'JSON');
+    });
+    
+    /* Gestion AJAX des likes pour les entreprises */
+    $('.likeComp').on('click',function () {
+        $.post('../../controllers/companyFromPartUserCtrl.php',{
+            companyLike: $(this).attr('data-companyLike')
+        }, function(data){
+            
+        },
+        'JSON');
+    });
+    
+    /* Gestion AJAX des dislikes pour les entreprises */
+    $('.dislikeComp').on('click',function () {
+        $.post('../../controllers/companyFromPartUserCtrl.php',{
+            companyDislike: $(this).attr('data-companyDislike')
+        }, function(data){
+
+        },
+        'JSON');
+    });
+    
+    /* Gestion AJAX des favoris pour les entreprises */
+    $('.addFavoriteComp').on('click',function () {
+        $.post('../../controllers/companyFromPartUserCtrl.php',{
+            favoriteComp: $(this).attr('data-favoriteCompany')
+        }, function(data){
+            var favorite = $('#placeFavorite_' + data.id);
         },
         'JSON');
     });

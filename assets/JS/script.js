@@ -1,7 +1,8 @@
 $(document).ready(function () {
-    // Transition effect for navbar 
+    // Effet de transition pour la navbar de la page d'accueuil
     $(window).scroll(function () {
-        // checks if window is scrolled more than 500px, adds/removes solid class
+        // Je vérifie si le scrolle est supérieur à 850, si c'est le cas j'ajoute la classe solid à ma navbar (qui est en transprente de base dans le css)
+        // même chose pour le bouton de connection qui change de couleur.
         if ($(this).scrollTop() > 850) {
             $('.navbar').addClass('solid');
             $('.btn-outline-warning').removeClass('hightBtn');

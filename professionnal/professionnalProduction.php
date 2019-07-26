@@ -9,6 +9,9 @@ include_once '../models/company.php';
 include_once '../models/photo.php';
 include_once '../models/production.php';
 include_once '../models/type.php';
+include_once '../models/likeProduction.php';
+include_once '../models/dislikeProduction.php';
+include_once '../models/favoriteProduction.php';
 include_once '../controllers/professionnalProductionCtrl.php';
 $page = $_SERVER['PHP_SELF'];
 ?>
@@ -27,10 +30,13 @@ $page = $_SERVER['PHP_SELF'];
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
+                                <div class="socialMedia">
+                                    <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = 'professionnalProdDetail.php?id=<?= $production->id ?>'">Voir plus</button>
+                                </div>
                                 <h4 class="card-title"><?= $production->title ?></h4>
                                 <h3 class="card-title">Entreprise <?= $production->name ?></h3>
                                 <h5 class="card-title">Chantier réalisé à <?= $production->city ?> (<?= $production->zipcode ?>) de type : <?= $production->category ?> / <?= $production->type ?></h5>
-                                <p class="card-text"><?= substr ($production->descriptionText,0 , 400) ?></p>
+                                <p class="card-text"><?= substr($production->descriptionText, 0, 400) ?></p>
                                 <?php if ($page == '/userFavorites.php' || $page == '/partUserProduction.php') { ?>
                                     <button type="button" class="btn btn-outline-warning registrationBtn cardBtn" onclick="javascript:location.href = '/realisationTest.php'">Voir plus</button>
                                 <?php } else { ?>
@@ -41,14 +47,6 @@ $page = $_SERVER['PHP_SELF'];
                                         </div>
                                     </div>
                                 <?php } ?>
-                                <div class="socialMedia">
-                                    <a href="#" title="J'aime"><i class="fas fa-sun fa-2x"></i></a>
-                                    <span><p></p></span>
-                                    <a href="#" title="J'aime moins"><i class="fas fa-snowflake fa-2x"></i></a>
-                                    <span><p></p></span>
-                                    <a href="#" title="Ajouter aux favoris"><i class="far fa-plus-square fa-2x"></i></a>
-                                    <span><p></p></span>
-                                </div>
                             </div>
                         </div>
                     </div>

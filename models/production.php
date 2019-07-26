@@ -12,6 +12,7 @@ class production extends database {
     public $photo = '';
     public $description = '';
     public $category = '';
+    public $active = 0;
 
     public function __construct() {
         parent::__construct();
@@ -79,8 +80,19 @@ class production extends database {
     }
     
     public function deleteProduction() {
-        $query = 'DELETE FROM `al2jt_production` '
-                . 'WHERE `id` = :id';
+        $query = 'UPDATE `al2jt_production` '
+                . 'SET `active` = 0 '
+                . 'WHERE `id` = :id ';
+        
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $queryExecute->execute();
+    }
+    
+    public function activeProduction() {
+        $query = 'UPDATE `al2jt_production` '
+                . 'SET `active` = 1 '
+                . 'WHERE `id` = :id ';
         
         $queryExecute = $this->db->prepare($query);
         $queryExecute->bindValue(':id', $this->id, PDO::PARAM_INT);
@@ -88,14 +100,15 @@ class production extends database {
     }
     
     public function searchProduction($search) {
-        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
+        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `u`.`active`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
                 . 'FROM `al2jt_production` AS `p` '
                 . 'INNER JOIN `al2jt_company` AS `comp` ON `comp`.`id` = `p`.`id_al2jt_company` '
                 . 'INNER JOIN `al2jt_photo` AS `photo` ON `p`.`id` = `photo`.`id_al2jt_production` '
                 . 'INNER JOIN `al2jt_typeOfProduction` AS `t` ON `t`.`id` = `p`.`id_al2jt_typeOfProduction` '
                 . 'INNER JOIN `al2jt_city` AS `c` ON `c`.`id` = `p`.`id_al2jt_city` '
                 . 'INNER JOIN `al2jt_category` AS `cat` ON `t`.`id_al2jt_category` = `cat`.`id` '
-                . 'WHERE `t`.`type` LIKE :productionSearch';
+                . 'INNER JOIN `al2jt_user` AS `u` ON `comp`.`id_al2jt_user` = `u`.`id` '
+                . 'WHERE `t`.`type` LIKE :productionSearch AND `u`.`active` = 1 ';
         
         $queryExecute = $this->db->prepare($query);
         $queryExecute->bindValue(':productionSearch', $search.'%', PDO::PARAM_STR);
@@ -104,14 +117,15 @@ class production extends database {
     }
     
     public function searchProductionByZipcode($search) {
-        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
+        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `u`.`active`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
                 . 'FROM `al2jt_production` AS `p` '
                 . 'INNER JOIN `al2jt_company` AS `comp` ON `comp`.`id` = `p`.`id_al2jt_company` '
                 . 'INNER JOIN `al2jt_photo` AS `photo` ON `p`.`id` = `photo`.`id_al2jt_production` '
                 . 'INNER JOIN `al2jt_typeOfProduction` AS `t` ON `t`.`id` = `p`.`id_al2jt_typeOfProduction` '
                 . 'INNER JOIN `al2jt_city` AS `c` ON `c`.`id` = `p`.`id_al2jt_city` '
+                . 'INNER JOIN `al2jt_user` AS `u` ON `comp`.`id_al2jt_user` = `u`.`id` '
                 . 'INNER JOIN `al2jt_category` AS `cat` ON `t`.`id_al2jt_category` = `cat`.`id` '
-                . 'WHERE `c`.`zipcode` LIKE :zipSearch';
+                . 'WHERE `c`.`zipcode` LIKE :zipSearch AND `u`.`active` = 1 ';
         
         $queryExecute = $this->db->prepare($query);
         $queryExecute->bindValue(':zipSearch', $search.'%', PDO::PARAM_STR);
@@ -120,14 +134,15 @@ class production extends database {
     }
     
      public function searchProductionByType($search) {
-        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
+        $query = 'SELECT `p`.`id`, `p`.`title`, `u`.`active`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
                 . 'FROM `al2jt_production` AS `p` '
                 . 'INNER JOIN `al2jt_company` AS `comp` ON `comp`.`id` = `p`.`id_al2jt_company` '
                 . 'INNER JOIN `al2jt_photo` AS `photo` ON `p`.`id` = `photo`.`id_al2jt_production` '
                 . 'INNER JOIN `al2jt_typeOfProduction` AS `t` ON `t`.`id` = `p`.`id_al2jt_typeOfProduction` '
                 . 'INNER JOIN `al2jt_city` AS `c` ON `c`.`id` = `p`.`id_al2jt_city` '
+                . 'INNER JOIN `al2jt_user` AS `u` ON `comp`.`id_al2jt_user` = `u`.`id` '
                 . 'INNER JOIN `al2jt_category` AS `cat` ON `t`.`id_al2jt_category` = `cat`.`id` '
-                . 'WHERE `t`.`type` LIKE :type';
+                . 'WHERE `t`.`type` LIKE :type AND `u`.`active` = 1 ';
         
         $queryExecute = $this->db->prepare($query);
         $queryExecute->bindValue(':type', $search.'%', PDO::PARAM_STR);
@@ -139,7 +154,8 @@ class production extends database {
         $query = 'SELECT COUNT(`p`.`id`) AS `number` '
                 . 'FROM `al2jt_production` AS `p` '
                 . 'INNER JOIN `al2jt_company` AS `comp` ON `comp`.`id` = `p`.`id_al2jt_company` '
-                . 'INNER JOIN `al2jt_user` AS `u` ON `comp`.`id_al2jt_user` = `u`.`id` ';
+                . 'INNER JOIN `al2jt_user` AS `u` ON `comp`.`id_al2jt_user` = `u`.`id` '
+                . 'WHERE `p`.`active` = 1';
         
         $queryExecute = $this->db->prepare($query);
         $queryExecute->execute();
@@ -147,7 +163,7 @@ class production extends database {
     }
     
      public function getProductionList() {
-        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
+        $query = 'SELECT `p`.`id`, `p`.`title`, `comp`.`name`, `p`.`descriptionText`, `p`.`active`, `t`.`type`, `cat`.`category`, `photo`.`photo`, `photo`.`description`, `c`.`zipcode`, `c`.`city` '
                 . 'FROM `al2jt_production` AS `p` '
                 . 'INNER JOIN `al2jt_company` AS `comp` ON `comp`.`id` = `p`.`id_al2jt_company` '
                 . 'INNER JOIN `al2jt_photo` AS `photo` ON `p`.`id` = `photo`.`id_al2jt_production` '

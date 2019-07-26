@@ -75,16 +75,6 @@ if (!empty($_SESSION['id'])) {
                     $formErrors['phoneNumber'] = 'Veuillez renseigner votre numéro de téléphone.';
                 }
 
-                if (!empty($_POST['mail'])) {
-                    if (preg_match($patternMail, $_POST['mail'])) {
-                        $particularUsers->mail = htmlspecialchars($_POST['mail']);
-                    } else {
-                        $formErrors['mail'] = 'Votre adresse mail est incorrecte.';
-                    }
-                } else {
-                    $formErrors['mail'] = 'Veuillez renseigner votre adresse mail.';
-                }
-
                 if (count($formErrors) == 0) {
                     $particularUsers->id = $_SESSION['id'];
                     if ($updateUserProfil = $particularUsers->updateUserProfil()) {

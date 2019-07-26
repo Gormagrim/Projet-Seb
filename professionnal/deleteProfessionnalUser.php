@@ -11,7 +11,7 @@ include_once 'navbarProfessionnal.php';
 
 <div class="row">
     <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8 userCards" id="deleteProUser">
-        <h2>Voulez-vous vraiment supprimer votre compte ?</h2>
+        <h2>Voulez-vous vraiment desactiver votre compte ?</h2>
         <form action="deleteProfessionnalUser.php" method="POST">
             <input type="submit" name="deleteProUser" class="btn btn-outline-warning registrationBtn" value="Confirmer" />
         </form>

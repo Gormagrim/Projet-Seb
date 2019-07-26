@@ -36,6 +36,7 @@ include_once '../controllers/adminProUserListCtrl.php';
                             <th>Adresse</th>
                             <th>Code Postal</th>
                             <th>Ville</th>
+                            <th>Compte actif</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -55,7 +56,12 @@ include_once '../controllers/adminProUserListCtrl.php';
                                 <td><?= $user->address ?></td>
                                 <td><?= $user->zipcode ?></td>
                                 <td><?= $user->city ?></td>
-                                <td><a href="adminProUserList.php?id=<?= $user->id ?>">Supprimer le compte</a></td>
+                                <td><?= $user->active ?></td>
+                                <?php if($user->active == 1) { ?>
+                                <td><a href="adminProUserList.php?idDesactive=<?= $user->id ?>">Desactiver le compte</a></td>
+                                <?php } else { ?>
+                                <td><a href="adminProUserList.php?id=<?= $user->id ?>">Activer le compte</a></td>
+                                <?php } ?>
                             </tr>
                         <?php } ?>
                     </tbody>

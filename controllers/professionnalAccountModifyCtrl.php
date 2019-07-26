@@ -84,16 +84,6 @@ if (!empty($_SESSION['id'])) {
                 } else {
                     $formErrors['name'] = 'Veuillez renseigner le nom de votre entreprise.';
                 }
-                
-                if (!empty($_POST['mail'])) {
-                    if (preg_match($patternMail, $_POST['mail'])) {
-                        $professionnalUsers->mail = htmlspecialchars($_POST['mail']);
-                    } else {
-                        $formErrors['mail'] = 'L\'adresse mail est incorrect.';
-                    }
-                } else {
-                    $formErrors['mail'] = 'Veuillez renseigner votre adresse mail.';
-                }
 
                 if (!empty($_POST['siret'])) {
                     if (preg_match($patternSiretNumber, $_POST['siret'])) {

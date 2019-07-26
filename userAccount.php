@@ -28,7 +28,7 @@ include_once 'function.php';
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 userIdentity">
                     <a href="/modifier-mon-compte.html"><i class="fas fa-user-edit fa-2x Usermodification" title="Modifier mes infos"></i></a>
-                    <a href="/supprimer-mon-compte.html"><i class="fas fa-user-slash fa-2x Usermodification" title="Supprimer mon compte"></i></a>
+                    <a href="/desactiver-mon-compte.html"><i class="fas fa-user-slash fa-2x Usermodification" title="Desactiver mon compte"></i></a>
                 </div>
             </div>
             <div class="row">
@@ -43,18 +43,18 @@ include_once 'function.php';
             </div>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
-                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Adresse :</span> <?= $particularUserInfo->address ?></p>
+                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Adresse :</span> <span class="orangeText"><?= $particularUserInfo->address ?></span></p>
                 </div>
                 <div class="col-12 col-sm-5 col-md-5 col-lg-5">
-                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Ville :</span> <?= $particularUserInfo->zipcode . ' ' . $particularUserInfo->city ?></p>
+                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Ville :</span> <span class="orangeText"><?= $particularUserInfo->zipcode . ' ' . $particularUserInfo->city ?></span></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 offset-sm-1 col-sm-5 offset-md-1 col-md-5 offset-lg-1 col-lg-5">
-                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Numéro de téléphone :</span> <?= $particularUserInfo->phoneNumber ?></p>
+                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Numéro de téléphone :</span> <span class="orangeText"><?= $particularUserInfo->phoneNumber ?></span></p>
                 </div>
                 <div class="col-12 col-sm-5 col-md-5 col-lg-5">
-                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Adresse mail :</span> <?= $particularUserInfo->mail ?></p>
+                    <p class="companyCard"><span class="orange">.</span><span class="accountDetails">Adresse mail :</span> <span class="orangeText"><?= $particularUserInfo->mail ?></span></p>
                 </div>
             </div>
 

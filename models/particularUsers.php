@@ -28,6 +28,8 @@ class particularUsers extends database {
     public $password = '';
     public $id_al2jt_userGroup = 0;
     public $id_al2jt_city = 0;
+    public $active = 0;
+    public $cle = '';
     
     /*
      * Attention si je crée la méthode magique "contruct", je dois également crée la méthode magique "destruct"
@@ -45,8 +47,8 @@ class particularUsers extends database {
          * On utilise les marqueurs nominatifs pour récupèrer les données renseignés dans le formulaire par l'utilisateur
          * 
          */
-        $query = 'INSERT INTO `al2jt_user` (`lastname`, `firstname`, `phoneNumber`, `address`, `mail`, `password`, `id_al2jt_userGroup`, `id_al2jt_city`) '
-                . 'VALUES (:lastname, :firstname, :phoneNumber, :address, :mail, :password, :id_al2jt_userGroup, :id_al2jt_city) ';
+        $query = 'INSERT INTO `al2jt_user` (`lastname`, `firstname`, `phoneNumber`, `address`, `mail`, `password`, `id_al2jt_userGroup`, `id_al2jt_city`, `active`, `cle`) '
+                . 'VALUES (:lastname, :firstname, :phoneNumber, :address, :mail, :password, :id_al2jt_userGroup, :id_al2jt_city, :active, :cle) ';
         /*
          * Une requête préparée (prepare($query)), c'est en quelque sorte une requête stockée en mémoire (pour la session courante), et que l'on peut exécuter à loisir (execute())
          */
@@ -67,6 +69,8 @@ class particularUsers extends database {
         $queryExecute->bindValue(':password', $this->password, PDO::PARAM_STR);
         $queryExecute->bindValue(':id_al2jt_userGroup', $this->id_al2jt_userGroup, PDO::PARAM_INT);
         $queryExecute->bindValue(':id_al2jt_city', $this->id_al2jt_city, PDO::PARAM_INT);
+        $queryExecute->bindValue(':active', $this->active, PDO::PARAM_BOOL);
+        $queryExecute->bindValue(':cle', $this->cle, PDO::PARAM_STR);
         /*
          * return me sert à exécuter la requête. Je le fais sur $this->db->lastInsertId() pour récupérer la dernière id inserée dans la table car je n'ai pas souhaité faire de transaction.
          */
@@ -96,7 +100,7 @@ class particularUsers extends database {
      * @return object
      */
     public function getHashByMail() {
-        $query = 'SELECT `password`, `id`, `id_al2jt_userGroup` '
+        $query = 'SELECT `password`, `id`, `id_al2jt_userGroup`, `active`, `cle`  '
                 . 'FROM `al2jt_user` '
                 . 'WHERE `mail` = :mail';
         $queryExecute = $this->db->prepare($query);
@@ -105,8 +109,9 @@ class particularUsers extends database {
         return $queryExecute->fetch(PDO::FETCH_OBJ);
     }
     
+    /* Méthode permettant d'obtenir les informations d'un utilisateur particulier */
     public function getUserInformation() {
-        $query = 'SELECT `u`.`id`, `u`.`lastname`, `u`.`firstname`, `u`.`phoneNumber`, `u`.`address`, `u`.`mail`, `ug`.`type`, `u`.`id_al2jt_city`, `c`.`city`, `c`.`zipcode` '
+        $query = 'SELECT `u`.`id`, `u`.`lastname`, `u`.`firstname`, `u`.`phoneNumber`, `u`.`address`, `u`.`mail`,`u`.`active`, `u`.`cle`, `ug`.`type`, `u`.`id_al2jt_city`, `c`.`city`, `c`.`zipcode` '
                 . 'FROM `al2jt_user` AS `u` '
                 . 'INNER JOIN `al2jt_city` AS `c` ON `u`.`id_al2jt_city` = `c`.`id` '
                 . 'INNER JOIN `al2jt_userGroup` AS `ug` ON `u`.`id_al2jt_userGroup` = `ug`.`id` '
@@ -117,7 +122,8 @@ class particularUsers extends database {
         $queryExecute->execute();
         return $queryExecute->fetch(PDO::FETCH_OBJ);
     }
-         
+    
+    /* M2thode permettant d'obtenir les information d'un utilisateur Pro et de son entreprise */     
     public function getProfessionnalInformation() {
         $query = 'SELECT `u`.`id`, `u`.`lastname`, `u`.`firstname`,`u`.`mail`, `u`.`id_al2jt_city`, `c`.`address`, `city`.`city`, `city`.`zipcode`, `ug`.`type`, `c`.`name`, `c`.`siret`, `c`.`presentationPhoto`, `c`.`leader`, `c`.`phoneNumber`, `c`.`numberOfEmploy` '
                 . 'FROM `al2jt_user` AS `u` '
@@ -132,9 +138,10 @@ class particularUsers extends database {
         return $queryExecute->fetch(PDO::FETCH_OBJ);
     }
     
+    /* Méthode permettant l'update d'un utilisateur particulier */
     public function updateUserProfil() {
         $query = 'UPDATE `al2jt_user` '
-                . 'SET `lastname` = :lastname, `firstname` = :firstname, `phoneNumber` = :phoneNumber, `address` = :address, `mail` = :mail, `id_al2jt_city` = :id_al2jt_city '
+                . 'SET `lastname` = :lastname, `firstname` = :firstname, `phoneNumber` = :phoneNumber, `address` = :address, `id_al2jt_city` = :id_al2jt_city '
                 . 'WHERE `id` = :id ';
         $queryExecute = $this->db->prepare($query);
 
@@ -143,16 +150,16 @@ class particularUsers extends database {
         $queryExecute->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
         $queryExecute->bindValue(':phoneNumber', $this->phoneNumber, PDO::PARAM_STR);
         $queryExecute->bindValue(':address', $this->address, PDO::PARAM_STR);
-        $queryExecute->bindValue(':mail', $this->mail, PDO::PARAM_STR);
         $queryExecute->bindValue(':id_al2jt_city', $this->id_al2jt_city, PDO::PARAM_INT);
         return $queryExecute->execute();  
     }
+    /* Méthode permettant l'update d'un utilisateur Pro et de son entreprise */
     
     public function updateProfessionnalUserProfil() {
         $query = 'UPDATE `al2jt_user` AS `u` '
                 . 'INNER JOIN `al2jt_company` AS `c` ON `u`.`id` = `c`.`id_al2jt_user` '
                 . 'INNER JOIN `al2jt_city` AS `city` ON `u`.`id_al2jt_city` = `city`.`id` '
-                . 'SET `u`.`lastname` = :lastname, `u`.`firstname` = :firstname, `c`.`phoneNumber` = :phoneNumber, `c`.`address` = :address, `u`.`mail` = :mail, `u`.`id_al2jt_city` = :id_al2jt_city, `c`.`name` = :name, `c`.`siret` = :siret, `c`.`presentationPhoto` = :presentationPhoto, `c`.`leader` = :leader, `c`.`numberOfEmploy` = :numberOfEmploy  '
+                . 'SET `u`.`lastname` = :lastname, `u`.`firstname` = :firstname, `c`.`phoneNumber` = :phoneNumber, `c`.`address` = :address, `u`.`id_al2jt_city` = :id_al2jt_city, `c`.`name` = :name, `c`.`siret` = :siret, `c`.`presentationPhoto` = :presentationPhoto, `c`.`leader` = :leader, `c`.`numberOfEmploy` = :numberOfEmploy  '
                 . 'WHERE `u`.`id` = :id ';
         $queryExecute = $this->db->prepare($query);
 
@@ -161,7 +168,6 @@ class particularUsers extends database {
         $queryExecute->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
         $queryExecute->bindValue(':phoneNumber', $this->phoneNumber, PDO::PARAM_STR);
         $queryExecute->bindValue(':address', $this->address, PDO::PARAM_STR);
-        $queryExecute->bindValue(':mail', $this->mail, PDO::PARAM_STR);
         $queryExecute->bindValue(':id_al2jt_city', $this->id_al2jt_city, PDO::PARAM_INT);
         $queryExecute->bindValue(':name', $this->name, PDO::PARAM_STR);
         $queryExecute->bindValue(':siret', $this->siret, PDO::PARAM_STR);
@@ -171,38 +177,54 @@ class particularUsers extends database {
         return $queryExecute->execute();  
     }
     
+    /* Méthode permettant la desactivation d'un utilisateur quel qu'il soit. */
     public function deleteUser() {
-        $query = 'DELETE FROM `al2jt_user` '
-                . 'WHERE `id` = :id';
+        $query = 'UPDATE `al2jt_user` '
+                . 'SET `active` = 0 '
+                . 'WHERE `id` = :id ';
         $queryExecute = $this->db->prepare($query);
         $queryExecute->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $queryExecute->execute();
     }
     
+    /* Méthode permettant l'activation d'un utilisateur quel qu'il soit. */
+    public function activeUser() {
+        $query = 'UPDATE `al2jt_user` '
+                . 'SET `active` = 1 '
+                . 'WHERE `id` = :id ';
+        $queryExecute = $this->db->prepare($query);
+        $queryExecute->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $queryExecute->execute();
+        
+    }
+    
+    /* Méthode permettant de compter le nombre d'utilisateur Particuliers */
     public function countParticularUser() {
         $query = 'SELECT COUNT(`u`.`id`) AS `user`, `ug`.`type` '
                 . 'FROM `al2jt_user` AS `u` '
                 . 'INNER JOIN `al2jt_userGroup` AS `ug` ON `u`.`id_al2jt_userGroup` = `ug`.`id` '
-                . 'WHERE `ug`.`type` = \'Particulier\' ';
+                . 'WHERE `ug`.`type` = \'Particulier\' AND `u`.`active` = 1 ';
                
         $queryExecute = $this->db->prepare($query);
         $queryExecute->execute();
         return $queryExecute->fetch(PDO::FETCH_OBJ);
     }
     
+    /* Méthode permettant de compter le nombre d'utilisateur Pro et donc le nombre d'entreprise */
     public function countProfessionnalUser() {
         $query = 'SELECT COUNT(`u`.`id`) AS `user`, `ug`.`type` '
                 . 'FROM `al2jt_user` AS `u` '
                 . 'INNER JOIN `al2jt_userGroup` AS `ug` ON `u`.`id_al2jt_userGroup` = `ug`.`id` '
-                . 'WHERE `ug`.`type` = \'Professionnel\' ';
+                . 'WHERE `ug`.`type` = \'Professionnel\' AND `u`.`active` = 1 ';
                
         $queryExecute = $this->db->prepare($query);
         $queryExecute->execute();
         return $queryExecute->fetch(PDO::FETCH_OBJ);
     }
     
+    /* Méthode permettant d'obtenir la liste des utilisateur Particuliers pour l'administrateur */
     public function getPartUserList() {
-        $query = 'SELECT `u`.`id`, `u`.`lastname`, `u`.`firstname`, `u`.`phoneNumber`, `u`.`address`, `u`.`mail`, `ug`.`type`, `u`.`id_al2jt_city`, `c`.`city`, `c`.`zipcode` '
+        $query = 'SELECT `u`.`id`, `u`.`active`, `u`.`lastname`, `u`.`firstname`, `u`.`phoneNumber`, `u`.`address`, `u`.`mail`, `ug`.`type`, `u`.`id_al2jt_city`, `c`.`city`, `c`.`zipcode` '
                 . 'FROM `al2jt_user` AS `u` '
                 . 'INNER JOIN `al2jt_city` AS `c` ON `u`.`id_al2jt_city` = `c`.`id` '
                 . 'INNER JOIN `al2jt_userGroup` AS `ug` ON `u`.`id_al2jt_userGroup` = `ug`.`id` '
@@ -214,8 +236,9 @@ class particularUsers extends database {
         return $queryExecute->fetchAll(PDO::FETCH_OBJ);
     }
     
+    /* Méthode permettant d'obtenir la liste des entreprises pour l'administrateur */
     public function getProUserList() {
-        $query = 'SELECT `u`.`id`, `u`.`lastname`, `u`.`firstname`,`u`.`mail`, `u`.`id_al2jt_city`, `c`.`address`, `city`.`city`, `city`.`zipcode`, `ug`.`type`, `c`.`name`, `c`.`siret`, `c`.`presentationPhoto`, `c`.`leader`, `c`.`phoneNumber`, `c`.`numberOfEmploy` '
+        $query = 'SELECT `u`.`id`, `u`.`lastname`, `u`.`active`, `u`.`firstname`,`u`.`mail`, `u`.`id_al2jt_city`, `c`.`address`, `city`.`city`, `city`.`zipcode`, `ug`.`type`, `c`.`name`, `c`.`siret`, `c`.`presentationPhoto`, `c`.`leader`, `c`.`phoneNumber`, `c`.`numberOfEmploy` '
                 . 'FROM `al2jt_user` AS `u` '
                 . 'INNER JOIN `al2jt_company` AS `c` ON `u`.`id` = `c`.`id_al2jt_user` '
                 . 'INNER JOIN `al2jt_city` AS `city` ON `u`.`id_al2jt_city` = `city`.`id` '

@@ -32,6 +32,7 @@ include_once '../controllers/adminProductionListCtrl.php';
                             <th>Description photo</th>
                             <th>Code Postal</th>
                             <th>Ville</th>
+                            <th>Chantier actif</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -47,7 +48,12 @@ include_once '../controllers/adminProductionListCtrl.php';
                                 <td><?= $prod->description ?></td>
                                 <td><?= $prod->zipcode ?></td>
                                 <td><?= $prod->city ?></td>
-                                <td><a href="adminProductionList.php?id=<?= $prod->id ?>">Supprimer le chantier</a></td>
+                                <td><?= $prod->active ?></td>
+                                <?php if($prod->active == 1) { ?>
+                                <td><a href="adminProductionList.php?idDesactive=<?= $prod->id ?>">Desactiver le chantier</a></td>
+                                <?php } else { ?>
+                                <td><a href="adminProductionList.php?id=<?= $prod->id ?>">Activer le chantier</a></td>
+                                <?php } ?>
                             </tr>
                         <?php } ?>
                     </tbody>

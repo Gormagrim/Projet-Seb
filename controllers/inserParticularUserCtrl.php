@@ -1,4 +1,5 @@
 <?php
+
 /*
  * CONTROLLER de ma méthode "inserParticularUser()"
  * 
@@ -30,23 +31,23 @@ if (isset($_POST['searchCity'])) {
      */
     $isProfessionnal = (isset($_GET['type']) ? ($_GET['type'] == 'professionnel' ? true : false) : '');
     /*
- * je crée une condition où je compte si le nombre de $_POST est supérieur à 0
- * je vérifie sur les données renseignées sont valides avant d'éxecuter ma méthode "insertParticularUsers()"
- */
+     * je crée une condition où je compte si le nombre de $_POST est supérieur à 0
+     * je vérifie sur les données renseignées sont valides avant d'éxecuter ma méthode "insertParticularUsers()"
+     */
     if (count($_POST) > 0) {
         /*
-     * j'instancie mon objet particularUsers() 
-     * je crée une variable ($particularUsers) qui devient un objet $particularUsers et à accès à tous les attributs et toutes les méthodes
-     * je fais le même chose pour mon objet company() pour le professionnel
-     */
+         * j'instancie mon objet particularUsers() 
+         * je crée une variable ($particularUsers) qui devient un objet $particularUsers et à accès à tous les attributs et toutes les méthodes
+         * je fais le même chose pour mon objet company() pour le professionnel
+         */
         $particularUsers = new particularUsers();
         $company = new company();
         // on vérifie que la variable $_POST['id_al2jt_userGroup'] existe ET n'est pas vide.
         if (!empty($_POST['id_al2jt_userGroup'])) {
             if ($_POST['id_al2jt_userGroup'] === '2' || $_POST['id_al2jt_userGroup'] === '3') {
                 /*
-             * on initialise l'objet $particularUsers et son attribut ($particularUsers->id_al2jt_userGroup) en lui donnant la valeur de ma variable ($_POST['id_al2jt_userGroup'])
-             */
+                 * on initialise l'objet $particularUsers et son attribut ($particularUsers->id_al2jt_userGroup) en lui donnant la valeur de ma variable ($_POST['id_al2jt_userGroup'])
+                 */
                 $particularUsers->id_al2jt_userGroup = $_POST['id_al2jt_userGroup'];
             } else {
                 $formErrors['id_al2jt_userGroup'] = 'Votre choix est incorrect.';
@@ -200,7 +201,10 @@ if (isset($_POST['searchCity'])) {
         }
 
         if (!empty($_POST['password']) && ($_POST['password'] == $_POST['passwordVerification'])) {
-            $particularUsers->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            /*
+             * Changer le password_default !!!!!!!!
+             */
+            $particularUsers->password = password_hash($_POST['password'], PASSWORD_ARGON2I);
         } else {
             $formErrors['password'] = 'Veuillez renseigner votre mot de passe.';
         }
@@ -215,10 +219,38 @@ if (isset($_POST['searchCity'])) {
             $formErrors['termsOfUse'] = 'Veuillez accepter les conditions d\'utilisation.';
         }
 
+        $_POST['active'] = false;
+
+        $chaine = ('abcdefghijklmnopkrstuvwxyz0123456789');
+        $cle = md5(str_shuffle(substr($chaine, rand(0, 36), rand(0, 36))));
+
+        $particularUsers->cle = $cle;
+
         if (count($formErrors) == 0) {
             if ($particularUsersInsert = $particularUsers->inserParticularUser()) {
+
+
                 if ($_POST['id_al2jt_userGroup'] === '3') {
                     $company->id_al2jt_user = $particularUsersInsert;
+                    // Préparation du mail contenant le lien d'activation
+                    $destinataire = $particularUsers->mail;
+                    $sujet = "Activation de votre votre compte";
+                    $entete = "From: izi.travaux@zohomail.eu";
+
+                    // Le lien d'activation est composé du login(log) et de la clé(cle)
+                    $message = 'Bienvenue sur Votre Site,
+ 
+                Pour activer votre compte, veuillez cliquer sur le lien ci dessous
+                ou copier/coller dans votre navigateur internet.
+ 
+                http://projetbtp/activation.php?log=' . urlencode($particularUsers->mail) . '&cle=' . urlencode($particularUsers->cle) . ';
+ 
+ 
+                ---------------
+                Ceci est un mail automatique, Merci de ne pas y répondre.';
+
+
+                    mail($destinataire, $sujet, $message, $entete); // Envoi du mail
                     if ($company->inserCompany()) {
                         $formSuccess = 'Enregistrement de votre compte et de l\'entreprise effectué';
                     } else {

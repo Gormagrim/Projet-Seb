@@ -1,8 +1,6 @@
 <?php
 session_start();
 include_once 'navbarProfessionnal.php';
-include_once '../TestBaseDeDonnées.php';
-include_once '../function.php';
 ?>
 <div class="row">
     <div class="bigCompanyCard col-12 offset-sm-2 col-sm-8 offset-md-2 col-md-8 offset-lg-2 col-lg-8">

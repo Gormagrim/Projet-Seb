@@ -9,6 +9,7 @@ class city extends database {
         parent::__construct();
     }
     
+    /* Méthode permettant de rechercher une ville par son nom */
     public function searchCity($search) {
         $query = 'SELECT `id`, `zipcode`, `city` '
                 . 'FROM `al2jt_city` '
@@ -19,8 +20,7 @@ class city extends database {
         return $queryExecute->fetchAll(PDO::FETCH_OBJ);
     }
     
-    // METHODE CREE AU CAS OU, PAS DE RECHERCHE AU CODE POSTAL AU 06/06/2019 !
-    
+    /* Méthode permettant de rechercher une ville par son code postal */
     public function searchZipcode($zipSearch) {
         $query = 'SELECT `id`, `zipcode`, `city` '
                 . 'FROM `al2jt_city` '

@@ -8,7 +8,7 @@ require_once 'controllers/indexCtrl.php';
 ?>
 <div class="row">                
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 mainTitle separation"> 
-       <h2 style="text-shadow:1px 1px 0 #ffa40d"><span class="orange">.</span>QUE NOUS PROPOSONS VOUS ?</h2>
+       <h2 style="text-shadow:1px 1px 0 #ffa40d"><span class="orange">.</span>QUE PROPOSONS NOUS ?</h2>
     </div>
 </div> <!-- Fin de div row -->
 <div class="row">
